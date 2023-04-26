@@ -53,7 +53,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static"
-      sx={{ backgroundColor: '#EC6642' }}
+      sx={{ backgroundColor: '#F9F5EB' }}
     >
       <Container maxWidth="xl">
         <Toolbar sx={{ display: 'flex', flexWrap: 'wrap' }} disableGutters>
@@ -122,7 +122,7 @@ function ResponsiveAppBar() {
                   fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
-                  color: '#0d0628',
+                  // color: 'inherit',
                   textDecoration: 'none',
               }}
               >
@@ -209,7 +209,7 @@ function ResponsiveAppBar() {
                 variant="h5"
                 noWrap
                 component="a"
-                href="/hi"
+                href=""
                 sx={{
                   mr:0,
                   display: { xs: 'flex', md: 'none' },

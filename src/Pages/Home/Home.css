@@ -1,0 +1,31 @@
+.popular_categories{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 40px;
+}
+
+.p_home {
+    font-family: 'Secular One', sans-serif;
+    font-size: 14px; /* Tamaño de fuente por defecto */
+    padding-top: 15px;
+    padding-bottom: 40px;
+    margin: 0px 50px;
+    text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+    .p_home {
+        font-size: 2.4vw; /* Ajustar el valor para lograr el tamaño deseado */
+    }
+}
+
+/* Media query para pantallas de 1080p */
+@media screen and (min-width: 1080px) {
+    .p_home {
+        font-size: 2vw; /* Ajustar el valor para lograr el tamaño deseado */
+    }
+}
+
+.welcome{padding-top: 20px;
+    text-align: center;
+}
