@@ -242,7 +242,7 @@ function ResponsiveAppBar() {
                 sx={{ 
                   flexGrow: 3, 
                   width: '100%',
-                  margin: '3% 0'
+                  margin: 1
                 }}
                 id="searchBarInput" 
                 label="Search" 
