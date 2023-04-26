@@ -11,7 +11,7 @@
     border-radius: 10px;
 }
 
-div a:first-of-type:before {
+.lines a:first-of-type:before {
   content: "";
   display: block;
   position: absolute;
@@ -23,7 +23,7 @@ div a:first-of-type:before {
   background-color: white;
 }
 
-div a:last-of-type:after {
+.lines a:last-of-type:after {
   content: "";
   display: block;
   position: absolute;

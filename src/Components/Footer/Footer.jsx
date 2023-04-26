@@ -25,7 +25,7 @@ export default function Footer() {
         fontFamily:'Secular One'
       }}
     >
-      <div style={{ display: "flex", gap: "15px" }}>
+      <div className="lines" style={{ display: "flex", gap: "15px" }}>
         <a
           className="links_webs"
           href="https://www.facebook.com/3DartPrints"
