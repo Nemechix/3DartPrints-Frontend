@@ -18,6 +18,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from 'react';
 import { Grid, TextField } from '@mui/material';
 
+import './ResponsiveAppBar.css'
+
 const pages = ['Random', 'Search'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -61,11 +63,12 @@ function ResponsiveAppBar() {
             sx={{ 
               display: 'flex',
               alignItems: 'center',
-              margin: '10px 0 0 0'
+              py: 1
             }}
+            rowSpacing={1}
           >
             {/* Web Size Menu */}
-            <Grid item xd={2}
+            <Grid item md={1}
               sx={{ display: { xs: 'none', md: 'flex' } }} 
             >
               <IconButton
@@ -122,7 +125,7 @@ function ResponsiveAppBar() {
                   fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
-                  // color: 'inherit',
+                  color: '#0d0628',
                   textDecoration: 'none',
               }}
               >
@@ -134,23 +137,26 @@ function ResponsiveAppBar() {
             <Grid item md={3} 
               sx={{ 
                 display: {xs: 'none', md: 'flex'}, 
-                backgroundColor: 'GhostWhite',
-                border: '1px solid black', 
-                borderRadius: 3, 
+                // backgroundColor: 'GhostWhite',
+                // border: '1px solid black', 
+                // borderRadius: 3, 
                 px: 1, 
-                my: 1,
+                my: 0,
                 mx: 3
               }}
             >
               <TextField 
                 sx={{ 
+                  backgroundColor: 'white',
+                  // border: '1px solid black',
+                  borderRadius: 15,
                   // flexGrow: 3, 
                   width: '100%',
                   // margin: 1
                 }}
                 id="searchBarInput" 
                 label="Search" 
-                variant="standard" 
+                variant="outlined" 
               />
             </Grid>
             
@@ -158,7 +164,13 @@ function ResponsiveAppBar() {
             <Grid item md
               sx={{ display: {xs: 'none', md: 'flex'} }}
             >
-              <Box sx={{ flexGrow: 1, justifyContent: 'right', display: { xs: 'none', md: 'flex' } }}>
+              <Box 
+                sx={{ 
+                  flexGrow: 1, 
+                  justifyContent: 'center', 
+                  display: { xs: 'none', md: 'flex' } 
+                }}
+              >
                 {/* {pages.map((page) => (
                   <Button
                     key={page}
@@ -169,22 +181,27 @@ function ResponsiveAppBar() {
                   </Button>
                 ))} */}
                 <Button
+                  startIcon={<AutoFixHighIcon/>}
                   onClick={handleCloseNavMenu}
-                  sx={{ display: 'block' }}
+                  // sx={{ display: 'block' }}
+                  variant='contained'
+                  color='success'
+                  size='small'
+                  // href='/'
                 >
                   <Typography
                     // variant="h6"
                     // noWrap
-                    component="button"
-                    href="/"
+                    // component="button"
+                    // href="/"
                     sx={{
                       // mr: 0,
                       // display: { xs: 'none', md: 'flex' },
                       // fontFamily: 'monospace',
                       fontWeight: 600,
-                      letterSpacing: '.3rem',
+                      letterSpacing: '.1rem',
                       // color: 'inherit',
-                      textDecoration: 'none',
+                      // textDecoration: 'none',
                     }}
                   >                
                     Inspire Me!
@@ -209,15 +226,15 @@ function ResponsiveAppBar() {
                 variant="h5"
                 noWrap
                 component="a"
-                href=""
+                href="/"
                 sx={{
-                  mr:0,
+                  mr: 0,
                   display: { xs: 'flex', md: 'none' },
-                  flexGrow: 1,
+                  // flexGrow: 1,
                   fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
-                  // color: 'inherit',
+                  color: '#0d0628',
                   textDecoration: 'none',
                 }}
               >
@@ -227,7 +244,10 @@ function ResponsiveAppBar() {
 
             {/* Smartphone Size InspireMe Icon */}
             <Grid item xs={`${isLogged ? 1 : 3}`}
-              sx={{ display: {xs: 'flex', md: 'none'} }} 
+              sx={{ 
+                display: {xs: 'flex', md: 'none'}, 
+                justifyContent: 'center'
+              }} 
             >
               <Tooltip title="Inspire Me!">
                 <IconButton sx={{ p: 0 }}>
@@ -242,7 +262,8 @@ function ResponsiveAppBar() {
                 display: {
                   xs: `${isLogged ? 'flex' : 'none'}`, 
                   md: 'none'
-                } 
+                },
+                justifyContent: 'center' 
               }} 
             >
               <Tooltip title="Favourites">
@@ -258,7 +279,8 @@ function ResponsiveAppBar() {
                 display: {
                   xs: `${isLogged ? 'flex' : 'none'}`, 
                   md: 'none'
-                } 
+                }, 
+                justifyContent: 'center'
               }}
             >
               <Tooltip title="Cart">
@@ -270,7 +292,11 @@ function ResponsiveAppBar() {
 
             {/* User Icon */}
             <Grid item xs={1} md={1}
-              sx={{ ml: {md: 2} }}
+              sx={{ 
+                display: 'flex',
+                ml: {md: 2}, 
+                justifyContent: 'center'
+              }}
             >
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
@@ -369,22 +395,24 @@ function ResponsiveAppBar() {
             <Grid item xs={10}
               sx={{ 
                 display: {xs: 'flex', md: 'none'}, 
-                backgroundColor: 'GhostWhite',
-                border: '1px solid black', 
-                borderRadius: 3, 
+                // backgroundColor: 'GhostWhite',
+                // border: '1px solid black', 
+                // borderRadius: 3, 
                 px: 1, 
-                my: 1 
+                my: 0 
               }}
             >
               <TextField 
                 sx={{ 
+                  backgroundColor: 'white',
+                  borderRadius: 15,
                   // flexGrow: 3, 
                   width: '100%',
                   // margin: 0,
                 }}
                 id="searchBarInput" 
                 label="Search" 
-                variant="standard" 
+                variant="outlined" 
               />
             </Grid>
             
