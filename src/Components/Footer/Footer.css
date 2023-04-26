@@ -1,7 +1,36 @@
-.footer-container{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5vh;
+.links_webs{
+    color: white;
+    transition: 0.2s;
+    border-radius: 10px;
+
+}
+
+.links_webs:hover{
+    color: #0d0628;
+    background-color: white;
+    border-radius: 10px;
+}
+
+div a:first-of-type:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  width: calc(50% - 55px);
+  background-color: white;
+}
+
+div a:last-of-type:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  width: calc(50% - 55px);
+  background-color: white;
 }
