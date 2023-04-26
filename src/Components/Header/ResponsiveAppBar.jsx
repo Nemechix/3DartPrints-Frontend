@@ -246,7 +246,7 @@ function ResponsiveAppBar() {
             <Grid item xs={`${isLogged ? 1 : 3}`}
               sx={{ 
                 display: {xs: 'flex', md: 'none'}, 
-                justifyContent: 'center'
+                justifyContent: `${isLogged ? 'center' : 'left'}`
               }} 
             >
               <Tooltip title="Inspire Me!">
@@ -301,7 +301,7 @@ function ResponsiveAppBar() {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={isLogged ? handleOpenUserMenu : handleOpenLoginMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" 
+                    <Avatar alt={`${isLogged ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg" 
                       sx={{ color: 'black' }}
                     />
                   </IconButton>
