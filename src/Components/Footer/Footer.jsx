@@ -22,6 +22,7 @@ export default function Footer() {
         borderRadius: "0px",
         paddingTop: "10px",
         paddingBottom: "10px",
+        fontFamily:'Secular One'
       }}
     >
       <div style={{ display: "flex", gap: "15px" }}>
