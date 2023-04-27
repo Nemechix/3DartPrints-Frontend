@@ -20,6 +20,7 @@ import { Backdrop, Fade, Grid, Modal, TextField } from '@mui/material';
 
 import './ResponsiveAppBar.css'
 import { useNavigate } from 'react-router-dom';
+import LoginFrame from '../LoginFrame/LoginFrame';
 
 const pages = ['Random', 'Search'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -511,6 +512,9 @@ function ResponsiveAppBar() {
       </AppBar>
 
       <Modal
+        // sx={{
+        //   bgcolor: 'white'
+        // }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={openLoginPopup}
@@ -525,22 +529,25 @@ function ResponsiveAppBar() {
       >
         <Fade in={openLoginPopup}>
           <Box sx={{
+            // display: 'flex',
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 400,
+            width: 300,
+            height: 400,
             bgcolor: 'background.paper',
             border: '2px solid #000',
             boxShadow: 24,
             p: 4,
           }}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            {/* <Typography id="transition-modal-title" variant="h6" component="h2">
               Text in a modal
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+            </Typography> */}
+            <LoginFrame/>
           </Box>
         </Fade>
       </Modal>
