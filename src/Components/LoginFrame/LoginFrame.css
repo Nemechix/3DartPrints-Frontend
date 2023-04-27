@@ -1,7 +1,6 @@
 .login-wrapper {
     display: block;
     position: absolute;
-    padding: 20px;
 }
 
 button {
@@ -10,9 +9,9 @@ button {
 
 form {
     display: block;
-    margin: 0 auto;
     border: 3px solid #ea5455;
+    background: #F9F5EB;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    padding: 35px;
+    padding: 5px 35px 35px 35px;
 }
