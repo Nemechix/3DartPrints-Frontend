@@ -10,22 +10,22 @@ function RegisterFrame({ setToken }) {
 
   return(
     <div className="register-wrapper">
-      <h1>Datos para el registro:</h1>
       <form>
+              <h2>Datos para el registro:</h2>      <hr />
         <label>
-          <p>Username</p>
+          <p>Username:</p>
           <input type="text" onChange={e => setUserName(e.target.value)}/>
         </label>
          <label>
-          <p>Email</p>
+          <p>Email:</p>
           <input type="email" onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
-          <p>Password</p>
+          <p>Password:</p>
           <input type="password" onChange={e => setPassword(e.target.value)}/>
         </label>
         <label>
-          <p>Confirma el Password</p>
+          <p>Confirma el Password:</p>
           <input type="password" onChange={e => setPassword2(e.target.value)}/>
         </label>
         <div>

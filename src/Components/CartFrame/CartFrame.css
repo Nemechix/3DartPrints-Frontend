@@ -1,5 +1,17 @@
 .cart-wrapper {
-     display: block;
-     position: absolute;
-     padding: 20px;
- }
+    display: block;
+    position: absolute;
+}
+    
+button {
+    float: right;
+}
+    
+form {
+    display: block;
+    border: 3px solid #ea5455;
+    background: #F9F5EB;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    padding: 5px 35px 35px 35px;
+}
