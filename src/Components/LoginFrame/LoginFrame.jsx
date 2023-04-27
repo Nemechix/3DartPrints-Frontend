@@ -1,71 +1,31 @@
-import { Email, Lock, Visibility, VisibilityOff } from "@mui/icons-material"
-import { Button, Card, CardActions, CardContent, CardHeader, Divider, IconButton, TextField, Typography } from "@mui/material"
-import { blue } from "@mui/material/colors"
-import { useState } from "react"
+import React, { useState } from 'react';
+import './LoginFrame.css';
 
-function LoginFrame() {
+function LoginFrame({ setToken }) {
 
-  const [ isPassVisible, setIsPassVisible ] = useState(false)
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
 
-  function handleVisibleClick() {
-    setIsPassVisible(!isPassVisible)
-  }
-
-  return (
-    <Card 
-      sx={{ width: '700px', backgroundColor: blue[50] }}
-      raised={true}
-    >
-      <CardHeader title='Login'/>
-      <CardContent>
-        <TextField
-          classes={{root: 'myClaseNameDani'}}
-          label='Email'
-          variant='outlined'
-          placeholder="Introduce Email"
-          fullWidth={true}
-          margin='dense'
-          InputProps={{
-            startAdornment: <Email/>
-          }}
-          />
-        <TextField
-          label='Password'
-          variant='outlined'
-          placeholder="Introduce Password"
-          fullWidth={true}
-          margin='dense'
-          type={ isPassVisible ? 'text' : 'password' }
-          InputProps={{
-            startAdornment: <Lock/>,
-            endAdornment: 
-              <IconButton
-                onClick={ handleVisibleClick }
-              >
-                { isPassVisible ? <Visibility/> : <VisibilityOff/> }
-              </IconButton>
-          }}
-          />
-      </CardContent>
-      <Divider/>
-      <CardActions sx={{display: 'flex', justifyContent: 'flex-end'}}>
-        <Button
-          size='small'
-          color='secondary'
-          variant='contained'
-          >
-          Register
-        </Button>
-        <Button
-          size='small'
-          color='primary'
-          variant='contained'
-          >
-          Login
-        </Button>
-      </CardActions>
-
-    </Card>  
+  return(
+    <div className="login-wrapper">
+      <h1>Por favor ingresa:</h1>
+      <form>
+        <label>
+          <p>Username</p>
+          <input type="text" onChange={e => setUserName(e.target.value)}/>
+        </label>
+        <label>
+          <p>Password</p>
+          <input type="password" onChange={e => setPassword(e.target.value)}/>
+        </label>
+          <div>
+           <br></br>
+        </div>
+        <div>
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
   )
 }
 
