@@ -17,8 +17,6 @@ export default function Footer() {
         justifyContent: "center",
         backgroundColor: "#0D0628",
         color: "white",
-        position: "fixed",
-        bottom: 0,
         borderRadius: "0px",
         paddingTop: "10px",
         paddingBottom: "10px",
@@ -65,7 +63,7 @@ export default function Footer() {
         style={{ width: "100px", marginTop: "13px" }}
       />
       <Typography
-        sx={{ fontSize: 14, marginTop: "" }}
+        sx={{ fontSize: 14 }}
         color="white"
         gutterBottom
       >

@@ -2,30 +2,117 @@
     display: flex;
     justify-content: space-evenly;
     padding-top: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
 }
 
 .p_home {
     font-family: 'Secular One', sans-serif;
-    font-size: 14px; /* Tamaño de fuente por defecto */
+    font-size: 14px; 
     padding-top: 15px;
     padding-bottom: 40px;
     margin: 0px 50px;
     text-align: center;
 }
 
-@media screen and (min-width: 600px) {
-    .p_home {
-        font-size: 2.4vw; /* Ajustar el valor para lograr el tamaño deseado */
-    }
-}
 
-/* Media query para pantallas de 1080p */
-@media screen and (min-width: 1080px) {
-    .p_home {
-        font-size: 2vw; /* Ajustar el valor para lograr el tamaño deseado */
-    }
-}
-
-.welcome{padding-top: 20px;
+.welcome{
+    padding-top: 20px;
     text-align: center;
 }
+
+.h3_home{
+    font-size: 6vw;
+    text-align: center;
+}
+
+.about_title{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.about_title>a{
+    color: black;
+}
+
+.parrafo1{
+    text-align: center;
+    padding: 20px;
+    font-size: 4.3vw;
+}
+
+.parrafo2{
+    text-align: center;
+    padding: 20px;
+    font-size: 4.3vw;
+
+}
+
+.parrafo3{
+    text-align: center;
+    padding: 20px;
+    font-size: 4.3vw;
+    padding-bottom: 30px;
+}
+
+.parrafos_title{
+    background-color: #eedbee;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .h3_home {
+        font-size: 2vw;
+    }
+
+    .parrafos{
+        display: flex;
+    }
+
+    .parrafos_title{
+        font-size: 15px;
+        padding: 0px 80px;
+
+    }
+
+    .parrafo1{
+        padding: 20px;
+        font-size: 1.2vw;
+        text-align: left;
+    }
+    
+    .parrafo2{
+        padding: 20px;
+        font-size: 1.2vw;
+        text-align: left;
+    }
+    
+    .parrafo3{
+        padding: 20px;
+        font-size: 1.2vw;
+        padding-bottom: 30px;
+        text-align: left;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .popular_categories {
+          display: flex ;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+        }
+      
+        .popular_categories > div {
+          width: 26%;
+          margin-bottom: 20px;
+        }
+      }
+
+      .about_title>a{
+        font-size: 1vw;
+      }
+
+
+
+}
+
