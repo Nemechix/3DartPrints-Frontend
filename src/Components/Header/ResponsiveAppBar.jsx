@@ -34,7 +34,7 @@ function ResponsiveAppBar() {
   // const [anchorElLogin, setAnchorElLogin] = useState(null)
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
 
-  const isLogged = true
+  const isLogged = false
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -527,20 +527,33 @@ function ResponsiveAppBar() {
           },
         }}
       >
-        <Fade in={openLoginPopup}>
-          <Box sx={{
-            // display: 'flex',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 300,
-            height: 400,
-            bgcolor: 'background.paper',
-            border: '2px solid #000',
-            boxShadow: 24,
-            p: 4,
-          }}>
+        <Fade in={openLoginPopup}
+          sx={{
+            display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              height: '100%',
+              border: '2px solid red',
+          }}
+        >
+          <Box 
+            sx={{
+              // display: 'flex',
+              // position: 'relative',
+              // justifyContent: 'center',
+              // alignItems: 'center',
+              // top: '50%',
+              // left: '50%',
+              // transform: 'translate(-50%, -50%)',
+              // width: '100%',
+              // height: '100%',
+              // bgcolor: 'white',
+              // border: '2px solid #000',
+              // boxShadow: 24,
+              // p: 4,
+            }}
+          >
             {/* <Typography id="transition-modal-title" variant="h6" component="h2">
               Text in a modal
             </Typography>
