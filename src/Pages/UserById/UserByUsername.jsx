@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import './UserById.css'
-import getUserById from '../../Services/GetUserById'
+import './UserByUsername.css'
+import getUserByUsername from '../../Services/GetUserByUsername'
 import { useParams } from 'react-router-dom'
 
-function UserById() {
+function UserByUsername() {
     const [user, setUser] = useState([])
-    const { id } = useParams()
+    const { username } = useParams()
     //console.log(user)
 
 const getUser = async () => {
-    const result = await getUserById(id)
+    const result = await getUserByUsername(username)
     console.log(result.data)
     setUser(result.data)
 }
 
 useEffect(() => {
     getUser()
-}, [id])
+}, [username])
 
     return (
         <div>{user.name}</div>
     )
 }
 
-export default UserById
+export default UserByUsername
