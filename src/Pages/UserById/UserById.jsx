@@ -4,9 +4,9 @@ import getUserById from '../../Services/GetUserById'
 import { useParams } from 'react-router-dom'
 
 function UserById() {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState([])
     const { id } = useParams()
-    console.log(user)
+    //console.log(user)
 
 const getUser = async () => {
     const result = await getUserById(id)
@@ -19,7 +19,7 @@ useEffect(() => {
 }, [id])
 
     return (
-        <div>{user}</div>
+        <div>{user.name}</div>
     )
 }
 
