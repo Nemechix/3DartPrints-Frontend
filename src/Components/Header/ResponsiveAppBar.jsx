@@ -163,7 +163,7 @@ function ResponsiveAppBar() {
                     width: '100%',
                     // margin: 1
                   }}
-                  id="searchBarInput" 
+                  id="webSearchBarInput" 
                   label="Search" 
                   variant="outlined" 
                 />
@@ -500,7 +500,7 @@ function ResponsiveAppBar() {
                     width: '100%',
                     // margin: 0,
                   }}
-                  id="searchBarInput" 
+                  id="smartphoneSearchBarInput" 
                   label="Search" 
                   variant="outlined" 
                 />
