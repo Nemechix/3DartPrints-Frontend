@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './UserByUsername.css'
-import getUserByUsername from '../../Services/GetUserByUsername'
+import getUserByUsername from '../../Services/GetUserByUsername.jsx'
 import { useParams } from 'react-router-dom'
 
 function UserByUsername() {
     const [user, setUser] = useState([])
     const { username } = useParams()
+    console.log(username)
     //console.log(user)
 
 const getUser = async () => {
