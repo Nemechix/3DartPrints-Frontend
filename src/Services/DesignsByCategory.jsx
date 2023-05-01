@@ -1,8 +1,8 @@
 import api from './config'
 
-async function getDesignsByCategoryId(name){
-    const designs = await api.get(`/category/${name}/designs`);
+async function getDesignsByCategoryName(name){
+    const designs = await api.get(`/category/name/${name}/designs`);
     return designs
 }
 
-export default getDesignsByCategoryId
+export default getDesignsByCategoryName

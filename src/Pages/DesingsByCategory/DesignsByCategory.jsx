@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import getDesignsByCategoryId from '../../Services/DesignsByCategory';
+import getDesignsByCategoryName from '../../Services/DesignsByCategory';
 
 function DesignsByCategory() {
   const { name } = useParams();
@@ -8,7 +8,7 @@ function DesignsByCategory() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getDesignsByCategoryId(name);
+      const response = await getDesignsByCategoryName(name);
       setDesigns(response.data);
     }
     fetchData();
