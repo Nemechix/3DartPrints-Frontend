@@ -39,7 +39,7 @@ function ResponsiveAppBar() {
   const isLogged = true
 
   function handleMenuItemClick(categoryId) {
-    navigate(`/category/${categoryId}/designs`);
+    navigate(`/category/${categoryId}`);
   }
 
 
