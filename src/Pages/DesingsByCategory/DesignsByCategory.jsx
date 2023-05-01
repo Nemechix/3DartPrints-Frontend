@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import getDesignsByCategory from '../../Services/DesingsByCategory';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import getDesignsByCategoryId from '../../Services/DesignsByCategory';
 
-function DesignsByCategory({ categoria }) {
+function DesignsByCategory() {
+  const { name } = useParams();
   const [designs, setDesigns] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getDesignsByCategory(categoria);
-      console.log(response.data)
+      const response = await getDesignsByCategoryId(name);
       setDesigns(response.data);
     }
     fetchData();
-  }, [categoria]);
+  }, [name]);
 
   return (
     <div>
-      <h2>Diseños por categoría: {categoria}</h2>
+      <h2>Diseños por categoría: {name}</h2>
       <ul>
-        {designs.map(design => (
-          <li key={design.id}>
-            {design.name}
-          </li>
+        {designs.map((design) => (
+          <li key={design.name}> <img style={{ width: '200px', height: '200px' }} className='design_image' src={design.image} alt="123" />{design.name}</li>
         ))}
       </ul>
     </div>
