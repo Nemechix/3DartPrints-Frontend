@@ -1,8 +1,8 @@
 import api from './config'
 
 async function getAllUsers(){
-    const users = await api.get("/user");
-    return users
+    const {data} = await api.get("/user");
+    return data
 }
 
-export default getAllUsers
+export default {getAllUsers}

@@ -9,7 +9,7 @@ function DesignsByCategory() {
   useEffect(() => {
     async function fetchData() {
       const response = await getDesignsByCategoryName(name);
-      setDesigns(response.data);
+      setDesigns(response);
     }
     fetchData();
   }, [name]);
