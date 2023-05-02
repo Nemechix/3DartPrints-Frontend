@@ -5,6 +5,8 @@ import About from "../Pages/About/About";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Cart from "../Pages/Cart/Cart";
+import UserByUsername from "../Pages/UserById/UserByUsername";
+import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
         {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/user/:username",
+        element: <UserByUsername />,
+      },
+      {
+        path: "/category/:name",
+        element: <DesignsByCategory />,
       },
     ],
   },
