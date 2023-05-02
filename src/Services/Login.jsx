@@ -1,4 +1,4 @@
-import { api } from "./config";
+import  api  from "./config";
 
 async function login(user) {
   const response = await api.post('/auth/login', user)
