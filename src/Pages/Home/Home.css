@@ -1,11 +1,3 @@
-.popular_categories{
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 40px;
-    flex-wrap: wrap;
-    text-align: center;
-    width: 100%;
-}
 
 .p_home {
     font-family: 'Secular One', sans-serif;
@@ -96,23 +88,20 @@
     }
 
     @media screen and (min-width: 1024px) {
-        .popular_categories {
-          display: flex ;
-          flex-wrap: wrap;
-          justify-content: space-evenly;
-        }
-      
         .popular_categories > div {
-          width: 26%;
-          margin-bottom: 20px;
-        }
+            width: 20%;
+            margin-bottom: 20px;
+            height: 300px;
+          }
+          
+          .popular_categories > div:last-child {
+            margin-right: 0;
+          }
+          
       }
 
       .about_title>a{
         font-size: 1vw;
       }
-
-
-
 }
 
