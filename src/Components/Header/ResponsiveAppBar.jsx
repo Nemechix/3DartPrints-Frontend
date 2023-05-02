@@ -22,10 +22,11 @@ import './ResponsiveAppBar.css'
 import { useNavigate } from 'react-router-dom';
 
 import LoginFrame from '../LoginFrame/LoginFrame';
+import GetMyProfile from '../../Services/GetMyProfile';
 // import { login } from '../../Services/Login';
 
 const pages = ['Pokemon', 'Cocina'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Dashboard'];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate()
@@ -36,9 +37,12 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null)
   // const [anchorElLogin, setAnchorElLogin] = useState(null)
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
+  // const [isLogged, setIsLogged] = useState()
+  const [user, setUser] = useState()
+  const anchorElUserWeb = false
 
-  const isLogged = localStorage.getItem('token')
-  console.log(isLogged)
+  // let isLogged = localStorage.getItem('token')
+  // console.log(isLogged)
   // async function handleSubmit(event) {
   //   event.preventDefault()
   //   const response = await login({email, password})
@@ -48,7 +52,21 @@ function ResponsiveAppBar() {
   //     : console.log('Email or Password incorrect.')
   // }
 
+  useEffect(() => {
+
+    async function fetchData() {
+      const user = await GetMyProfile(localStorage.getItem('token'))
+      setUser(user)
+    }
+
+    localStorage.getItem('token') ?
+      fetchData()
+      : setUser(null)
+      
+  }, [localStorage.getItem('token')])
+
   function handleMenuItemClick(categoryId) {
+    handleCloseNavMenu()
     navigate(`/category/${categoryId}`);
   }
 
@@ -75,6 +93,47 @@ function ResponsiveAppBar() {
 
   const handleCloseLoginMenu = () => {
     setOpenLoginPopup(false)
+  }
+
+  function handleLogoutClick() {
+    localStorage.removeItem('token')
+    handleCloseUserMenu()
+    navigate('/')
+  }
+
+  function UserMenu() {
+    return (
+      <Menu
+
+        sx={{
+          mt: '45px',
+        }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        {settings.map((setting) => (
+          <MenuItem key={setting} onClick={handleCloseUserMenu}>
+            <Typography textAlign="center">{setting}</Typography>
+          </MenuItem>
+        ))}
+        
+        <MenuItem onClick={handleLogoutClick}>
+            <Typography textAlign="center">Logout</Typography>
+        </MenuItem>
+
+      </Menu>
+    )
   }
 
   return (
@@ -270,10 +329,10 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Smartphone Size InspireMe Icon */}
-              <Grid item xs={`${isLogged ? 1 : 3}`}
+              <Grid item xs={`${user ? 1 : 3}`}
                 sx={{
                   display: { xs: 'flex', md: 'none' },
-                  justifyContent: `${isLogged ? 'center' : 'left'}`
+                  justifyContent: `${user ? 'center' : 'left'}`
                 }}
               >
                 <Tooltip title="Inspire Me!">
@@ -287,7 +346,7 @@ function ResponsiveAppBar() {
               <Grid item xs={1}
                 sx={{
                   display: {
-                    xs: `${isLogged ? 'flex' : 'none'}`,
+                    xs: `${user ? 'flex' : 'none'}`,
                     md: 'none'
                   },
                   justifyContent: 'center'
@@ -304,7 +363,7 @@ function ResponsiveAppBar() {
               <Grid item xs={1}
                 sx={{
                   display: {
-                    xs: `${isLogged ? 'flex' : 'none'}`,
+                    xs: `${user ? 'flex' : 'none'}`,
                     md: 'none'
                   },
                   justifyContent: 'center'
@@ -326,18 +385,21 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title="Open settings">
+                  <Tooltip title="User settings">
                     <IconButton
                       sx={{ p: 0 }}
-                      onClick={isLogged ? handleOpenUserMenu : handleOpenLoginMenu} //handleOpenLoginMenu} 
+                      onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} //handleOpenLoginMenu} 
                     // sx={{ p: 0 }}
                     >
-                      <Avatar alt={`${isLogged ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg"
+                      {/* <Avatar alt={`${user ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg" */}
+                      <Avatar alt={`${user ? `${user.name}` : ''}`} src="/static/images/avatar/2.jpg"
                         sx={{ color: 'black' }}
                       />
+                      {/* {console.log(user ? user.name : 'NO USER')} */}
                     </IconButton>
                   </Tooltip>
-                  <Menu
+                  <UserMenu/>
+                  {/* <Menu
                     sx={{
                       mt: '45px',
                     }}
@@ -360,7 +422,12 @@ function ResponsiveAppBar() {
                         <Typography textAlign="center">{setting}</Typography>
                       </MenuItem>
                     ))}
-                  </Menu>
+                    
+                    <MenuItem onClick={handleLogoutClick}>
+                        <Typography textAlign="center">Logout</Typography>
+                    </MenuItem>
+
+                  </Menu> */}
                   {/* <Menu
                     sx={{
                       // display: {xs: 'flex', md: 'none'},
@@ -396,18 +463,19 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title="Open settings">
+                  <Tooltip title="User settings">
                     <IconButton
                       sx={{ p: 0 }}
-                      onClick={isLogged ? handleOpenUserMenu : () => navigate('/login')} //handleOpenLoginMenu} 
+                      onClick={user ? handleOpenUserMenu : () => navigate('/login')} //handleOpenLoginMenu} 
                     // sx={{ p: 0 }}
                     >
-                      <Avatar alt={`${isLogged ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg"
+                      <Avatar alt={`${user ? `${user.name}` : ''}`} src="/static/images/avatar/2.jpg"
                         sx={{ color: 'black' }}
                       />
                     </IconButton>
                   </Tooltip>
-                  <Menu
+                  <UserMenu/>
+                  {/* <Menu
                     sx={{
                       mt: '45px',
                     }}
@@ -422,7 +490,7 @@ function ResponsiveAppBar() {
                       vertical: 'top',
                       horizontal: 'right',
                     }}
-                    open={Boolean(anchorElUser)}
+                    open={Boolean(anchorElUserWeb)}
                     onClose={handleCloseUserMenu}
                   >
                     {settings.map((setting) => (
@@ -430,7 +498,7 @@ function ResponsiveAppBar() {
                         <Typography textAlign="center">{setting}</Typography>
                       </MenuItem>
                     ))}
-                  </Menu>
+                  </Menu> */}
                   {/* <Menu
                     sx={{
                       // display: {xs: 'flex', md: 'none'},
