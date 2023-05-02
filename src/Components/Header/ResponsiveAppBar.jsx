@@ -36,7 +36,7 @@ function ResponsiveAppBar() {
   // const [anchorElLogin, setAnchorElLogin] = useState(null)
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
 
-  const isLogged = true
+  const isLogged = false
 
   function handleMenuItemClick(categoryId) {
     navigate(`/category/${categoryId}`);
@@ -172,9 +172,9 @@ function ResponsiveAppBar() {
                     width: '100%',
                     // margin: 1
                   }}
-                  id="searchBarInput"
-                  label="Search"
-                  variant="outlined"
+                  id="webSearchBarInput" 
+                  label="Search" 
+                  variant="outlined" 
                 />
               </Grid>
 
@@ -511,9 +511,9 @@ function ResponsiveAppBar() {
                     width: '100%',
                     // margin: 0,
                   }}
-                  id="searchBarInput"
-                  label="Search"
-                  variant="outlined"
+                  id="smartphoneSearchBarInput" 
+                  label="Search" 
+                  variant="outlined" 
                 />
               </Grid>
 
@@ -538,20 +538,33 @@ function ResponsiveAppBar() {
           },
         }}
       >
-        <Fade in={openLoginPopup}>
-          <Box sx={{
-            // display: 'flex',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 300,
-            height: 400,
-            bgcolor: 'background.paper',
-            border: '2px solid #000',
-            boxShadow: 24,
-            p: 4,
-          }}>
+        <Fade in={openLoginPopup}
+          sx={{
+            display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              height: '100%',
+              border: '2px solid red',
+          }}
+        >
+          <Box 
+            sx={{
+              // display: 'flex',
+              // position: 'relative',
+              // justifyContent: 'center',
+              // alignItems: 'center',
+              // top: '50%',
+              // left: '50%',
+              // transform: 'translate(-50%, -50%)',
+              // width: '100%',
+              // height: '100%',
+              // bgcolor: 'white',
+              // border: '2px solid #000',
+              // boxShadow: 24,
+              // p: 4,
+            }}
+          >
             {/* <Typography id="transition-modal-title" variant="h6" component="h2">
               Text in a modal
             </Typography>
