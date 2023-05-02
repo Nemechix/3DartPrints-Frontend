@@ -52,7 +52,7 @@ export default function DesignCard() {
                 height={isMobile ? "180" : "240vw"}
                 image={design.image}
                 alt={design.name}
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "fill" }}
               />
             </CardActionArea>
             <div
@@ -68,29 +68,17 @@ export default function DesignCard() {
                 {design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                {!isMobile && (
-                  <>
-                    <IconButton aria-label="Add to cart" onClick={() => addToCart(design)}>
-                      <ShoppingCartIcon />
-                    </IconButton>
-                    <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design)}>
-                      <FavoriteIcon />
-                    </IconButton>
-                  </>
-                )}
-                <Typography variant="body1" color="text.secondary" sx={{ marginLeft: isMobile ? 0 : "1rem" }}>
+                <Typography variant="body1" color="text.secondary" sx={{ marginRight: "1rem" }}>
                   {`$${design.price}`}
                 </Typography>
-                {isMobile && (
-                  <>
-                    <IconButton aria-label="Add to cart" onClick={() => addToCart(design)}>
-                      <ShoppingCartIcon />
-                    </IconButton>
-                    <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design)}>
-                      <FavoriteIcon />
-                    </IconButton>
-                  </>
-                )}
+                <div style={{ display: "flex" }}>
+                  <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design)} sx={{ marginRight: "1rem" }}>
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton aria-label="Add to cart" onClick={() => addToCart(design)}>
+                    <ShoppingCartIcon />
+                  </IconButton>
+                </div>
               </Box>
             </div>
           </Card>
@@ -98,6 +86,7 @@ export default function DesignCard() {
       </div>
     </>
   );
-  
-  
+
+
+
 }
