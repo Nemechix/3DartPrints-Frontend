@@ -52,7 +52,7 @@ export default function DesignCard() {
                 height={isMobile ? "180" : "240vw"}
                 image={design.image}
                 alt={design.name}
-                style={{ objectFit: "fill" }}
+                style={{ objectFit: "cover" }}
               />
             </CardActionArea>
             <div
@@ -64,11 +64,11 @@ export default function DesignCard() {
                 padding: "1rem"
               }}
             >
-              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ fontSize: isMobile ? '1rem' : '1.3rem', marginRight: isMobile ? 0 : "1rem" }}>
+              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ fontSize: isMobile ? '1rem' : '1.3rem', marginRight: isMobile ? 0 : "1rem", marginBottom:"0px" }}>
                 {design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography variant="body1" color="text.secondary" sx={{ marginRight: "1rem" }}>
+                <Typography variant="body1" color="text.secondary" sx={{ marginRight: "1.6rem" }}>
                   {`$${design.price}`}
                 </Typography>
                 <div style={{ display: "flex" }}>
