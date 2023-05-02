@@ -7,6 +7,7 @@ import Register from "../Pages/Register/Register";
 import Cart from "../Pages/Cart/Cart";
 import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
+import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
       {
         path: "/category/:name",
         element: <DesignsByCategory />,
+      },
+      ,
+      {
+        path: "/user/:username/designs/:DesignId",
+        element: <UniqueDesign />,
       },
     ],
   },

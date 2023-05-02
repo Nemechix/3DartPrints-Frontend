@@ -13,10 +13,16 @@ import Box from '@mui/material/Box';
 import { useMediaQuery } from '@mui/material';
 import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function DesignCard() {
-  const { name } = useParams();
+  const { name, userId } = useParams();
+  console.log(name)
   const [designs, setDesigns] = useState([]);
+  const navigate = useNavigate()
+
+
   const isMobile = useMediaQuery('(max-width:1024px)');
 
   useEffect(() => {
@@ -53,6 +59,9 @@ export default function DesignCard() {
                 image={design.image}
                 alt={design.name}
                 style={{ objectFit: "cover" }}
+                onClick={  function handleMenuItemClick() {
+                  navigate(`/user/${design.userId}/designs/${design.id}`);
+                }}
               />
             </CardActionArea>
             <div
