@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import './LoginFrame.css';
 import { login } from '../../Services/Login';
 
-function LoginFrame({ setToken }) {
+function LoginFrame({ setOpenLoginPopup }) {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   async function handleSubmit(event) {
     event.preventDefault()
-    const token = await login({email, password})
-    // console.log(token)
+    const response = await login({email, password})
+    if (response.hasOwnProperty('data')) {
+      localStorage.setItem('token', response.data.token)
+      setOpenLoginPopup(false)
+    } else {
+      console.log('Email or Password incorrect.')
+    }
   }
 
   return(

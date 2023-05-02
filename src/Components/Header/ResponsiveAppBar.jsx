@@ -22,6 +22,7 @@ import './ResponsiveAppBar.css'
 import { useNavigate } from 'react-router-dom';
 
 import LoginFrame from '../LoginFrame/LoginFrame';
+// import { login } from '../../Services/Login';
 
 const pages = ['Pokemon', 'Cocina'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -36,12 +37,20 @@ function ResponsiveAppBar() {
   // const [anchorElLogin, setAnchorElLogin] = useState(null)
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
 
-  const isLogged = false
+  const isLogged = localStorage.getItem('token')
+  console.log(isLogged)
+  // async function handleSubmit(event) {
+  //   event.preventDefault()
+  //   const response = await login({email, password})
+  //   response.hasOwnProperty('data') ? 
+  //     localStorage.setItem('token', response.data.token)
+  //   // console.log(localStorage.token)
+  //     : console.log('Email or Password incorrect.')
+  // }
 
   function handleMenuItemClick(categoryId) {
     navigate(`/category/${categoryId}`);
   }
-
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -571,7 +580,7 @@ function ResponsiveAppBar() {
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
             </Typography> */}
-            <LoginFrame />
+            <LoginFrame setOpenLoginPopup={setOpenLoginPopup}/>
           </Box>
         </Fade>
       </Modal>
