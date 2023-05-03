@@ -3,7 +3,7 @@ import './LoginFrame.css';
 import { login } from '../../Services/Login';
 import { useNavigate } from 'react-router';
 
-function LoginFrame({ setOpenLoginPopup }) {
+function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -13,7 +13,7 @@ function LoginFrame({ setOpenLoginPopup }) {
   async function handleSubmit(event) {
     event.preventDefault()
     const token = await login({email, password})
-    
+
     if (token) {
       localStorage.setItem('token', token)
       setOpenLoginPopup ? setOpenLoginPopup(false) : navigate('/')
@@ -38,7 +38,10 @@ function LoginFrame({ setOpenLoginPopup }) {
            <br></br>
         </div>
         <div>
-          <button type="submit">Enviar</button>
+          <button id='submit' type="submit">Enviar</button>
+        </div>
+        <div>
+          <button id='signup' onClick={handleRegisterClick}>Registrarse</button>
         </div>
       </form>
     </div>

@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
 import './RegisterFrame.css';
+import postSignUp from '../../Services/postSignUp';
 
-function RegisterFrame({ setToken }) {
+function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
   const [username, setUserName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
 
+  async function handleSubmit(event) {
+    event.preventDefault()
+    try {
+      const user = await postSignUp({ username, email, password })
+      
+      if (user) {
+        setOpenRegisterPopup ? setOpenRegisterPopup(false) : navigate('/')
+        console.log(user)
+      }
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   return(
     <div className="register-wrapper">
-      <form>
+      <form onSubmit={handleSubmit}>
               <h2>Datos para el registro:</h2>      <hr />
         <label>
           <p>Username:</p>
@@ -32,7 +47,10 @@ function RegisterFrame({ setToken }) {
            <br></br>
         </div>
         <div>
-            <button type="submit">Registrar</button>
+            <button id='submit' type="submit">Registrar</button>
+        </div>
+        <div>
+            <button id='login' onClick={handleLoginClick}>Login</button>
         </div>
       </form>
     </div>
