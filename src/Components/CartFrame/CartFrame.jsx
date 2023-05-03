@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CartFrame.css';
-import { baseURL } from '../../Services/config';
+import  baseURL  from '../../Services/config';
 
 function CartFrame() {
   const [cartItems, setCartItems] = useState([]);
