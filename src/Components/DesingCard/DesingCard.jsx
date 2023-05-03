@@ -59,7 +59,7 @@ export default function DesignCard() {
                 image={design.image}
                 alt={design.name}
                 style={{ objectFit: "cover" }}
-                onClick={  function handleMenuItemClick() {
+                onClick={function handleMenuItemClick() {
                   navigate(`/user/${design.userId}/designs/${design.id}`);
                 }}
               />
@@ -73,7 +73,7 @@ export default function DesignCard() {
                 padding: "1rem"
               }}
             >
-              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom:"0px", textOverflow:"ellipsis", whiteSpace:"nowrap", overflow:"hidden" }}>
+              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", width:"100%", fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom: "0px" }}>
                 {design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
