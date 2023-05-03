@@ -2,14 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import  getDesignById  from '../../Services/getDesignById';
 
-function DesignDetail() {
+function UniqueDesign() {
     const [design, setDesign ] = useState({})
     const {id} = useParams()
     
     
       const getDesign = async () => {
         const result = await getDesignById(id);
-        console.log(result.data)
         setDesign(result.data);
       };
     
@@ -26,4 +25,4 @@ function DesignDetail() {
   );
 }
 
-export default DesignDetail;
+export default UniqueDesign;
