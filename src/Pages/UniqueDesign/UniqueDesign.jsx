@@ -22,13 +22,13 @@ function UniqueDesign() {
   };
 
   return (
-<div class="unique-design-container">
-  <img class="unique-design-image" src={design.image} alt={design.name} />
-  <div class="unique-design-details">
-    <h1 class="unique-design-price">{design.price}€</h1>
-    <h2 class="unique-design-name">{design.name}</h2>
-    <p class="unique-design-description">{design.description}</p>
-    <button class="unique-design-button" onClick={addToCart}>Añadir al carrito</button>
+<div className="unique-design-container">
+  <img className="unique-design-image" src={design.image} alt={design.name} />
+  <div className="unique-design-details">
+    <h1 className="unique-design-price">{design.price}€</h1>
+    <h2 className="unique-design-name">{design.name}</h2>
+    <p className="unique-design-description">{design.description}</p>
+    <button className="unique-design-button" onClick={addToCart}>Añadir al carrito</button>
   </div>
 </div>
 
