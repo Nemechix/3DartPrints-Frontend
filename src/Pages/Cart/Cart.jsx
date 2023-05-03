@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { baseURL } from '../../Services/config';
-import Payment from './Payment';
+import Payment from '../../Components/Payment/Payment';
 import CartFrame from '../../Components/CartFrame/CartFrame'
 
   function Cart() {
