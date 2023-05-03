@@ -45,7 +45,7 @@ export default function DesignCard() {
             className="card"
             sx={{
               width: "45%",
-              height: "260px",
+              height: "280px",
               marginBottom: "20px",
               display: "flex",
               flexDirection: "column",
@@ -55,7 +55,7 @@ export default function DesignCard() {
             <CardActionArea>
               <CardMedia
                 component="img"
-                height={isMobile ? "180" : "240vw"}
+                height={isMobile ? "185" : "240vw"}
                 image={design.image}
                 alt={design.name}
                 style={{ objectFit: "cover" }}
@@ -73,7 +73,7 @@ export default function DesignCard() {
                 padding: "1rem"
               }}
             >
-              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ fontSize: isMobile ? '1rem' : '1.3rem', marginRight: isMobile ? 0 : "1rem", marginBottom:"0px" }}>
+              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom:"0px", textOverflow:"ellipsis", whiteSpace:"nowrap", overflow:"hidden" }}>
                 {design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
