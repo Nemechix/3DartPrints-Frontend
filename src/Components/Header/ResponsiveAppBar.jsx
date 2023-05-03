@@ -16,13 +16,14 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect } from 'react';
-import { Backdrop, Fade, Grid, Modal, TextField } from '@mui/material';
+import { Backdrop, Fade, Grid, Modal, TextField, Stack, Divider } from '@mui/material';
 
 import './ResponsiveAppBar.css'
 import { useNavigate } from 'react-router-dom';
 
 import LoginFrame from '../LoginFrame/LoginFrame';
 import GetMyProfile from '../../Services/GetMyProfile';
+import getAllCategories from '../../Services/getAllCategories';
 // import { login } from '../../Services/Login';
 
 const pages = ['Pokemon', 'Cocina'];
@@ -39,7 +40,7 @@ function ResponsiveAppBar() {
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
   // const [isLogged, setIsLogged] = useState()
   const [user, setUser] = useState()
-  const anchorElUserWeb = false
+  const [categories, setCategories] = useState([])
 
   // let isLogged = localStorage.getItem('token')
   // console.log(isLogged)
@@ -64,6 +65,16 @@ function ResponsiveAppBar() {
       : setUser(null)
       
   }, [localStorage.getItem('token')])
+
+  useEffect(() => {
+
+    async function fetchData() {
+      const categories = await getAllCategories()
+      setCategories(categories)
+    }
+
+    fetchData()
+  }, [])
 
   function handleMenuItemClick(categoryId) {
     handleCloseNavMenu()
@@ -133,6 +144,29 @@ function ResponsiveAppBar() {
         </MenuItem>
 
       </Menu>
+    )
+  }
+
+  function NavBar() {
+    return (
+      <Stack
+        divider={<Divider orientation="vertical" flexItem />}
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+        spacing={2}
+        paddingY={1}
+        sx={{ color: 'black', overflow: 'auto' }}
+      >
+        {categories.map((category) => {
+          return (
+            <Typography key={category.name} variant='body2'>
+              { category.name }
+            </Typography>
+          )
+        })}
+        
+      </Stack>
     )
   }
 
@@ -596,6 +630,15 @@ function ResponsiveAppBar() {
 
             </Grid>
           </Toolbar>
+        </Container>
+
+        <Container maxWidth="xl"
+          sx={{ 
+            display: { xs: 'none', md: 'block' },
+            borderTop: '1px solid black' 
+          }}
+        >
+          <NavBar/>
         </Container>
       </AppBar>
 
