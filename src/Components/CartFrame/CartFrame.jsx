@@ -46,8 +46,10 @@ function CartFrame() {
         ) : (
           <ul>
             {cartItems.map((design) => (
-              <li key={design.id}>
-                {design.name} - {design.price} {design.printer && <span> - Printed on {design.printer}</span>}
+              <li key={design.id} className="cart-item">
+                <span>{design.name}</span>
+                <span>{design.price}</span>
+                {design.printer && <span> - Printed on {design.printer}</span>}
                 <button onClick={() => removeFromCart(design)}>Remove</button>
               </li>
             ))}
