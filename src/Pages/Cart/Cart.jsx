@@ -8,6 +8,5 @@ import CartFrame from '../../Components/CartFrame/CartFrame'
       </div>
     );
   }
-}
 
   export default Cart
