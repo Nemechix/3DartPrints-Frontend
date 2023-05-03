@@ -46,7 +46,10 @@ function Payment() {
   };
 
   const handleCheckout = () => {
-    onSuccess();
+    const confirmed = window.confirm('¿Estás seguro de que deseas finalizar la compra?');
+    if (confirmed) {
+      onSuccess();
+    }
   };
 
   return (
