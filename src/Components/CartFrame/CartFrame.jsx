@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CartFrame.css';
-import Config from '../../Services/config';
+import { baseURL } from '../../Services/config';
 
 function CartFrame() {
   const [cartItems, setCartItems] = useState([]);
@@ -31,7 +31,7 @@ function CartFrame() {
     setCartItems(newCartItems);
   };
   
-  return (
+    return (
     <div className="cart-wrapper">
       <form>
         <h2>Carrito de compra:</h2>
@@ -42,7 +42,7 @@ function CartFrame() {
           <ul>
             {cartItems.map((design) => (
               <li key={design.id}>
-                {design.name} - {design.price}{' '}
+                {design.name} - {design.price} {' '}
                 {design.printer && <span> - Printed on {design.printer}</span>}
                 <button onClick={() => removeFromCart(design)}>Remove</button>
               </li>
