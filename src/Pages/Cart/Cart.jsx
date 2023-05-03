@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { baseURL } from '../../Services/config';
+import Payment from './Payment';
 import CartFrame from '../../Components/CartFrame/CartFrame'
-import Checkout from '../../Components/Checkout/Checkout'
 
   function Cart() {
+    const [cartItems, setCartItems] = useState([]);
+    const [cartTotal, setCartTotal] = useState(0);
+
+    useEffect(() => {
+      const fetchCartTotal = async () => {
+        const response = await fetch(`${baseURL}/cartTotal`);
+        const data = await response.json();
+        setCartTotal(data.total);
+      };
+      fetchCartTotal();
+    }, []);
+
     return (
       <div>
         <CartFrame />
-        <Checkout />
+        <Payment cartTotal={cartTotal} />
       </div>
     );
   }
