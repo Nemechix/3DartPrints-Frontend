@@ -23,6 +23,8 @@ import { useNavigate } from 'react-router-dom';
 
 import LoginFrame from '../LoginFrame/LoginFrame';
 import GetMyProfile from '../../Services/GetMyProfile';
+// import getAllCategories from '../../Services/getAllCategories';
+import CategoriesNavBar from './CategoriesNavBar';
 // import { login } from '../../Services/Login';
 
 const pages = ['Pokemon', 'Cocina'];
@@ -39,7 +41,6 @@ function ResponsiveAppBar() {
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
   // const [isLogged, setIsLogged] = useState()
   const [user, setUser] = useState()
-  const anchorElUserWeb = false
 
   // let isLogged = localStorage.getItem('token')
   // console.log(isLogged)
@@ -136,11 +137,14 @@ function ResponsiveAppBar() {
     )
   }
 
+  
+
   return (
     <>
       <AppBar position="static"
         sx={{ backgroundColor: '#F9F5EB' }}
       >
+        {/* Header itself */}
         <Container maxWidth="xl">
           <Toolbar sx={{ display: 'flex', flexWrap: 'wrap' }} disableGutters>
             <Grid container
@@ -596,6 +600,16 @@ function ResponsiveAppBar() {
 
             </Grid>
           </Toolbar>
+        </Container>
+        
+        {/* Categories NavBar */}
+        <Container maxWidth="xl"
+          sx={{ 
+            display: { xs: 'none', md: 'block' },
+            borderTop: '1px solid black' 
+          }}
+        >
+          <CategoriesNavBar/>
         </Container>
       </AppBar>
 
