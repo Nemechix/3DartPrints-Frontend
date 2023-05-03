@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import './LoginFrame.css';
 import { login } from '../../Services/Login';
+import { useNavigate } from 'react-router';
 
-function LoginFrame({ setToken }) {
+function LoginFrame({ setOpenLoginPopup }) {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const navigate = useNavigate()
+
   async function handleSubmit(event) {
     event.preventDefault()
     const token = await login({email, password})
-    // console.log(token)
+    
+    if (token) {
+      localStorage.setItem('token', token)
+      setOpenLoginPopup ? setOpenLoginPopup(false) : navigate('/')
+    } else {
+      console.log('Email or Password incorrect.')
+    }
   }
 
   return(
@@ -19,7 +28,7 @@ function LoginFrame({ setToken }) {
         <h2>Por favor ingresa:</h2>            <hr />
         <label>
           <p>Username:</p>
-          <input type="text" onChange={e => setEmail(e.target.value)}/>
+          <input type="text" onChange={e => setEmail(e.target.value)} autoFocus/>
         </label>
         <label>
           <p>Password:</p>
