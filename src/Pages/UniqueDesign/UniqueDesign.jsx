@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import getDesignById from '../../Services/getDesignById';
+import "./UniqueDesign.css"
 
 function UniqueDesign() {
   const [design, setDesign ] = useState({});
@@ -16,17 +17,22 @@ function UniqueDesign() {
   }, [id]);
 
   const addToCart = () => {
+    // Aquí puedes agregar la lógica para agregar el artículo al carrito
     console.log('Artículo agregado al carrito');
   };
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <img style={{paddingTop: '20px', width: '80vw', borderRadius: '10px'}} src={design.image} alt={design.name} />
-      <h1 style={{marginTop: '20px'}}>{design.price}€</h1>
-      <h3>{design.name}</h3>
-      <p>{design.description}</p>
-      <button style={{marginTop: '20px',marginBottom:"15px"}} onClick={addToCart}>Añadir al carrito</button>
-    </div>
+<div class="unique-design-container">
+  <img class="unique-design-image" src={design.image} alt={design.name} />
+  <div class="unique-design-details">
+    <h1 class="unique-design-price">{design.price}€</h1>
+    <h2 class="unique-design-name">{design.name}</h2>
+    <p class="unique-design-description">{design.description}</p>
+    <button class="unique-design-button" onClick={addToCart}>Añadir al carrito</button>
+  </div>
+</div>
+
+
   );
 }
 
