@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { PayPalButton } from "react-paypal-button-v2";
 import { baseURL } from '../../Services/config';
 
-function Payment() {
+function Payment(props) {
   const [paid, setPaid] = useState(false);
   const [error, setError] = useState(null);
   const [cartTotal, setCartTotal] = useState(0);
   const shippingCost = 10;
   const taxRate = 0.15;
-  const taxAmount = cartTotal * taxRate;
-  const total = cartTotal + shippingCost + taxAmount;
+  const taxAmount = props.cartTotal * taxRate;
+  const total = props.cartTotal + shippingCost + taxAmount;
+
 
   // obtenemos el ID del cliente, y su campo paypalID, para el pago
   const [userClient, setUserClient] = useState("");
@@ -37,6 +38,7 @@ function Payment() {
 
   const onSuccess = (details, data) => {
     console.log("Transaction completed by " + details.payer.name.given_name);
+    // Aquí puedes enviar la información del pago al servidor y actualizar la base de datos
     setPaid(true);
   };
 
@@ -70,6 +72,7 @@ function Payment() {
             clientId: userClient,
             currency: "EUR",
           }}
+          
         />
       )}
       {paid && <p>¡Pago completado con éxito!</p>}

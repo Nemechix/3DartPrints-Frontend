@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import './CartFrame.css';
+import React, { useState, useEffect } from 'react';
 import { baseURL } from '../../Services/config';
+import './CartFrame.css';
 
 function CartFrame() {
   const [cartItems, setCartItems] = useState([]);
   const [printer, setPrinter] = useState('');
   const [price, setPrice] = useState('');
+  const [cartTotal, setCartTotal] = useState(0);
 
   const handleAddToCart = async (design) => {
     //llama la API para obtener la información del diseño
@@ -35,6 +36,16 @@ function CartFrame() {
     const newCartItems = cartItems.filter((item) => item !== product);
     setCartItems(newCartItems);
   };
+
+  useEffect(() => {
+      // obtiene total del carrito
+    const fetchCartTotal = async () => {
+      const response = await fetch(`${baseURL}/cartTotal`);
+      const data = await response.json();
+      setCartTotal(data.total);
+    };
+    fetchCartTotal();
+  }, []);
   
   return (
     <div className="cart-wrapper">
@@ -57,12 +68,12 @@ function CartFrame() {
         )}
         <label>
           Precio:
-          <input type="text" value={design.price} onChange={(e) => setDesign({ ...design, price: e.target.value })} />
+          <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
         </label>
         <br />
         <label>
           Impresora:
-          <input type="text" value={design.printer} onChange={(e) => setDesign({ ...design, printer: e.target.value })} />
+          <input type="text" value={printer} onChange={(e) => setPrinter(e.target.value)} />
         </label>
         <br />
         <button onClick={() => handleAddToCart(design)}>Añadir</button>
@@ -71,10 +82,10 @@ function CartFrame() {
           <br></br>
         </div>
         <p>Total: {cartItems.reduce((acc, design) => acc + parseFloat(design.price), 0)}</p>
-        <button>Checkout</button>
+        <button>Paso 2 - </button>
       </form>
     </div>
   );
 }
 
-export default CartFrame;
+export default CartFrame
