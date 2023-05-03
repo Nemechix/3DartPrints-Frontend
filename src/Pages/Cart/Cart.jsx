@@ -19,7 +19,7 @@ import CartFrame from '../../Components/CartFrame/CartFrame'
     return (
       <div>
         <CartFrame />
-        <Payment cartTotal={cartTotal} />
+
       </div>
     );
   }
