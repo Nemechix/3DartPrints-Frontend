@@ -16,14 +16,15 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 
 
+
 export default function DesignCard() {
   const { name, userId } = useParams();
   console.log(name)
   const [designs, setDesigns] = useState([]);
   const navigate = useNavigate()
-
-
   const isMobile = useMediaQuery('(max-width:1024px)');
+
+
 
   useEffect(() => {
     async function fetchData() {
@@ -36,6 +37,8 @@ export default function DesignCard() {
   const addToCart = (design) => { };
 
   const addToFavorites = (design) => { };
+
+  
   return (
     <>
       <div className="popular_categories">
@@ -70,21 +73,20 @@ export default function DesignCard() {
                 flexDirection: isMobile ? "column" : "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "1rem"
-              }}
+                padding: "1rem"}}
             >
-              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", width:"100%", fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom: "0px" }}>
+              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", width: "100%", fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom: "0px" }}>
                 {design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography variant="body1" color="text.secondary" sx={{ marginRight: "1.6rem" }}>
+                <Typography variant="body1" color="text.secondary" sx={{ marginRight: "" }}>
                   {`$${design.price}`}
                 </Typography>
-                <div style={{ display: "flex" }}>
-                  <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design)} sx={{ marginRight: "1rem" }}>
-                    <FavoriteIcon />
+                <div style={{ display: "flex", marginLeft:"px" }}>
+                  <IconButton aria-label="Add to favorites" >
+                    <FavoriteIcon/>
                   </IconButton>
-                  <IconButton aria-label="Add to cart" onClick={() => addToCart(design)}>
+                  <IconButton aria-label="Add to cart" onClick={() => addToFavorites(design)}>
                     <ShoppingCartIcon />
                   </IconButton>
                 </div>
