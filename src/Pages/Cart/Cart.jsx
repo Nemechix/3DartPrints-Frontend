@@ -48,43 +48,44 @@ function ProductPage() {
 
   function Cart() {
     return (
-    <div>
-      <h1>Product Page</h1>
-      <label>
-        Name:
-        <input type="text" value={name} onChange={handleNameChange} />
-      </label>
-      <br />
-      <label>
-        Description:
-        <input type="text" value={description} onChange={handleDescriptionChange} />
-      </label>
-      <br />
-      <label>
-        Image:
-        <input type="file" onChange={handleImageChange} />
-      </label>
-      <br />
-      <label>
-        Printer:
-        <input type="text" value={printer} onChange={handlePrinterChange} />
-      </label>
-      <br />
-      <label>
-        Price:
-        <input type="number" value={price} onChange={handlePriceChange} />
-      </label>
-      <br />
-      <label>
-        Quantity:
-        <input type="number" value={quantity} onChange={handleQuantityChange} />
-      </label>
-      <br />
-      <button onClick={handleAddToCart}>Add to Cart</button>
-      <br />
-      <CartFrame />
-    </div>
-  );
+      <div>
+        <h1>Product Page</h1>
+        <label>
+          Name:
+          <input type="text" value={name} onChange={handleNameChange} />
+        </label>
+        <br />
+        <label>
+          Description:
+          <input type="text" value={description} onChange={handleDescriptionChange} />
+        </label>
+        <br />
+        <label>
+          Image:
+          <input type="file" onChange={handleImageChange} />
+        </label>
+        <br />
+        <label>
+          Printer:
+          <input type="text" value={printer} onChange={handlePrinterChange} />
+        </label>
+        <br />
+        <label>
+          Price:
+          <input type="number" value={price} onChange={handlePriceChange} />
+        </label>
+        <br />
+        <label>
+          Quantity:
+          <input type="number" value={quantity} onChange={handleQuantityChange} />
+        </label>
+        <br />
+        <button onClick={handleAddToCart}>Add to Cart</button>
+        <br />
+        <CartFrame />
+      </div>
+    );
+  }
 }
 
-export default Cart
+  export default ProductPage
