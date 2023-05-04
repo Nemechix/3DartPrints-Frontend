@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Payment from '../../Components/Payment/Payment';
 import CartFrame from '../../Components/CartFrame/CartFrame'
-import { getCartTotal } from '../../services/cartService';
+import { getCartTotal } from '../../Services/cartService';
 
   function Cart() {
     // const [cartItems, setCartItems] = useState([]);
