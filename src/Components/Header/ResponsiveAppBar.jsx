@@ -23,6 +23,9 @@ import { useNavigate } from 'react-router-dom';
 
 import LoginFrame from '../LoginFrame/LoginFrame';
 import GetMyProfile from '../../Services/GetMyProfile';
+// import getAllCategories from '../../Services/getAllCategories';
+import CategoriesNavBar from './CategoriesNavBar';
+import RegisterFrame from '../RegisterFrame/RegisterFrame';
 // import { login } from '../../Services/Login';
 
 const pages = ['Pokemon', 'Cocina'];
@@ -37,9 +40,9 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null)
   // const [anchorElLogin, setAnchorElLogin] = useState(null)
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
+  const [openRegisterPopup, setOpenRegisterPopup] = useState(false)
   // const [isLogged, setIsLogged] = useState()
   const [user, setUser] = useState()
-  const anchorElUserWeb = false
 
   // let isLogged = localStorage.getItem('token')
   // console.log(isLogged)
@@ -95,6 +98,20 @@ function ResponsiveAppBar() {
     setOpenLoginPopup(false)
   }
 
+  const handleCloseRegisterMenu = () => {
+    setOpenRegisterPopup(false)
+  }
+
+  function handleRegisterClick() {
+    setOpenLoginPopup(false)
+    setOpenRegisterPopup(true)
+  }
+
+  function handleLoginClick() {
+    setOpenRegisterPopup(false)
+    setOpenLoginPopup(true)
+  }
+
   function handleLogoutClick() {
     localStorage.removeItem('token')
     handleCloseUserMenu()
@@ -136,11 +153,14 @@ function ResponsiveAppBar() {
     )
   }
 
+  
+
   return (
     <>
       <AppBar position="static"
         sx={{ backgroundColor: '#F9F5EB' }}
       >
+        {/* Header itself */}
         <Container maxWidth="xl">
           <Toolbar sx={{ display: 'flex', flexWrap: 'wrap' }} disableGutters>
             <Grid container
@@ -597,8 +617,19 @@ function ResponsiveAppBar() {
             </Grid>
           </Toolbar>
         </Container>
+        
+        {/* Categories NavBar */}
+        <Container maxWidth="xl"
+          sx={{ 
+            display: { xs: 'none', md: 'block' },
+            borderTop: '1px solid black' 
+          }}
+        >
+          <CategoriesNavBar/>
+        </Container>
       </AppBar>
 
+      {/* Login Popup */}
       <Modal
         // sx={{
         //   bgcolor: 'white'
@@ -648,7 +679,46 @@ function ResponsiveAppBar() {
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
             </Typography> */}
-            <LoginFrame setOpenLoginPopup={setOpenLoginPopup}/>
+            <LoginFrame
+              setOpenLoginPopup={setOpenLoginPopup}
+              handleRegisterClick={handleRegisterClick}
+            />
+          </Box>
+        </Fade>
+      </Modal>
+      
+      {/* Register Popup */}
+      <Modal
+        // sx={{
+        //   bgcolor: 'white'
+        // }}
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openRegisterPopup}
+        onClose={handleCloseRegisterMenu}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={openRegisterPopup}
+          sx={{
+            display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              height: '100%',
+              border: '2px solid red',
+          }}
+        >
+          <Box>
+            <RegisterFrame 
+              setOpenRegisterPopup={setOpenRegisterPopup}
+              handleLoginClick={handleLoginClick}
+            />
           </Box>
         </Fade>
       </Modal>

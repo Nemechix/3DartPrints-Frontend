@@ -1,9 +1,12 @@
-import React from 'react'
 import RegisterFrame from '../../Components/RegisterFrame/RegisterFrame'
+import { useNavigate } from 'react-router';
 
 function Register() {
+
+  const navigate = useNavigate()
+  
   return (
-      <RegisterFrame />
+      <RegisterFrame handleLoginClick={() => navigate('/login')}/>
   )
 }
 
