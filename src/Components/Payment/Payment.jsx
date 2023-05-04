@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { PayPalButton } from "react-paypal-button-v2";
-import { baseURL } from '../../Services/config';
+//import { PayPalButton } from "react-paypal-button-v2";
+//import { baseURL } from '../../Services/config';
 
 function Payment(props) {
   const [paid, setPaid] = useState(false);

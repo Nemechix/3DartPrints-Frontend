@@ -14,12 +14,21 @@ import { useMediaQuery } from '@mui/material';
 import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../Context/appContext';
 
 
 
 export default function DesignCard() {
   const { name, userId } = useParams();
+  const { favorites, addToFavorites, removeFromFavorites } = useAppContext()
   console.log(name)
+
+  const favoritesChecker = (id) => {
+    const boolean = favorites.some((design) => design.id === id)
+    return boolean
+  }
+
+  console.log('favorites are ', favorites)
   const [designs, setDesigns] = useState([]);
   const navigate = useNavigate()
   const isMobile = useMediaQuery('(max-width:1024px)');
@@ -36,9 +45,8 @@ export default function DesignCard() {
 
   const addToCart = (design) => { };
 
-  const addToFavorites = (design) => { };
 
-  
+
   return (
     <>
       <div className="popular_categories">
@@ -73,7 +81,8 @@ export default function DesignCard() {
                 flexDirection: isMobile ? "column" : "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "1rem"}}
+                padding: "1rem"
+              }}
             >
               <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", width: "100%", fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom: "0px" }}>
                 {design.name}
@@ -82,11 +91,18 @@ export default function DesignCard() {
                 <Typography variant="body1" color="text.secondary" sx={{ marginRight: "" }}>
                   {`$${design.price}`}
                 </Typography>
-                <div style={{ display: "flex", marginLeft:"px" }}>
-                  <IconButton aria-label="Add to favorites" >
-                    <FavoriteIcon/>
-                  </IconButton>
-                  <IconButton aria-label="Add to cart" onClick={() => addToFavorites(design)}>
+                <div style={{ display: "flex", marginLeft: "px" }}>
+                  {favoritesChecker(design.id) ?
+                    <IconButton aria-label="remove to favorites" onClick={() => removeFromFavorites(design.id)}>
+                      <FavoriteIcon sx={{ color: 'pink' }} />
+                    </IconButton>
+                    :
+                    <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design)}>
+                      <FavoriteIcon />
+                    </IconButton>
+                  }
+
+                  <IconButton aria-label="Add to cart" >
                     <ShoppingCartIcon />
                   </IconButton>
                 </div>

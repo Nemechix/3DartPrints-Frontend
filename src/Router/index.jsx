@@ -8,6 +8,7 @@ import Cart from "../Pages/Cart/Cart";
 import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
+import Favorites from "../Pages/Favorites/Favorites";
 
 const router = createBrowserRouter([
   {
@@ -42,10 +43,14 @@ const router = createBrowserRouter([
         path: "/category/:name",
         element: <DesignsByCategory />,
       },
-      ,
       {
         path: "/user/:username/designs/:id",
         element: <UniqueDesign />,
+      },
+      ,
+      {
+        path: "/user/favorites",
+        element: <Favorites />,
       },
     ],
   },

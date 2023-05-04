@@ -28,6 +28,8 @@ import CategoriesNavBar from './CategoriesNavBar';
 import RegisterFrame from '../RegisterFrame/RegisterFrame';
 // import { login } from '../../Services/Login';
 
+import { Link } from 'react-router-dom';
+
 const pages = ['Pokemon', 'Cocina'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
@@ -373,9 +375,11 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Tooltip title="Favourites">
+                  <Link to="/user/favorites">
                   <IconButton sx={{ p: 0 }}>
                     <FavoriteBorderIcon sx={{ margin: 1 }} />
                   </IconButton>
+                  </Link>
                 </Tooltip>
               </Grid>
 

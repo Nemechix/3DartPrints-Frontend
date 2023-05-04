@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { baseURL } from '../../Services/config';
+//import { baseURL } from '../../Services/config';
 import Payment from '../../Components/Payment/Payment';
 import CartFrame from '../../Components/CartFrame/CartFrame'
 
