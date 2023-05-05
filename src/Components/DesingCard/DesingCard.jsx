@@ -15,6 +15,7 @@ import { useAppContext } from '../../Context/appContext';
 import axios from 'axios';
 import GetMyProfile from '../../Services/GetMyProfile';
 
+
 export default function DesignCard() {
   const { name } = useParams();
   const { cart, addToCart, removeFromCart } = useAppContext()
@@ -100,7 +101,8 @@ export default function DesignCard() {
             sx={{
               width: "45%",
               height: "280px",
-              marginBottom: "20px",
+              margin:"5px",
+              marginBottom:"30px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between"

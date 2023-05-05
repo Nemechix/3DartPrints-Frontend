@@ -396,9 +396,11 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Tooltip title="Cart">
+                  <Link to="/user/cart">
                   <IconButton sx={{ p: 0 }}>
                     <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
                   </IconButton>
+                  </Link>
                 </Tooltip>
               </Grid>
 

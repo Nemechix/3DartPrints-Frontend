@@ -36,7 +36,7 @@ function UniqueDesign() {
         <IconButton aria-label="Add to favorites" onClick={toggleFavorite} sx={{ marginRight: "1rem", fontSize:"40px" }}>
           {isFavorite ? <FavoriteIcon sx={{ color: "pink" }} /> : <FavoriteBorderIcon />}
           </IconButton>
-          <h1 className="unique-design-price">{design.price}€</h1>
+          <h1 className="unique-design-price">${design.price}</h1>
 
         </div>
         <h2 className="unique-design-name">{design.name}</h2>

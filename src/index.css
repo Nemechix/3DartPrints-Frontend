@@ -2,7 +2,7 @@ body {
   margin: 0
 }
 
-.popular_categories{
+.popular_categories {
   display: flex;
   justify-content: space-evenly;
   padding-top: 20px;
@@ -11,13 +11,16 @@ body {
   width: 100%;
 }
 
-.designCards_body{
-  padding: 50px 122px;
-}
 
-.unique-design-container{
-  margin-left: 171px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
+@media (min-width: 1280px) {
+  .designCards_body {
+    padding: 50px 122px;
+  }
 
+  .unique-design-container {
+    margin-left: 171px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+}

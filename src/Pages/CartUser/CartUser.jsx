@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import getDesignsByCategoryName from '../../Services/DesignsByCategory';
-import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 import { useMediaQuery } from '@mui/material';
-import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/appContext';
@@ -22,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function CartUser() {
     const { name } = useParams();
     const { cart, addToCart, removeFromCart } = useAppContext()
+    
 
 
     const cartChecker = (id) => {
@@ -89,7 +83,7 @@ function CartUser() {
                                 src={design.image}
                                 alt={design.name}
                             />
-                            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "30px" }}>
+                            <div className='text_design'>
                                 <h4 style={{ fontSize: '20px' }}>{design.name}</h4>
                                 <span style={{ color: 'red', fontSize: '25px', fontWeight: 'bold' }}>
                                     ${design.price}
@@ -97,7 +91,6 @@ function CartUser() {
                                 <IconButton sx={{ marginRight: "230px", marginTop:"25px" }} aria-label="remove to cart" onClick={() => removeFromCart(design.id)}>
                                     <DeleteIcon sx={{ color: 'black' }} />
                                 </IconButton>
-
                             </div>
                         </div>
                     );
@@ -118,7 +111,7 @@ function CartUser() {
                         ${(cart.reduce((total, design) => total + design.price, 0) * 1.15).toFixed(2)}
                     </span>
                 </p>
-
+    
                 <Button
                     sx={{ width: '100%', height: "50px" }}
                     variant='contained'
@@ -130,8 +123,8 @@ function CartUser() {
                 </Button>
             </div>
         </div>
-
     );
+    
 
 
 

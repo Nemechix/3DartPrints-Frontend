@@ -39,7 +39,7 @@
 }
 
 /* Estilos para escritorio */
-@media (min-width: 1024px) {
+@media (min-width: 1080px) {
     .unique-design-container {
         flex-direction: row;
     }
