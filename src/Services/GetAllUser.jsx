@@ -5,4 +5,4 @@ async function getAllUsers(){
     return data
 }
 
-export default {getAllUsers}
+export default getAllUsers
