@@ -7,7 +7,6 @@ async function GetMyProfile( token ) {
         'token': token
       }
     })
-
     return data.user
 
   } catch(error) {

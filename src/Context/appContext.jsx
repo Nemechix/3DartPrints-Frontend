@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 import { useState, useEffect } from 'react'
 
-const FAVORITES_STORAGE_KEY = 'my_app_favorites'
+const CART_STORAGE_KEY = 'my_app_cart'
 
 const AppContext = createContext(null)
 
@@ -16,28 +16,32 @@ export const useAppContext = () => {
 }
 
 const AppContextProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(() => {
-    const storedFavorites = localStorage.getItem(FAVORITES_STORAGE_KEY)
+  const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem(CART_STORAGE_KEY)
 
-    return storedFavorites ? JSON.parse(storedFavorites) : []
+    return storedCart ? JSON.parse(storedCart) : []
   })
 
   useEffect(() => {
-    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites))
-  }, [favorites])
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart))
+  }, [cart])
 
-  const addToFavorites = (design) => {
-    const newFavorites = [...favorites, design]
-    setFavorites(newFavorites)
+  const token = localStorage.getItem('token')
+
+  const addToCart = (design) => {
+   const oldCart = [...cart]
+   const newCart = oldCart.concat(design)
+   setCart(newCart)
   }
 
-  const removeFromFavorites = (designId) => {
-    const newFavorites = favorites.filter((design) => design.id !== designId)
-    setFavorites(newFavorites)
+  const removeFromCart = (designId) => {
+    const oldCart = [...cart]
+    const newCart = oldCart.filter((design =>design.id !== designId))
+    setCart(newCart)
   }
 
   return (
-    <AppContext.Provider value={{ favorites, addToFavorites, removeFromFavorites }}>
+    <AppContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
     </AppContext.Provider>
   )

@@ -17,6 +17,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect } from 'react';
 import { Backdrop, Fade, Grid, Modal, TextField } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './ResponsiveAppBar.css'
 import { useNavigate } from 'react-router-dom';
@@ -237,7 +238,7 @@ function ResponsiveAppBar() {
                     textDecoration: 'none',
                   }}
                 >
-                  3DArtPrints
+                  3DArt
                 </Typography>
               </Grid>
 
@@ -317,6 +318,7 @@ function ResponsiveAppBar() {
                   </Button>
                 </Box>
               </Grid>
+              
 
               {/* Smartphone Size Icon & Title */}
               <Grid item xs={8}

@@ -8,7 +8,7 @@ import Cart from "../Pages/Cart/Cart";
 import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
-import Favorites from "../Pages/Favorites/Favorites";
+import CartUser from "../Pages/CartUser/CartUser";
 
 const router = createBrowserRouter([
   {
@@ -49,8 +49,8 @@ const router = createBrowserRouter([
       },
       ,
       {
-        path: "/user/favorites",
-        element: <Favorites />,
+        path: "/user/cart",
+        element: <CartUser />,
       },
     ],
   },

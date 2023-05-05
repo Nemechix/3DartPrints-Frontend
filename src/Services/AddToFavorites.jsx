@@ -1,8 +1,13 @@
-import api from "./config"
+import axios from 'axios';
 
-async function addToFavorites(designId, userId) {
-  const response = await api.post(`design/designs/${designId}/favorites`, { userId });
-  return response.data.favorite;
-}
+const addToFavorites = async (designId,token) => {
+    try {
+      const response = await axios.post(`https://threedartprints-2yqk.onrender.com/design/designs/${designId}/favorites`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
 
-export default addToFavorites;
+export default addToFavorites

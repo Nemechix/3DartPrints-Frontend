@@ -3,37 +3,34 @@ import { useParams } from 'react-router-dom';
 import getDesignsByCategoryName from '../../Services/DesignsByCategory';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useMediaQuery } from '@mui/material';
 import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/appContext';
-
-
+import axios from 'axios';
+import GetMyProfile from '../../Services/GetMyProfile';
 
 export default function DesignCard() {
-  const { name, userId } = useParams();
-  const { favorites, addToFavorites, removeFromFavorites } = useAppContext()
-  console.log(name)
+  const { name } = useParams();
+  const { cart, addToCart, removeFromCart } = useAppContext()
 
-  const favoritesChecker = (id) => {
-    const boolean = favorites.some((design) => design.id === id)
+
+  const cartChecker = (id) => {
+    const boolean = cart.some((design) => design.id === id)
     return boolean
   }
+  console.log('cart are ', cart)
 
-  console.log('favorites are ', favorites)
+
   const [designs, setDesigns] = useState([]);
   const navigate = useNavigate()
   const isMobile = useMediaQuery('(max-width:1024px)');
-
-
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -43,12 +40,58 @@ export default function DesignCard() {
     fetchData();
   }, [name]);
 
-  const addToCart = (design) => { };
+  useEffect(() => {
+    async function getUserId() {
+      const token = localStorage.getItem("token");
+      const userData = await GetMyProfile(token);
+      setUserId(userData.id);
+    }
+    getUserId();
+  }, [])
 
+
+  const addToFavorites = async (designId) => {
+    if (!userId) {
+      alert("Debes iniciar sesión para agregar a favoritos");
+      return;
+    }
+    
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(`https://threedartprints-2yqk.onrender.com/api/design/favorites`, {designId, userId }, {
+        headers: {
+          'token': token
+        }
+      });
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const RemoveFromFavorites = async (designId) => {
+    if (!userId) {
+      alert("Debes iniciar sesión para eliminar de favoritos");
+      return;
+    }
+    
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(`https://threedartprints-2yqk.onrender.com/api/user/favorites`, {designId, userId }, {
+        headers: {
+          'token': token
+        }
+      });
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
 
 
   return (
-    <>
+    <div className='designCards_body'>
       <div className="popular_categories">
         {designs.map((design) => (
           <Card
@@ -92,26 +135,28 @@ export default function DesignCard() {
                   {`$${design.price}`}
                 </Typography>
                 <div style={{ display: "flex", marginLeft: "px" }}>
-                  {favoritesChecker(design.id) ?
-                    <IconButton aria-label="remove to favorites" onClick={() => removeFromFavorites(design.id)}>
-                      <FavoriteIcon sx={{ color: 'pink' }} />
+
+                  <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design.id)}>
+                    <FavoriteIcon />
+                  </IconButton>
+
+
+                  {cartChecker(design.id) ?
+                    <IconButton aria-label="remove to cart" onClick={() => removeFromCart(design.id)}>
+                      <ShoppingCartIcon sx={{ color: 'lightblue' }} />
                     </IconButton>
                     :
-                    <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design)}>
-                      <FavoriteIcon />
+                    <IconButton aria-label="Add to cart" onClick={() => addToCart(design)}>
+                      <ShoppingCartIcon />
                     </IconButton>
                   }
-
-                  <IconButton aria-label="Add to cart" >
-                    <ShoppingCartIcon />
-                  </IconButton>
                 </div>
               </Box>
             </div>
           </Card>
         ))}
       </div>
-    </>
+    </div>
   );
 
 
