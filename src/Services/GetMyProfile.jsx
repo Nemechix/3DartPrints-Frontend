@@ -10,7 +10,7 @@ async function GetMyProfile( token ) {
     return data.user
 
   } catch(error) {
-    console.log(error.response.data)
+    console.log(error)
     return ''
   }
 }
