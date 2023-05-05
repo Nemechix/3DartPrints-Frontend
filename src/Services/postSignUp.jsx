@@ -1,23 +1,23 @@
 import api from "./config"
 
-async function postSignUp({ username, email, password }) {
+async function postSignUp(obj) {
   try {
-    const user = await api.post('/auth/signUp', {
-      name: 'DEFAULT', // varchar(255) NOT NULL,
-      surname: 'DEFAULT', // varchar(255) NOT NULL,
-      username: username, // varchar(255) NOT NULL,
-      email: email, // varchar(255) DEFAULT NULL,
-      password: password, // varchar(255) NOT NULL,
+    const { data } = await api.post('/auth/signUp', {
+      name: obj.name, // varchar(255) NOT NULL,
+      surname: obj.surname, // varchar(255) NOT NULL,
+      username: obj.username, // varchar(255) NOT NULL,
+      email: obj.email, // varchar(255) DEFAULT NULL,
+      password: obj.password, // varchar(255) NOT NULL,
       verified: 1, // tinyint(1) NOT NULL,
       role: 'user', // enum('admin','user') NOT NULL,
-      designer: 0, // tinyint(1) NOT NULL,
-      printer: 0, // tinyint(1) NOT NULL,
+      designer: obj.designer, // tinyint(1) NOT NULL,
+      printer: obj.printer, // tinyint(1) NOT NULL,
       //createdAt: '2023-05-16 23:00:00' // datetime NOT NULL,
     })
     
-    return user
+    return data.data
   } catch(error) {
-    return ''
+    return new Error(error)
   }
 
 }
