@@ -5,7 +5,7 @@ async function getAllCategories() {
     const { data } = await api.get('/category')
     return data
   } catch(error) {
-    console.log(error.message)
+    console.log(error)
     return []
   }
 }

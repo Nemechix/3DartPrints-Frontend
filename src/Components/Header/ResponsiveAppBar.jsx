@@ -420,7 +420,7 @@ function ResponsiveAppBar() {
                     // sx={{ p: 0 }}
                     >
                       {/* <Avatar alt={`${user ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg" */}
-                      <Avatar alt={`${user ? `${user.name}` : ''}`} src="/static/images/avatar/2.jpg"
+                      <Avatar alt={`${user ? `${user.name}` : ''}`} src=""
                         sx={{ color: 'black' }}
                       />
                       {/* {console.log(user ? user.name : 'NO USER')} */}
@@ -497,7 +497,7 @@ function ResponsiveAppBar() {
                       onClick={user ? handleOpenUserMenu : () => navigate('/login')} //handleOpenLoginMenu} 
                     // sx={{ p: 0 }}
                     >
-                      <Avatar alt={`${user ? `${user.name}` : ''}`} src="/static/images/avatar/2.jpg"
+                      <Avatar alt={`${user ? `${user.name}` : ''}`} src=""
                         sx={{ color: 'black' }}
                       />
                     </IconButton>
