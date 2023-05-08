@@ -240,7 +240,7 @@ function ResponsiveAppBar() {
                   display: { xs: 'none', md: 'flex' },
                 }}
               >
-                <img src="../../../src/assets/3DArts_Logo_TRIM.png" alt="LOGO" style={{ height: 50 }}/>
+                <img src="../../../public/3DArts_Logo_TRIM.png" alt="LOGO" style={{ height: 50 }}/>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
                 <Typography
                   variant="h6"
@@ -489,7 +489,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 {/* Icon */}
-                <img src="../../src/assets/3DArts_Logo_TRIM.png" alt="LOGO" style={{height: 50}}/>
+                <img src="../../public/3DArts_Logo_TRIM.png" alt="LOGO" style={{height: 50}}/>
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
                 {/* Title */}
