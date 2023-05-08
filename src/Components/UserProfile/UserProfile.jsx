@@ -1,28 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import { getUserData } from './getUserData';
+import { getUserData, getMyUserData } from '../../Services/UserData';
+import { GetMyProfile } from '../../Services/GetMyProfile'
 
-function UserProfile(props) {
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    getUserData(props.username)
-      .then(data => setUserData(data))
-      .catch(error => console.log(error));
-  }, [props.username]);
-
-  if (!userData) {
-    return <div>Cargando...</div>;
+  function OtherProfilePage({ userData, username }) {
+    return (
+      <div>
+        <h1>Perfil de {username}</h1>
+        <p>Nombre: {userData.nombre}</p>
+        <p>Email: {userData.email}</p>
+      </div>
+    );
   }
 
-  return (
-    <div>
-      <h1>Perfil de {props.username}</h1>
-      <p>Nombre: {userData.nombre}</p>
-      <p>Email: {userData.email}</p>
-      <p>Printer: {userData.printer}</p>
-      <p>Designs: {userData.designs}</p>
-    </div>
-  );
-}
-
-export default UserProfile;
+function UserProfile(props) {
+    const [userData, setUserData] = useState(null);
+  
+    useEffect(() => {
+      getMyUserData()
+        .then(data => setUserData(data))
+        .catch(error => console.log(error));
+    }, []);
+  
+    useEffect(() => {
+      if (userData && userData.username !== props.match.params.username) {
+        getUserData(props.match.params.username)
+          .then(data => setUserData(data))
+          .catch(error => console.log(error));
+      }
+    }, [props.match.params.username, userData]);
+  
+    if (!userData) {
+      return <div>Cargando...</div>;
+    }
+  
+    if (userData.username === props.match.params.username) {
+      return <GetMyProfile userData={userData} />;
+    } else {
+      return <OtherProfilePage userData={userData} username={props.match.params.username} />;
+    }
+  }
+  
+  export default UserProfile;
