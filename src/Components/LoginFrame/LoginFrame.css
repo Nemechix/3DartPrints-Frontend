@@ -3,13 +3,6 @@
     position: absolute;
 }
 
-button#submit {
-    float: right;
-}
-
-button#signup {
-    float: left;
-}
 
 form {
     display: block;
@@ -18,4 +11,53 @@ form {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     padding: 5px 35px 35px 35px;
+}
+
+.Card-login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 330px;
+    z-index: 10;
+}
+
+
+@media (min-width: 900px) {
+  form {
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    padding: 5px 35px 35px 35px;
+    border: none;
+}
+
+.login-wrapper {
+    display: block;
+    position: relative;
+
+}
+
+.edit_form{
+    text-align: center;
+    border: none;
+    margin: 50px 300px ;
+    border-radius: 5px;
+    height: 280px;
+}
+
+.button_login{
+    margin-top: 15px;
+    margin-right: 76px;
+    width: 100px;
+    height: 25px;
+}
+
+.Card-login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 90%;
+}
+
 }
