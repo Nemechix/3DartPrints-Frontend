@@ -29,13 +29,14 @@ function CategoriesNavBar() {
       {categories.map((category) => {
         return (
           <IconButton key={category.name} sx={{ p: 0 }}>
-            <Button href={`/category/${category.name}`} sx={{ p: 0 }}>
-              <Typography variant='body2'>
-                { category.name }
-              </Typography>
+            <Button
+              href={`/category/${category.name}`}
+              sx={{ p: 0, color: "text.primary", textDecoration: "none" }}
+            >
+              <Typography variant="body2">{category.name}</Typography>
             </Button>
           </IconButton>
-        )
+        );
       })}
       
     </Stack>

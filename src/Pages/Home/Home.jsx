@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from '@mui/material/CardContent';
@@ -11,7 +10,7 @@ export default function MultiActionAreaCard() {
   return (
     <main>
       <h3 className="h3_home">Visita nuestras categorías populares</h3>
-      <div className="popular_categories">
+      <div className="popular_categories_home">
         <Card className="card" sx={{ width: "45%", height: 200, marginBottom: "20px" }}>
           <CardActionArea>
             <CardMedia
@@ -72,36 +71,8 @@ export default function MultiActionAreaCard() {
             </CardContent>
           </CardActionArea>
         </Card>
-        <Card sx={{ width: "45%", height: 200, marginBottom: "20px" }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="https://www.garrigues.com/sites/default/files/impresion_3d_al_rescate_del_clima.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Categoria
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-        <Card sx={{ width: "45%", height: 200, marginBottom: "20px" }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="https://www.garrigues.com/sites/default/files/impresion_3d_al_rescate_del_clima.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Categoria
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        
+      
       </div>
 
       <div className="parrafos_title">

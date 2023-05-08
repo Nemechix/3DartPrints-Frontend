@@ -26,8 +26,6 @@ const AppContextProvider = ({ children }) => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart))
   }, [cart])
 
-  const token = localStorage.getItem('token')
-
   const addToCart = (design) => {
    const oldCart = [...cart]
    const newCart = oldCart.concat(design)
