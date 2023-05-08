@@ -1,6 +1,6 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route/* , Redirect */ } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem("token");
