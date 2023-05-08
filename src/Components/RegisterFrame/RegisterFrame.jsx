@@ -204,16 +204,16 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             type="radio" 
             name='printer'
             value={0} 
-            checked
+            defaultChecked
           />
-          <label for='printerNo'>No</label>
+          <label htmlFor='printerNo'>No</label>
           <input 
             id='printerYes'
             type="radio" 
             name='printer'
             value={1} 
           />
-          <label for='printerYes'>Yes</label>
+          <label htmlFor='printerYes'>Yes</label>
         </label>
         <label>
           <p>¿Are you Designer?</p>
@@ -222,16 +222,16 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             type="radio" 
             name='designer'
             value={0}
-            checked
+            defaultChecked
           />
-          <label for='designerNo'>No</label>
+          <label htmlFor='designerNo'>No</label>
           <input 
             id='designerYes'
             type="radio" 
             name='designer'
             value={1}
           />
-          <label for='designerYes'>Yes</label>
+          <label htmlFor='designerYes'>Yes</label>
         </label>
         <div>
            <br></br>
