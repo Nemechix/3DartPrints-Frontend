@@ -58,7 +58,7 @@ export default function Footer() {
         </a>
       </div>
       <img
-        src="/public/3DArts_Logo_TRIM.png"
+        src="/3DArts_Logo_TRIM.png"
         alt="Logo"
         style={{ width: "100px", marginTop: "13px" }}
       />
