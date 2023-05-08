@@ -15,6 +15,22 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function CartUser() {
     const { name } = useParams();
     const { cart, addToCart, removeFromCart } = useAppContext()
+
+    const checkout = async () => {
+        await fetch("https://threedartprints-2yqk.onrender.com/api/stripe/checkout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ items: cart }),
+        }).then((response) => {
+          return response.json();
+        }).then((response) => {
+            if(response.url){
+                window.location.assign(response.url)
+            }
+        })
+    }
     
 
 
@@ -117,7 +133,7 @@ function CartUser() {
                     variant='contained'
                     size='small'
                     startIcon={<ShoppingCartIcon />}
-                    onClick={() => navigate('/checkout')}
+                    onClick={checkout}
                 >
                     Checkout
                 </Button>

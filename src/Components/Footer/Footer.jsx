@@ -15,12 +15,12 @@ export default function Footer() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#0D0628",
+        backgroundColor: "#2f466c",
         color: "white",
         borderRadius: "0px",
         paddingTop: "10px",
         paddingBottom: "10px",
-        fontFamily:'Secular One'
+        fontFamily: "Secular One",
       }}
     >
       <div className="lines" style={{ display: "flex", gap: "15px" }}>
@@ -62,11 +62,7 @@ export default function Footer() {
         alt="Logo"
         style={{ width: "100px", marginTop: "13px" }}
       />
-      <Typography
-        sx={{ fontSize: 14 }}
-        color="white"
-        gutterBottom
-      >
+      <Typography sx={{ fontSize: 14 }} color="white" gutterBottom>
         Copyright &copy; 2023 3DartPrints
       </Typography>
       <div style={{}}>
