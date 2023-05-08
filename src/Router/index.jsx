@@ -9,7 +9,7 @@ import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
 import CartUser from "../Pages/CartUser/CartUser";
-import PrivateRoute from "../../Components/PrivateRoute/PrivateRoute";
+import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import AdminTools from "../Pages/AdminTools/AdminTools";
 
 const router = createBrowserRouter([
