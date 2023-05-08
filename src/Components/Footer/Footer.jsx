@@ -1,4 +1,4 @@
-import { Card, Typography } from "@mui/material";
+import { Card, Divider, Typography } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -58,6 +58,7 @@ export default function Footer() {
           <TwitterIcon fontSize="large" />
         </a>
       </div>
+      <Divider sx={{ backgroundColor: 'white', width: '90%', mt: 1 }}/>
       <img
         src={logo}
         alt="Logo"
