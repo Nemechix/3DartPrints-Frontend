@@ -4,7 +4,7 @@ async function login(user) {
   try {
     const { data } = await api.post('/auth/login', user)
     
-    return data.token
+    return data
   } catch(error) {
     return ''
   }
