@@ -9,6 +9,7 @@ import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
 import CartUser from "../Pages/CartUser/CartUser";
+import CartUser from "../Pages/AdminTools/AdminTools";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/admin" ,
+        element: <AdminTools />,
       },
       {
         path: "/about",
