@@ -4,6 +4,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import "./Footer.css"
+import logo from '/3DArts_Logo_TRIM.png'
 
 export default function Footer() {
   return (
@@ -58,7 +59,7 @@ export default function Footer() {
         </a>
       </div>
       <img
-        src="/3DArts_Logo_TRIM.png"
+        src={logo}
         alt="Logo"
         style={{ width: "100px", marginTop: "13px" }}
       />

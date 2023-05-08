@@ -20,6 +20,7 @@ import { Backdrop, Fade, Grid, Modal, TextField } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './ResponsiveAppBar.css'
+import logo from '/3DArts_Logo_TRIM.png'
 import { useNavigate } from 'react-router-dom';
 
 import LoginFrame from '../LoginFrame/LoginFrame';
@@ -240,7 +241,7 @@ function ResponsiveAppBar() {
                   display: { xs: 'none', md: 'flex' },
                 }}
               >
-                <img src="/3DArts_Logo_TRIM.png" alt="LOGO" style={{ height: 50 }}/>
+                <img src={logo} alt="LOGO" style={{ height: 50 }}/>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
                 <Typography
                   variant="h6"
@@ -489,7 +490,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 {/* Icon */}
-                <img src="/3DArts_Logo_TRIM.png" alt="LOGO" style={{height: 50}}/>
+                <img src={logo} alt="LOGO" style={{height: 50}}/>
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
                 {/* Title */}
