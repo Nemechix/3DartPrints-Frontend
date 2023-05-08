@@ -124,7 +124,7 @@ function CartUser() {
                 <p>
                     Total (taxes included):{' '}
                     <span style={{ fontSize: '25px', fontWeight: 'bold',float:"right" }}>
-                        ${(cart.reduce((total, design) => total + design.price, 0) * 1.15).toFixed(2)}
+                        ${cart.reduce((total, design) => total + design.price, 0).toFixed(2)}
                     </span>
                 </p>
     
