@@ -105,7 +105,6 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
       if (user) {
         setOpenRegisterPopup ? setOpenRegisterPopup(false) : navigate('/')
-        console.log(user)
       }
     } catch(error) {
       console.log(error)

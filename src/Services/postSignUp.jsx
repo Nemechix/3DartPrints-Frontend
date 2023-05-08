@@ -15,7 +15,7 @@ async function postSignUp(obj) {
       //createdAt: '2023-05-16 23:00:00' // datetime NOT NULL,
     })
     
-    return data.data
+    return data
   } catch(error) {
     return new Error(error)
   }
