@@ -32,7 +32,20 @@ import RegisterFrame from '../RegisterFrame/RegisterFrame';
 import { Link } from 'react-router-dom';
 
 const pages = ['Pokemon', 'Cocina'];
-const settings = ['Profile', 'Account', 'Dashboard'];
+const settings = [
+  {
+    name: 'Profile', 
+    url: '/profile'
+  },
+  {
+    name: 'Account', 
+    url: '/'
+  },
+  {
+    name: 'Dashboard',
+    url: '/'
+  }
+]
 
 function ResponsiveAppBar() {
   const navigate = useNavigate()
@@ -74,6 +87,11 @@ function ResponsiveAppBar() {
   function handleMenuItemClick(categoryId) {
     handleCloseNavMenu()
     navigate(`/category/${categoryId}`);
+  }
+
+  function handleUserItemClick(link) {
+    handleCloseUserMenu()
+    navigate(link)
   }
 
   const handleOpenNavMenu = (event) => {
@@ -143,8 +161,8 @@ function ResponsiveAppBar() {
         onClose={handleCloseUserMenu}
       >
         {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{setting}</Typography>
+          <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
+            <Typography textAlign="center">{setting.name}</Typography>
           </MenuItem>
         ))}
         
@@ -217,7 +235,7 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Web Size Icon & Title */}
-              <Grid item md={3}
+              <Grid item md={2}
                 sx={{
                   display: { xs: 'none', md: 'flex' },
                 }}
@@ -271,15 +289,19 @@ function ResponsiveAppBar() {
 
               {/* Web Size Quick Actions */}
               <Grid item md
-                sx={{ display: { xs: 'none', md: 'flex' } }}
+                sx={{ 
+                  display: { xs: 'none', md: 'flex' },
+                  flexGrow: 1,
+                  justifyContent: 'space-evenly',
+                }}
               >
-                <Box
+                {/* <Box
                   sx={{
                     flexGrow: 1,
                     justifyContent: 'center',
                     display: { xs: 'none', md: 'flex' }
                   }}
-                >
+                > */}
                   {/* {pages.map((page) => (
                     <Button
                       key={page}
@@ -316,9 +338,29 @@ function ResponsiveAppBar() {
                       Inspire Me!
                     </Typography>
                   </Button>
-                </Box>
+                  {/* <Tooltip title="Cart">
+                    <Link to="/user/cart">
+                      <IconButton sx={{ p: 0 }}>
+                        <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                      </IconButton>
+                    </Link>
+                  </Tooltip> */}
+                {/* </Box> */}
               </Grid>
               
+              <Grid item md={1}
+              sx={{
+                display: { xs: 'none', md: 'block' }
+              }}
+              >
+                <Tooltip title="Cart">
+                  <Link to="/user/cart">
+                    <IconButton sx={{ p: 0 }}>
+                      <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                    </IconButton>
+                  </Link>
+                </Tooltip>
+              </Grid>
 
               {/* Smartphone Size Icon & Title */}
               <Grid item xs={8}
