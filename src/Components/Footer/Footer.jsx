@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="lines" style={{ display: "flex", gap: "15px" }}>
         <a
           className="links_webs"
-          href="https://www.facebook.com/3DartPrints"
+          href="https://www.facebook.com/people/TresDe-ArtPrints/pfbid0259xKQqZvoY15gtKFUYsmLHMDJZm254RV4sXtFnU6YzFbdwJdguvLUzJbA2mmtDDTl/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -43,7 +43,7 @@ export default function Footer() {
         </a>
         <a
           className="links_webs"
-          href="https://www.youtube.com/3DartPrints"
+          href="https://www.youtube.com/channel/UC_1AEuqtDM96W7wH5U_RubA"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -51,7 +51,7 @@ export default function Footer() {
         </a>
         <a
           className="links_webs"
-          href="https://www.twitter.com/3DartPrints"
+          href="https://twitter.com/3DartPrints"
           target="_blank"
           rel="noopener noreferrer"
         >
