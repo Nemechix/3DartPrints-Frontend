@@ -9,7 +9,8 @@ import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
 import CartUser from "../Pages/CartUser/CartUser";
-import CartUser from "../Pages/AdminTools/AdminTools";
+import PrivateRoute from "../../Components/PrivateRoute/PrivateRoute";
+import AdminTools from "../Pages/AdminTools/AdminTools";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/admin" ,
-        element: <AdminTools />,
+        path: "/admin",
+        element: <PrivateRoute component={AdminTools} />,
       },
       {
         path: "/about",
