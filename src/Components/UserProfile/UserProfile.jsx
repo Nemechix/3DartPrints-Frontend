@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getUserData } from './userData';
+import { getUserData } from './getUserData';
 
 function UserProfile(props) {
   const [userData, setUserData] = useState(null);
