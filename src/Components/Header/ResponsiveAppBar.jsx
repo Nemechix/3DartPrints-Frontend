@@ -492,7 +492,9 @@ function ResponsiveAppBar() {
                 }}
               >
                 {/* Icon */}
-                <img src={logo} alt="LOGO" style={{height: 50}}/>
+                <Link to='/'>
+                  <img src={logo} alt="LOGO" style={{height: 50}}/>
+                </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
                 {/* Title */}
