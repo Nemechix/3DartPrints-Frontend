@@ -115,7 +115,7 @@ function CartUser() {
                             <DeleteIcon
                               sx={{
                                 color: "black",
-                                fontSize: isMobile ? "4vw" : "2vw",
+                                fontSize: isMobile ? "5vw" : "2vw",
                               }}
                             />
                           </IconButton>
