@@ -183,7 +183,7 @@ function ResponsiveAppBar() {
         sx={{ backgroundColor: '#F9F5EB' }}
       >
         {/* Header itself */}
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ px: 1 }}>
           <Toolbar sx={{ display: 'flex', flexWrap: 'wrap' }} disableGutters>
             <Grid container
               sx={{
@@ -443,7 +443,10 @@ function ResponsiveAppBar() {
 
               {/* Smartphone Size Menu */}
               <Grid item xs={1}
-                sx={{ display: { xs: 'flex', md: 'none' } }}
+                sx={{ 
+                  display: { xs: 'flex', md: 'none' }, 
+                  justifyContent: 'center' 
+                }}
               >
                 <IconButton
                   size="large"
@@ -488,7 +491,7 @@ function ResponsiveAppBar() {
                 sx={{
                   display: { xs: 'flex', md: 'none' },
                   alignItems: 'center',
-                  pl: '10px'
+                  // pl: '10px'
                 }}
               >
                 {/* Icon */}
