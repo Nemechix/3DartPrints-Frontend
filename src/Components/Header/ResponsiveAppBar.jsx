@@ -425,6 +425,25 @@ function ResponsiveAppBar() {
                 </Box>
               </Grid>
 
+              {/* Smartphone Size Favs Icon */}
+              <Grid item xs={1}
+                sx={{
+                  display: {
+                    xs: 'none',
+                    md: `${user ? 'flex' : 'none'}`
+                  },
+                  justifyContent: 'center'
+                }}
+              >
+                <Tooltip title="Favourites">
+                  <Link to="/user/favorites">
+                  <IconButton sx={{ p: 0 }}>
+                    <FavoriteBorderIcon sx={{ margin: 1 }} />
+                  </IconButton>
+                  </Link>
+                </Tooltip>
+              </Grid>
+
               {/* Web size cart icon */}
               <Grid item md={1}
               sx={{
