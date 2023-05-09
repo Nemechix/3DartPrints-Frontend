@@ -18,11 +18,12 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const { token, role } = await login({ email, password });
+    const { token, role, favorites } = await login({ email, password });
 
     if (token) {
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      localStorage.setItem("favorites", favorites);
       setOpenLoginPopup ? setOpenLoginPopup(false) : navigate("/");
     } else {
       console.log("Email or Password incorrect.");
