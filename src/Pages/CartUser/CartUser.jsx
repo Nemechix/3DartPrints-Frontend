@@ -15,6 +15,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function CartUser() {
     const { name } = useParams();
     const { cart, addToCart, removeFromCart } = useAppContext()
+      const isMobile = useMediaQuery("(max-width:1024px)");
+
 
     const checkout = async () => {
         await fetch("https://threedartprints-2yqk.onrender.com/api/stripe/checkout", {
@@ -43,7 +45,6 @@ function CartUser() {
 
     const [designs, setDesigns] = useState([]);
     const navigate = useNavigate()
-    const isMobile = useMediaQuery('(max-width:1024px)');
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
@@ -88,27 +89,38 @@ function CartUser() {
 
     return (
         <div className='cart_body_container' style={{ display: 'flex' }}>
-            <div className='designCart_container' style={{ flex: 1 }}>
-                <h3 style={{fontSize:"40px"}} id='h3_my_cart'>My Cart</h3>
-                <p style={{fontSize:"25px"}}>{cart.length} articles</p>
+            <div className='designCart_container' style={{  }}>
+                <h3 style={{fontSize:"25px", fontFamily:"roboto"}} id='h3_my_cart'>My Cart</h3>
+                <p style={{fontSize:"20px", fontFamily:"roboto"}}>{cart.length} articles</p>
                 {cart.map((design) => {
                     return (
-                        <div key={design.id} className='design_cart'>
-                            <img
-                                className='design_cart_img'
-                                src={design.image}
-                                alt={design.name}
-                            />
-                            <div className='text_design'>
-                                <h4 style={{ fontSize: '20px' }}>{design.name}</h4>
-                                <span style={{ color: 'red', fontSize: '25px', fontWeight: 'bold' }}>
-                                    ${design.price}
-                                </span>
-                                <IconButton sx={{ marginRight: "230px", marginTop:"25px" }} aria-label="remove to cart" onClick={() => removeFromCart(design.id)}>
-                                    <DeleteIcon sx={{ color: 'black' }} />
-                                </IconButton>
-                            </div>
+                      <div key={design.id} className="design_cart">
+                        <img
+                          className="design_cart_img"
+                          src={design.image}
+                          alt={design.name}
+                        />
+                        <div className="text_design">
+                          <p className="p_design">{design.name}</p>
+                          <span className="price_design">${design.price}</span>
                         </div>
+                        <div
+                          style={{ display: "flex", alignItems: "flex-end" }}
+                        >
+                          <IconButton
+                            sx={{}}
+                            aria-label="remove to cart"
+                            onClick={() => removeFromCart(design.id)}
+                          >
+                            <DeleteIcon
+                              sx={{
+                                color: "black",
+                                fontSize: isMobile ? "4vw" : "2vw",
+                              }}
+                            />
+                          </IconButton>
+                        </div>
+                      </div>
                     );
                 })}
             </div>
@@ -116,7 +128,7 @@ function CartUser() {
                 <h4 style={{ marginTop: "8px", marginBottom: "0px" }}>Resume</h4>
                 <p>
                     Subtotal articles:{' '}
-                    <span style={{ fontSize: '25px', fontWeight: 'bold', float:"right" }}>
+                    <span style={{ fontSize: isMobile ? '25px': "2vw", fontWeight: 'bold', float:"right" }}>
                         ${cart.reduce((total, design) => total + design.price, 0).toFixed(2)}
                     </span>
                 </p>
