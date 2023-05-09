@@ -93,7 +93,7 @@ function CartUser() {
                 <p style={{fontSize:"25px"}}>{cart.length} articles</p>
                 {cart.map((design) => {
                     return (
-                        <div className='design_cart'>
+                        <div key={design.id} className='design_cart'>
                             <img
                                 className='design_cart_img'
                                 src={design.image}

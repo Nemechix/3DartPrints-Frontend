@@ -25,7 +25,6 @@ export default function DesignCard() {
     const boolean = cart.some((design) => design.id === id)
     return boolean
   }
-  console.log('cart are ', cart)
 
 
   const [designs, setDesigns] = useState([]);
@@ -105,13 +104,15 @@ export default function DesignCard() {
               marginBottom:"30px",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between"
+              justifyContent: "space-between",
+              boxShadow:"none",
+              border:"1px solid lightgray"
             }}
           >
             <CardActionArea>
               <CardMedia
                 component="img"
-                height={isMobile ? "185" : "240vw"}
+                height={isMobile ? "185" : "220vw"}
                 image={design.image}
                 alt={design.name}
                 style={{ objectFit: "cover" }}
@@ -123,13 +124,13 @@ export default function DesignCard() {
             <div
               style={{
                 display: "flex",
-                flexDirection: isMobile ? "column" : "row",
+                flexDirection: isMobile ? "column" : "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "1rem"
+                padding: "1rem",
               }}
             >
-              <Typography fontFamily={'Secular One'} gutterBottom variant="h5" component="div" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", width: "100%", fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom: "0px" }}>
+              <Typography fontFamily={'Roboto'} gutterBottom variant="h5" component="div" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", width: "100%", fontSize: isMobile ? '1rem' : '1.08rem', marginRight: isMobile ? 0 : "1rem", marginBottom: "0px" }}>
                 {design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>

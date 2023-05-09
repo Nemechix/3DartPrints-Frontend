@@ -179,31 +179,35 @@ function ResponsiveAppBar() {
 
   return (
     <>
-      <AppBar position="static"
-        sx={{ backgroundColor: '#F9F5EB' }}
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#F9F5EB",
+          boxShadow: "none",
+          borderBottom: "1px solid lightgray",
+        }}
       >
         {/* Header itself */}
         <Container maxWidth="xl" sx={{ px: 1 }}>
-          <Toolbar sx={{ display: 'flex', flexWrap: 'wrap' }} disableGutters>
-            <Grid container
+          <Toolbar sx={{ display: "flex", flexWrap: "wrap" }} disableGutters>
+            <Grid
+              container
               sx={{
-                display: 'flex',
-                alignItems: 'center',
-                py: 1
+                display: "flex",
+                alignItems: "center",
+                py: 1,
               }}
               rowSpacing={1}
             >
               {/* Web Size Menu */}
-              <Grid item md={1}
-                sx={{ display: { xs: 'none', md: 'flex' } }}
-              >
+              <Grid item md={1} sx={{ display: { xs: "none", md: "flex" } }}>
                 <IconButton
                   size="large"
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                // color="inherit"
+                  // color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
@@ -211,23 +215,26 @@ function ResponsiveAppBar() {
                   id="menu-appbar"
                   anchorEl={anchorElNav}
                   anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
+                    vertical: "bottom",
+                    horizontal: "left",
                   }}
                   keepMounted
                   transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
+                    vertical: "top",
+                    horizontal: "left",
                   }}
                   open={Boolean(anchorElNav)}
                   onClose={handleCloseNavMenu}
                   sx={{
-                    display: { xs: 'block', md: 'none' },
+                    display: { xs: "block", md: "none" },
                   }}
                 >
                   {pages.map((page) => (
                     <MenuItem key={page}>
-                      <Typography onClick={() => handleMenuItemClick(page)} textAlign="center">
+                      <Typography
+                        onClick={() => handleMenuItemClick(page)}
+                        textAlign="center"
+                      >
                         {page}
                       </Typography>
                     </MenuItem>
@@ -236,13 +243,15 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Web Size Icon & Title */}
-              <Grid item md={1}
+              <Grid
+                item
+                md={1}
                 sx={{
-                  display: { xs: 'none', md: 'flex' },
+                  display: { xs: "none", md: "flex" },
                 }}
               >
-                <Link to='/'>
-                  <img src={logo} alt="LOGO" style={{ height: 50 }}/>
+                <Link to="/">
+                  <img src={logo} alt="LOGO" style={{ height: 50 }} />
                 </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
                 <Typography
@@ -265,38 +274,42 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Web Size Search Input */}
-              <Grid item md
+              <Grid
+                item
+                md
                 sx={{
-                  display: { xs: 'none', md: 'flex' },
+                  display: { xs: "none", md: "flex" },
                   // backgroundColor: 'GhostWhite',
-                  // border: '1px solid black', 
-                  // borderRadius: 3, 
+                  // border: '1px solid black',
+                  // borderRadius: 3,
                   px: 1,
                   my: 0,
-                  mx: 3
+                  mx: 3,
                 }}
               >
                 <TextField
                   sx={{
-                    backgroundColor: 'white',
+                    backgroundColor: "white",
                     // border: '1px solid black',
                     borderRadius: 15,
-                    // flexGrow: 3, 
-                    width: '100%',
+                    // flexGrow: 3,
+                    width: "100%",
                     // margin: 1
                   }}
-                  id="webSearchBarInput" 
-                  label="Search" 
-                  variant="outlined" 
+                  id="webSearchBarInput"
+                  label="Search"
+                  variant="outlined"
                 />
               </Grid>
 
               {/* Web Size Quick Actions */}
-              <Grid item md
-                sx={{ 
-                  display: { xs: 'none', md: 'none' },
+              <Grid
+                item
+                md
+                sx={{
+                  display: { xs: "none", md: "none" },
                   flexGrow: 1,
-                  justifyContent: 'space-evenly',
+                  justifyContent: "space-evenly",
                 }}
               >
                 {/* <Box
@@ -306,7 +319,7 @@ function ResponsiveAppBar() {
                     display: { xs: 'none', md: 'flex' }
                   }}
                 > */}
-                  {/* {pages.map((page) => (
+                {/* {pages.map((page) => (
                     <Button
                       key={page}
                       onClick={handleCloseNavMenu}
@@ -315,34 +328,34 @@ function ResponsiveAppBar() {
                       {page}
                     </Button>
                   ))} */}
-                  <Button
-                    startIcon={<AutoFixHighIcon />}
-                    onClick={handleCloseNavMenu}
-                    // sx={{ display: 'block' }}
-                    variant='contained'
-                    color='success'
-                    size='small'
+                <Button
+                  startIcon={<AutoFixHighIcon />}
+                  onClick={handleCloseNavMenu}
+                  // sx={{ display: 'block' }}
+                  variant="contained"
+                  color="success"
+                  size="small"
                   // href='/'
+                >
+                  <Typography
+                    // variant="h6"
+                    // noWrap
+                    // component="button"
+                    // href="/"
+                    sx={{
+                      // mr: 0,
+                      // display: { xs: 'none', md: 'flex' },
+                      // fontFamily: 'monospace',
+                      fontWeight: 600,
+                      letterSpacing: ".1rem",
+                      // color: 'inherit',
+                      // textDecoration: 'none',
+                    }}
                   >
-                    <Typography
-                      // variant="h6"
-                      // noWrap
-                      // component="button"
-                      // href="/"
-                      sx={{
-                        // mr: 0,
-                        // display: { xs: 'none', md: 'flex' },
-                        // fontFamily: 'monospace',
-                        fontWeight: 600,
-                        letterSpacing: '.1rem',
-                        // color: 'inherit',
-                        // textDecoration: 'none',
-                      }}
-                    >
-                      Inspire Me!
-                    </Typography>
-                  </Button>
-                  {/* <Tooltip title="Cart">
+                    Inspire Me!
+                  </Typography>
+                </Button>
+                {/* <Tooltip title="Cart">
                     <Link to="/user/cart">
                       <IconButton sx={{ p: 0 }}>
                         <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
@@ -351,28 +364,35 @@ function ResponsiveAppBar() {
                   </Tooltip> */}
                 {/* </Box> */}
               </Grid>
-              
+
               {/* Web Size User Icon */}
-              <Grid item xs={1} md={1}
+              <Grid
+                item
+                xs={1}
+                md={1}
                 sx={{
-                  display: { xs: 'none', md: 'flex' },
+                  display: { xs: "none", md: "flex" },
                   ml: { md: 2 },
-                  justifyContent: 'center'
+                  justifyContent: "center",
                 }}
               >
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="User settings">
                     <IconButton
                       sx={{ p: 0 }}
-                      onClick={user ? handleOpenUserMenu : () => navigate('/login')} //handleOpenLoginMenu} 
-                    // sx={{ p: 0 }}
+                      onClick={
+                        user ? handleOpenUserMenu : () => navigate("/login")
+                      } //handleOpenLoginMenu}
+                      // sx={{ p: 0 }}
                     >
-                      <Avatar alt={`${user ? `${user.name}` : ''}`} src=""
-                        sx={{ color: 'black' }}
+                      <Avatar
+                        alt={`${user ? `${user.name}` : ""}`}
+                        src=""
+                        sx={{ color: "black" }}
                       />
                     </IconButton>
                   </Tooltip>
-                  <UserMenu/>
+                  <UserMenu />
                   {/* <Menu
                     sx={{
                       mt: '45px',
@@ -420,36 +440,38 @@ function ResponsiveAppBar() {
                       </Link>
                     </MenuItem>
                   </Menu> */}
-
-
                 </Box>
               </Grid>
 
               {/* Smartphone Size Favs Icon */}
-              <Grid item xs={1}
+              <Grid
+                item
+                xs={1}
                 sx={{
                   display: {
-                    xs: 'none',
-                    md: `${user ? 'flex' : 'none'}`
+                    xs: "none",
+                    md: `${user ? "flex" : "none"}`,
                   },
-                  justifyContent: 'center'
+                  justifyContent: "center",
                 }}
               >
                 <Tooltip title="Favourites">
                   <Link to="/user/favorites">
-                  <IconButton sx={{ p: 0 }}>
-                    <FavoriteBorderIcon sx={{ margin: 1 }} />
-                  </IconButton>
+                    <IconButton sx={{ p: 0 }}>
+                      <FavoriteBorderIcon sx={{ margin: 1 }} />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
 
               {/* Web size cart icon */}
-              <Grid item md={1}
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                justifyContent: 'center'
-              }}
+              <Grid
+                item
+                md={1}
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  justifyContent: "center",
+                }}
               >
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
@@ -461,10 +483,12 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Smartphone Size Menu */}
-              <Grid item xs={1}
-                sx={{ 
-                  display: { xs: 'flex', md: 'none' }, 
-                  justifyContent: 'center' 
+              <Grid
+                item
+                xs={1}
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                  justifyContent: "center",
                 }}
               >
                 <IconButton
@@ -473,7 +497,7 @@ function ResponsiveAppBar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                // color="inherit"
+                  // color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
@@ -481,23 +505,26 @@ function ResponsiveAppBar() {
                   id="menu-appbar"
                   anchorEl={anchorElNav}
                   anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
+                    vertical: "bottom",
+                    horizontal: "left",
                   }}
                   keepMounted
                   transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
+                    vertical: "top",
+                    horizontal: "left",
                   }}
                   open={Boolean(anchorElNav)}
                   onClose={handleCloseNavMenu}
                   sx={{
-                    display: { xs: 'block', md: 'none' },
+                    display: { xs: "block", md: "none" },
                   }}
                 >
                   {pages.map((page) => (
                     <MenuItem key={page}>
-                      <Typography onClick={() => handleMenuItemClick(page)} textAlign="center">
+                      <Typography
+                        onClick={() => handleMenuItemClick(page)}
+                        textAlign="center"
+                      >
                         {page}
                       </Typography>
                     </MenuItem>
@@ -506,16 +533,18 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Smartphone Size Icon & Title */}
-              <Grid item xs={2}
+              <Grid
+                item
+                xs={2}
                 sx={{
-                  display: { xs: 'flex', md: 'none' },
-                  alignItems: 'center',
+                  display: { xs: "flex", md: "none" },
+                  alignItems: "center",
                   // pl: '10px'
                 }}
               >
                 {/* Icon */}
-                <Link to='/'>
-                  <img src={logo} alt="LOGO" style={{height: 50}}/>
+                <Link to="/">
+                  <img src={logo} alt="LOGO" style={{ height: 50 }} />
                 </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
@@ -541,35 +570,39 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Smartphone Size Search Input */}
-              <Grid item xs
+              <Grid
+                item
+                xs
                 sx={{
-                  display: { xs: 'flex', md: 'none' },
+                  display: { xs: "flex", md: "none" },
                   // backgroundColor: 'GhostWhite',
-                  // border: '1px solid black', 
-                  // borderRadius: 3, 
+                  // border: '1px solid black',
+                  // borderRadius: 3,
                   px: 1,
-                  my: 0
+                  my: 0,
                 }}
               >
                 <TextField
                   sx={{
-                    backgroundColor: 'white',
+                    backgroundColor: "white",
                     borderRadius: 15,
-                    // flexGrow: 3, 
-                    width: '100%',
+                    // flexGrow: 3,
+                    width: "100%",
                     // margin: 0,
                   }}
-                  id="smartphoneSearchBarInput" 
-                  label="Search" 
-                  variant="outlined" 
+                  id="smartphoneSearchBarInput"
+                  label="Search"
+                  variant="outlined"
                 />
               </Grid>
 
               {/* Smartphone Size InspireMe Icon */}
-              <Grid item xs={`${user ? 1 : 3}`}
+              <Grid
+                item
+                xs={`${user ? 1 : 3}`}
                 sx={{
-                  display: { xs: 'none', md: 'none' },
-                  justifyContent: `${user ? 'center' : 'left'}`
+                  display: { xs: "none", md: "none" },
+                  justifyContent: `${user ? "center" : "left"}`,
                 }}
               >
                 <Tooltip title="Inspire Me!">
@@ -580,29 +613,34 @@ function ResponsiveAppBar() {
               </Grid>
 
               {/* Smartphone Size User Icon */}
-              <Grid item xs={1} md={1}
+              <Grid
+                item
+                xs={1}
+                md={1}
                 sx={{
-                  display: { xs: 'flex', md: 'none' },
+                  display: { xs: "flex", md: "none" },
                   ml: { md: 2 },
                   mx: 1,
-                  justifyContent: 'center'
+                  justifyContent: "center",
                 }}
               >
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="User settings">
                     <IconButton
                       sx={{ p: 0 }}
-                      onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} //handleOpenLoginMenu} 
-                    // sx={{ p: 0 }}
+                      onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} //handleOpenLoginMenu}
+                      // sx={{ p: 0 }}
                     >
                       {/* <Avatar alt={`${user ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg" */}
-                      <Avatar alt={`${user ? `${user.name}` : ''}`} src=""
-                        sx={{ color: 'black' }}
+                      <Avatar
+                        alt={`${user ? `${user.name}` : ""}`}
+                        src=""
+                        sx={{ color: "black" }}
                       />
                       {/* {console.log(user ? user.name : 'NO USER')} */}
                     </IconButton>
                   </Tooltip>
-                  <UserMenu/>
+                  <UserMenu />
                   {/* <Menu
                     sx={{
                       mt: '45px',
@@ -653,64 +691,64 @@ function ResponsiveAppBar() {
                       </Typography>
                     </MenuItem>
                   </Menu> */}
-
-
                 </Box>
               </Grid>
 
               {/* Smartphone Size Favs Icon */}
-              <Grid item xs={1}
+              <Grid
+                item
+                xs={1}
                 sx={{
                   display: {
-                    xs: `${user ? 'flex' : 'none'}`,
-                    md: 'none'
+                    xs: `${user ? "flex" : "none"}`,
+                    md: "none",
                   },
-                  justifyContent: 'center'
+                  justifyContent: "center",
                 }}
               >
                 <Tooltip title="Favourites">
                   <Link to="/user/favorites">
-                  <IconButton sx={{ p: 0 }}>
-                    <FavoriteBorderIcon sx={{ margin: 1 }} />
-                  </IconButton>
+                    <IconButton sx={{ p: 0 }}>
+                      <FavoriteBorderIcon sx={{ margin: 1 }} />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
 
               {/* Smartphone Size Cart Icon */}
-              <Grid item xs={1}
+              <Grid
+                item
+                xs={1}
                 sx={{
                   display: {
-                    xs: `${user ? 'flex' : 'flex'}`,
-                    md: 'none'
+                    xs: `${user ? "flex" : "flex"}`,
+                    md: "none",
                   },
-                  justifyContent: 'center'
+                  justifyContent: "center",
                 }}
               >
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
-                  <IconButton sx={{ p: 0 }}>
-                    <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
-                  </IconButton>
+                    <IconButton sx={{ p: 0 }}>
+                      <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
-
             </Grid>
           </Toolbar>
         </Container>
-        
+
         {/* Categories NavBar */}
-        <Divider 
-          sx={{ backgroundColor: 'inherit' }}
-        />
-        <Container maxWidth="xl"
-          sx={{ 
-            display: { xs: 'none', md: 'block' },
-            // borderTop: '1px solid black' 
+        <Divider sx={{ backgroundColor: "inherit" }} />
+        <Container
+          maxWidth="xl"
+          sx={{
+            display: { xs: "none", md: "block" },
+            // borderTop: '1px solid black'
           }}
         >
-          <CategoriesNavBar/>
+          <CategoriesNavBar />
         </Container>
       </AppBar>
 
@@ -731,31 +769,34 @@ function ResponsiveAppBar() {
           },
         }}
       >
-        <Fade in={openLoginPopup}
+        <Fade
+          in={openLoginPopup}
           sx={{
-            display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              height: '100%',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
           }}
         >
-          <Box 
-            sx={{
-              // display: 'flex',
-              // position: 'relative',
-              // justifyContent: 'center',
-              // alignItems: 'center',
-              // top: '50%',
-              // left: '50%',
-              // transform: 'translate(-50%, -50%)',
-              // width: '100%',
-              // height: '100%',
-              // bgcolor: 'white',
-              // border: '2px solid #000',
-              // boxShadow: 24,
-              // p: 4,
-            }}
+          <Box
+            sx={
+              {
+                // display: 'flex',
+                // position: 'relative',
+                // justifyContent: 'center',
+                // alignItems: 'center',
+                // top: '50%',
+                // left: '50%',
+                // transform: 'translate(-50%, -50%)',
+                // width: '100%',
+                // height: '100%',
+                // bgcolor: 'white',
+                // border: '2px solid #000',
+                // boxShadow: 24,
+                // p: 4,
+              }
+            }
           >
             {/* <Typography id="transition-modal-title" variant="h6" component="h2">
               Text in a modal
@@ -770,7 +811,7 @@ function ResponsiveAppBar() {
           </Box>
         </Fade>
       </Modal>
-      
+
       {/* Register Popup */}
       <Modal
         // sx={{
@@ -788,18 +829,19 @@ function ResponsiveAppBar() {
           },
         }}
       >
-        <Fade in={openRegisterPopup}
+        <Fade
+          in={openRegisterPopup}
           sx={{
-            display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              height: '100%',
-              border: '2px solid red',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+            border: "2px solid red",
           }}
         >
           <Box>
-            <RegisterFrame 
+            <RegisterFrame
               setOpenRegisterPopup={setOpenRegisterPopup}
               handleLoginClick={handleLoginClick}
             />
