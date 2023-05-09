@@ -565,6 +565,7 @@ function ResponsiveAppBar() {
                 sx={{
                   display: { xs: 'flex', md: 'none' },
                   ml: { md: 2 },
+                  mx: 1,
                   justifyContent: 'center'
                 }}
               >
