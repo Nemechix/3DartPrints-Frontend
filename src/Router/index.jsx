@@ -9,9 +9,9 @@ import UserByUsername from "../Pages/UserById/UserByUsername";
 import DesignsByCategory from "../Pages/DesingsByCategory/DesignsByCategory";
 import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
 import CartUser from "../Pages/CartUser/CartUser";
-//import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
-//import AdminTools from "../Pages/AdminTools/AdminTools";
-//import PrinterModelsList from "../Pages/PrinterModelList/PrinterModelList";
+/* import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
+import AdminTools from "../Pages/AdminTools/AdminTools"; */
+import PrinterModelsList from "../Pages/PrinterModelList/PrinterModelList";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-      },
-      /* {
+      } /* ,
+      {
         path: "/admin",
         element: <PrivateRoute component={AdminTools} />,
-      }, */
+      } */,
       {
         path: "/about",
         element: <About />,
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-        {
+      {
         path: "/cart",
         element: <Cart />,
       },
@@ -57,11 +57,11 @@ const router = createBrowserRouter([
       {
         path: "/user/cart",
         element: <CartUser />,
-      }/* ,
+      },
       {
         path: "/printer",
-        element: <PrinterModelList />,
-      }, */
+        element: <PrinterModelsList />,
+      },
     ],
   },
 ]);

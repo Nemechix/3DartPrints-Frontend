@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PrinterModel from '../../Components/PrinterModel/PrinterModel';
 import api from '../../Services/config';
 
@@ -33,7 +33,7 @@ export default PrinterModelsList;
 
 
 
-/*
+
   const printerModels = [
     {
       id: 1,
@@ -48,4 +48,3 @@ export default PrinterModelsList;
       image: 'https://cdn.shopify.com/s/files/1/0274/4293/7933/products/1_b7a00516-19c9-4ba9-9649-7b8a051c7551.jpg?v=1638450566',
     },
   ];
-*/
