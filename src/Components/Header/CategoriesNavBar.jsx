@@ -1,6 +1,7 @@
 import { Typography, Button, IconButton, Stack, Divider } from '@mui/material'
 import { useState, useEffect } from 'react'
 import getAllCategories from '../../Services/getAllCategories'
+import { Link } from 'react-router-dom'
 
 function CategoriesNavBar() {
   
@@ -29,12 +30,19 @@ function CategoriesNavBar() {
       {categories.map((category) => {
         return (
           <IconButton key={category.name} sx={{ p: 0 }}>
-            <Button
+            {/* <Button
               href={`/category/${category.name}`}
               sx={{ p: 0, color: "text.primary", textDecoration: "none" }}
+            > */}
+            <Link to={`/category/${category.name}`}
+              // underline='none'
+              // textDecoration= "none"
+              // sx={{ color: "text.primary" }}
+              style={{ textDecoration: 'none', color: 'inherit' }}
             >
               <Typography variant="body2">{category.name}</Typography>
-            </Button>
+            </Link>
+            {/* </Button> */}
           </IconButton>
         );
       })}
