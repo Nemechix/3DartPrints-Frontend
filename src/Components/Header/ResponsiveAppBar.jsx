@@ -16,7 +16,7 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect } from 'react';
-import { Backdrop, Fade, Grid, Modal, TextField } from '@mui/material';
+import { Backdrop, Divider, Fade, Grid, Modal, TextField } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './ResponsiveAppBar.css'
@@ -701,10 +701,13 @@ function ResponsiveAppBar() {
         </Container>
         
         {/* Categories NavBar */}
+        <Divider 
+          sx={{ backgroundColor: 'inherit' }}
+        />
         <Container maxWidth="xl"
           sx={{ 
             display: { xs: 'none', md: 'block' },
-            borderTop: '1px solid black' 
+            // borderTop: '1px solid black' 
           }}
         >
           <CategoriesNavBar/>
