@@ -36,7 +36,7 @@ useEffect(() => {
             className="card"
             sx={{
               width: "45%",
-              height: "280px",
+              height: "180px",
               margin: "5px",
               marginBottom: "30px",
               display: "flex",
@@ -49,7 +49,7 @@ useEffect(() => {
             <CardActionArea>
               <CardMedia
                 component="img"
-                height={isMobile ? "220" : "160vw"}
+                height={isMobile ? "130" : "160vw"}
                 image={category.image}
                 alt={category.name}
                 style={{ objectFit: "cover" }}
