@@ -32,7 +32,7 @@ import RegisterFrame from '../RegisterFrame/RegisterFrame';
 
 import { Link } from 'react-router-dom';
 
-const pages = ['Pokemon', 'Cocina'];
+const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
 const settings = [
   {
     name: 'Profile', 
