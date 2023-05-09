@@ -30,19 +30,19 @@
 }
 
 .parrafo1 {
-  text-align: center;
+  text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo2 {
-  text-align: center;
+  text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo3 {
-  text-align: center;
+  text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
   padding-bottom: 30px;
@@ -72,20 +72,20 @@
   .parrafo1 {
     padding: 20px;
     font-size: 1.2vw;
-    text-align: left;
+    text-align: justify;
   }
 
   .parrafo2 {
     padding: 20px;
     font-size: 1.2vw;
-    text-align: left;
+    text-align: justify;
   }
 
   .parrafo3 {
     padding: 20px;
     font-size: 1.2vw;
     padding-bottom: 30px;
-    text-align: left;
+    text-align: justify;
   }
 
   @media screen and (min-width: 1024px) {
