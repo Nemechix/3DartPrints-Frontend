@@ -11,6 +11,7 @@ import UniqueDesign from "../Pages/UniqueDesign/UniqueDesign";
 import CartUser from "../Pages/CartUser/CartUser";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 //import AdminTools from "../Pages/AdminTools/AdminTools";
+import PrinterModelsList from "../Pages/PrinterModelList/PrinterModelList";
 
 const router = createBrowserRouter([
   {
@@ -53,10 +54,13 @@ const router = createBrowserRouter([
         path: "/user/:username/designs/:id",
         element: <UniqueDesign />,
       },
-      
       {
         path: "/user/cart",
         element: <CartUser />,
+      },
+      {
+        path: "/printer",
+        element: <PrinterModelList />,
       },
     ],
   },

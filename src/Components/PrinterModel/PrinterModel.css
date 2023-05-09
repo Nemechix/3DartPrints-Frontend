@@ -1,0 +1,28 @@
+.printer-model {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .printer-model_image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .printer-model_name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .printer-model_description {
+    font-size: 14px;
+    text-align: justify;
+    margin-bottom: 10px;
+  }
+  
