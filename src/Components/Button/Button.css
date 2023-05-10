@@ -1,8 +1,23 @@
-.button {
-    background-color: #002B5B;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
+    .button {
+      background-color: #002B5B;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  
+    .button-red {
+      background-color: #ea5455;
+      color: white;
+    }
+  
+    .button-green {
+      background-color: rgb(172, 219, 172);
+      color: white;
+    }
+
+    .button-orange {
+      background-color: rgb(255, 209, 123);
+      color: white;
+    }

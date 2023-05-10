@@ -1,9 +1,10 @@
-import './Button.css';
+import React from "react";
+import "./Button.css";
 
-const Button = ({ children, onClick }) => {
+const Button3D = ({ children, onClick, className }) => {
   return (
     <button
-      className="button"
+      className={`button ${className ? className : ""}`}
       onClick={onClick}
     >
       {children}
@@ -11,5 +12,4 @@ const Button = ({ children, onClick }) => {
   );
 };
 
-export default Button;
-
+export default Button3D;

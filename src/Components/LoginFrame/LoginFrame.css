@@ -1,17 +1,3 @@
-.login-wrapper {
-    display: block;
-    position: absolute;
-}
-
-
-form {
-    display: block;
-    border: 3px solid #ea5455;
-    background: #F9F5EB;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    padding: 5px 35px 35px 35px;
-}
 
 .Card-login-container{
     display: flex;
@@ -22,35 +8,7 @@ form {
     z-index: 10;
 }
 
-
 @media (min-width: 900px) {
-  form {
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    padding: 5px 35px 35px 35px;
-    border: none;
-}
-
-.login-wrapper {
-    display: block;
-    position: relative;
-
-}
-
-.edit_form{
-    text-align: center;
-    border: none;
-    margin: 50px 300px ;
-    border-radius: 5px;
-    height: 280px;
-}
-
-.button_login{
-    margin-top: 15px;
-    margin-right: 76px;
-    width: 100px;
-    height: 25px;
-}
 
 .Card-login-container{
     display: flex;
