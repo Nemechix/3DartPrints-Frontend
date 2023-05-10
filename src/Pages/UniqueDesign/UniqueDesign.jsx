@@ -8,8 +8,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import axios from "axios";
 import GetMyProfile from "../../Services/GetMyProfile";
 import { addFavorite, removeFavorite } from "../../Services/favorites";
+import { useAppContext } from "../../Context/appContext";
 
 function UniqueDesign() {
+  const { cart, addToCart, removeFromCart } = useAppContext()
+
   const [design, setDesign] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
   const { id } = useParams();
@@ -112,10 +115,6 @@ function UniqueDesign() {
     }
   };
 
-  const addToCart = () => {
-    console.log("Artículo agregado al carrito");
-  };
-
   return (
     <div className="unique-design-container">
       <img
@@ -146,7 +145,7 @@ function UniqueDesign() {
         </div>
         <h2 className="unique-design-name">{design.name}</h2>
         <p className="unique-design-description">{design.description}</p>
-        <button className="unique-design-button" onClick={addToCart}>
+        <button className="unique-design-button" onClick={() => addToCart(design)}>
           Añadir al carrito
         </button>
       </div>
