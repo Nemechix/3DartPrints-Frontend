@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/appContext';
 import axios from 'axios';
 import GetMyProfile from '../../Services/GetMyProfile';
+import { addFavorite, removeFavorite } from '../../Services/favorites';
 
 
 export default function DesignCard() {
@@ -68,19 +69,16 @@ export default function DesignCard() {
       alert("Debes iniciar sesión para agregar a favoritos");
       return;
     }
-    console.log('ME LLAMAN ADD')
+
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(`https://threedartprints-2yqk.onrender.com/api/design/favorites`, {designId, userId }, {
-        headers: {
-          'token': token
-        }
-      });
 
-      setFavorites(response.data.favorites)
-      localStorage.setItem('favorites', JSON.stringify(response.data.favorites))
+      const data = await addFavorite(designId, userId)
+      
+      console.log(data.message)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
 
-      return response;
+      // return response;
     } catch (error) {
       console.error(error);
     }
@@ -91,19 +89,15 @@ export default function DesignCard() {
       alert("Debes iniciar sesión para eliminar de favoritos");
       return;
     }
-    console.log('ME LLAMAN')
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.delete(`https://threedartprints-2yqk.onrender.com/api/user/favorites`, {designId, userId }, {
-        headers: {
-          'token': token
-        }
-      });
 
-      setFavorites(response.data.favorites)
-      localStorage.setItem('favorites', JSON.stringify(response.data.favorites))
+    try {
+      const data = await removeFavorite(designId, userId)
+
+      console.log(data.message)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
       
-      return response;
+      // return response;
     } catch (error) {
       console.error(error);
     }
@@ -114,7 +108,6 @@ export default function DesignCard() {
   return (
     <div className='designCards_body'>
       <div className="popular_categories">
-        {console.log(favorites)}
         {designs.map((design) => (
           <Card
             key={design.id}
