@@ -167,6 +167,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             variant="outlined"
             margin="dense"
         ></TextField>
+        
         <TextField
             onChange={(e) => setPassword(e.target.value)}
             fullWidth={true}
@@ -174,6 +175,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             variant="outlined"
             margin="dense"
           ></TextField>
+
         <TextField
             onChange={(e) => setPassword(e.target.value)}
             fullWidth={true}
