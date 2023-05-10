@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
+import { FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import { Card, CardActions, CardContent, CardHeader, Divider, IconButton, Link, TextField } from '@mui/material';
 import './RegisterFrame.css';
@@ -121,13 +121,19 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
         raised={true}
       >
         <CardHeader title="Datos para el registro:"></CardHeader>
+
       {/* User Basics Form */}
   <CardContent onSubmit={handleBasicsSubmit}
         style={{display: userBasics ? 'none' : 'block'}}
       >
-        <label>
-          <p>Username:</p>
-          <input type="text" onChange={e => setUsername(e.target.value)}/>
+
+      <TextField
+            onChange={e => setUsername(e.target.value)}
+            fullWidth={true}
+            label="User Name"
+            variant="outlined"
+            margin="dense"
+            >
           <Typography 
             variant='caption' 
             color='red'
@@ -136,12 +142,17 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             <WarningAmberRoundedIcon fontSize='small'/>
             Username already exists
           </Typography>
-        </label>
+        </TextField>
 
 
-         <label>
-          <p >Email:</p>
-          <input type="email" onChange={e => setEmail(e.target.value)}/>
+      <TextField
+            onChange={(e) => setEmail(e.target.value)}
+            fullWidth={true}
+            label="Email"
+            variant="outlined"
+            margin="dense"
+            type="email">
+
           <Typography 
             variant='caption' 
             color='red'
@@ -150,6 +161,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             <WarningAmberRoundedIcon fontSize='small'/>
             Must be a valid email
           </Typography>
+
           <Typography 
             variant='caption' 
             color='red'
@@ -158,15 +170,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             <WarningAmberRoundedIcon fontSize='small'/>
             Email already exists
           </Typography>
-        </label>
-
-        <TextField
-            onChange={(event) => setEmail(event.target.value)}
-            fullWidth={true}
-            label="Email"
-            variant="outlined"
-            margin="dense"
-        ></TextField>
+        </TextField>
         
         <TextField
             onChange={(e) => setPassword(e.target.value)}
@@ -177,21 +181,12 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
           ></TextField>
 
         <TextField
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
             fullWidth={true}
             label="Confirma el Password:"
             variant="outlined"
             margin="dense"
-        ></TextField>
-
-        <label>
-          <p>Password:</p>
-          <input type="password" onChange={e => setPassword(e.target.value)}/>
-        </label>
-
-        <label>
-          <p>Confirma el Password:</p>
-          <input type="password" onChange={e => setPasswordConfirm(e.target.value)}/>
+        >
           <Typography 
             variant='caption' 
             color='red'
@@ -200,91 +195,66 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             <WarningAmberRoundedIcon fontSize='small'/>
             Password should be the same
           </Typography>
-        </label>
-        <div>
-        <Divider />
-        </div>
-        <div>
-            <button className='submit' type="submit" disabled={!enableSubmit}>Registrar</button>
-        </div>
+        </TextField>
     </CardContent>
+
         <Divider />
+
           <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <p style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "10px" }}></p>
+              <p style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "10px" }}>
               <Button3D 
-              onClick={handleBasicsSubmit} disabled={!enableSubmit} className="button" type="submit">
+              onClick={handleBasicsSubmit} className="button" type="submit" disabled={!enableSubmit} >
               Registrar
               </Button3D>
+              </p>
             <Link to="/api">
               <Button3D
               onClick={handleLoginClick}
-              className="button"
+            className="button-green"
               >
               Login
               </Button3D>
             </Link>
           </CardActions>
 
+
+
       {/* User Details Form */}
       <CardActions onSubmit={handleSubmit}
-        style={{display: userBasics ? 'block' : 'none'}}
-      >
-        <h2>Datos para el registro:</h2>
-        <hr/>
-        <label>
-          <p>Name:</p>
-          <input type="text" name='name'/>
-        </label>
-        <label>
-          <p>Surname:</p>
-          <input type="text" name='surname'/>
-        </label>
-        <label>
-          <p>Birthdate:</p>
-          <input type="date" name='birth'/>
-        </label>
-        <label>
-          <p>¿Do you have Printer/s?</p>
-          <input 
-            id='printerNo' 
-            type="radio" 
-            name='printer'
-            value={0} 
-            defaultChecked
-          />
-          <label htmlFor='printerNo'>No</label>
-          <input 
-            id='printerYes'
-            type="radio" 
-            name='printer'
-            value={1} 
-          />
-          <label htmlFor='printerYes'>Yes</label>
-        </label>
-        <label>
-          <p>¿Are you Designer?</p>
-          <input 
-            id='designerNo'
-            type="radio" 
-            name='designer'
-            value={0}
-            defaultChecked
-          />
-          <label htmlFor='designerNo'>No</label>
-          <input 
-            id='designerYes'
-            type="radio" 
-            name='designer'
-            value={1}
-          />
-          <label htmlFor='designerYes'>Yes</label>
-        </label>
+        style={{display: userBasics ? 'block' : 'none'}}>
+
+        <TextField fullWidth label="Name" variant="outlined" margin="dense" name="name" />
+        <TextField fullWidth label="Surname" variant="outlined" margin="dense" name="surname" />
+        <TextField fullWidth label="Birthdate" variant="outlined" margin="dense" name="birth" type="date" />
+        <p></p>
+        <Divider />
+        <p></p>
+        <Typography variant="body1">Do you have Printer/s?</Typography>
+            <FormControl component="fieldset" margin="dense">
+                <FormControl row aria-label="printer" name="printer">
+                    <FormControlLabel value="0" control={<Radio />} label="No" defaultChecked />
+                    <FormControlLabel value="1" control={<Radio />} label="Yes" />
+                </FormControl>
+            </FormControl>
+        <p></p>
+        <Divider />
+        <p></p>
+        <Typography variant="body1">Are you Designer?</Typography>
+            <FormControl component="fieldset" margin="dense">
+                <RadioGroup row aria-label="designer" name="designer">
+                    <FormControlLabel value="0" control={<Radio />} label="No" defaultChecked />
+                    <FormControlLabel value="1" control={<Radio />} label="Yes" />
+                </RadioGroup>
+            </FormControl>
+        <p></p>
+        <Divider />
+        <p></p>
               <Button3D 
-              onClick={handleBasicsSubmit} className="button" type="submit">
-              Registrar
+              onClick={handleSubmit} className="button" type="submit">
+              Register
               </Button3D>
       </CardActions>
-            </Card>
+    </Card>
     </div>
   )
 }
