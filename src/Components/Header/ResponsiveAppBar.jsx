@@ -136,6 +136,8 @@ function ResponsiveAppBar() {
 
   function handleLogoutClick() {
     localStorage.removeItem('token')
+    localStorage.removeItem('role')
+    localStorage.removeItem('favorites')
     handleCloseUserMenu()
     navigate('/')
   }
