@@ -29,7 +29,6 @@ function UniqueDesign() {
       // );
       // const favorites = favoritesResponse.data;
       const favorites = JSON.parse(localStorage.getItem('favorites'))
-      console.log(favorites)
       setIsFavorite(
         favorites.some((favorite) => favorite.id === design.id)
       );
@@ -63,7 +62,6 @@ function UniqueDesign() {
       const data = await addFavorite(designId, userId)
       
       console.log(data.message)
-      console.log(data.favorites)
       setFavorites(data.favorites)
       localStorage.setItem('favorites', JSON.stringify(data.favorites))
       setIsFavorite(true);
@@ -94,7 +92,6 @@ function UniqueDesign() {
       const data = await removeFavorite(designId, userId)
 
       console.log(data.message)
-      console.log(data.favorites)
       setFavorites(data.favorites)
       localStorage.setItem('favorites', JSON.stringify(data.favorites))
       setIsFavorite(false);

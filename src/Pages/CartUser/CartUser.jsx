@@ -40,8 +40,6 @@ function CartUser() {
         const boolean = cart.some((design) => design.id === id)
         return boolean
     }
-    console.log('cart are ', cart)
-
 
     const [designs, setDesigns] = useState([]);
     const navigate = useNavigate()
