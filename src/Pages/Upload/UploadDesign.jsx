@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Card, CardActions, CardContent, CardHeader, Divider, TextField, Typography } from '@mui/material';
+import Button3D from "../../Components/Button/Button";
 
 function UploadDesign() {
   const [formData, setFormData] = useState({
@@ -64,70 +66,95 @@ function UploadDesign() {
     }
   };
   return (
-    <div>
-      <h1>Subir diseño</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Nombre:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Descripción:
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Archivo:
-          <input type="file" name="file" onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Imagen:
-          <input type="file" name="image" onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Precio:
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Cantidad:
-          <input
-            type="number"
-            name="quantity"
-            value={formData.quantity}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>Categoría:</label>
-        <br />
-        <input
-          type="text"
-          name="categoryName"
-          value={formData.categoryName}
-          onChange={handleInputChange}
-        />
-        <br />
-        <button type="submit">Subir diseño</button>
-      </form>
-    </div>
+    <div className="register-wrapper">
+  <Card
+        className="card"
+        sx={{ width: "700px", backgroundColor: "white" }}
+        raised={true}
+    >
+  <CardHeader title="Subir diseño:"></CardHeader>
+  <CardContent onSubmit={handleSubmit}>
+    <TextField
+      label="Nombre:"
+      name="name"
+      value={formData.name}
+      onChange={handleInputChange}
+      fullWidth={true}
+      variant="outlined"
+      margin="dense"
+    />
+    <br />
+    <TextField
+      label="Descripción:"
+      name="description"
+      value={formData.description}
+      onChange={handleInputChange}
+      fullWidth={true}
+      variant="outlined"
+      margin="dense"
+      multiline
+      rows={4}
+    />
+    <br />
+    <TextField
+      label="Archivo:"
+      type="file"
+      name="file"
+      onChange={handleInputChange}
+      fullWidth={true}
+      variant="outlined"
+      margin="dense"
+    />
+    <br />
+    <TextField
+      label="Imagen:"
+      type="file"
+      name="image"
+      onChange={handleInputChange}
+      fullWidth={true}
+      variant="outlined"
+      margin="dense"
+    />
+    <br />
+    <TextField
+      label="Precio:"
+      type="number"
+      name="price"
+      value={formData.price}
+      onChange={handleInputChange}
+      fullWidth={true}
+      variant="outlined"
+      margin="dense"
+    />
+    <br />
+    <TextField
+      label="Cantidad:"
+      type="number"
+      name="quantity"
+      value={formData.quantity}
+      onChange={handleInputChange}
+      fullWidth={true}
+      variant="outlined"
+      margin="dense"
+    />
+    <br />
+    <TextField
+      name="categoryName"
+      value={formData.categoryName}
+      onChange={handleInputChange}
+      fullWidth={true}
+      label="Categoría:"
+      variant="outlined"
+      margin="dense"
+    />
+        <Button3D variant="contained" color="primary" onClick={handleSubmit}>
+      Subir diseño
+    </Button3D>
+    </CardContent>
+    </Card>
+
+</div>
+
   );
 }
 
