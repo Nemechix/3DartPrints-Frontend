@@ -7,6 +7,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import axios from "axios";
 import GetMyProfile from "../../Services/GetMyProfile";
+import { addFavorite, removeFavorite } from "../../Services/favorites";
 
 function UniqueDesign() {
   const [design, setDesign] = useState({});
@@ -14,19 +15,29 @@ function UniqueDesign() {
   const { id } = useParams();
   const [userId, setUserId] = useState(null);
 
+  const [favorites, setFavorites] = useState([])
+
   const getDesign = async () => {
     const result = await getDesignById(id);
     setDesign(result.data);
     if (userId) {
-      const favoritesResponse = await axios.get(
-        `https://threedartprints-2yqk.onrender.com/api/user/favorites/${userId}`
-      );
-      const favorites = favoritesResponse.data;
+      // const favoritesResponse = await axios.get(
+      //   `https://threedartprints-2yqk.onrender.com/api/user/favorites/${userId}`
+      // );
+      // const favorites = favoritesResponse.data;
+      const favorites = JSON.parse(localStorage.getItem('favorites'))
+      console.log(favorites)
       setIsFavorite(
-        favorites.some((favorite) => favorite.designId === design.id)
+        favorites.some((favorite) => favorite.id === design.id)
       );
     }
   };
+
+  useEffect(() => {
+    localStorage.getItem('favorites') ?
+      setFavorites(JSON.parse(localStorage.getItem('favorites')))
+      : localStorage.setItem('favorites', JSON.stringify([]))
+  }, [localStorage.getItem('favorites')])
 
   useEffect(() => {
     async function getUserId() {
@@ -45,18 +56,26 @@ function UniqueDesign() {
     }
 
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(
-        `https://threedartprints-2yqk.onrender.com/api/design/favorites`,
-        { designId, userId },
-        {
-          headers: {
-            token: token,
-          },
-        }
-      );
+
+      const data = await addFavorite(designId, userId)
+      
+      console.log(data.message)
+      console.log(data.favorites)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
       setIsFavorite(true);
-      return response;
+
+      // const token = localStorage.getItem("token");
+      // const response = await axios.post(
+      //   `https://threedartprints-2yqk.onrender.com/api/design/favorites`,
+      //   { designId, userId },
+      //   {
+      //     headers: {
+      //       token: token,
+      //     },
+      //   }
+      // );
+      // return response;
     } catch (error) {
       console.error(error);
     }
@@ -69,18 +88,25 @@ function UniqueDesign() {
     }
 
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.delete(
-        `https://threedartprints-2yqk.onrender.com/api/user/favorites`,
-        {
-          data: { designId, userId },
-          headers: {
-            token: token,
-          },
-        }
-      );
+      const data = await removeFavorite(designId, userId)
+
+      console.log(data.message)
+      console.log(data.favorites)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
       setIsFavorite(false);
-      return response;
+
+      // const token = localStorage.getItem("token");
+      // const response = await axios.delete(
+      //   `https://threedartprints-2yqk.onrender.com/api/user/favorites`,
+      //   {
+      //     data: { designId, userId },
+      //     headers: {
+      //       token: token,
+      //     },
+      //   }
+      // );
+      // return response;
     } catch (error) {
       console.error(error);
     }
@@ -104,10 +130,8 @@ function UniqueDesign() {
             onClick={() => {
               if (isFavorite) {
                 removeFromFavorites(design.id);
-                setIsFavorite(false);
               } else {
                 addToFavorites(design.id);
-                setIsFavorite(true);
               }
             }}
             sx={{ marginRight: "1rem", fontSize: "40px" }}

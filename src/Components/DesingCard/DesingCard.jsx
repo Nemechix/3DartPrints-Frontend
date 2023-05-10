@@ -54,7 +54,7 @@ export default function DesignCard() {
   useEffect(() => {
     localStorage.getItem('favorites') ?
       setFavorites(JSON.parse(localStorage.getItem('favorites')))
-      : null
+      : localStorage.setItem('favorites', JSON.stringify([]))
   }, [localStorage.getItem('favorites')])
 
   const toggleFavorites = (designId) => {
