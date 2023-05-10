@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import getDesignsByCategoryName from '../../Services/DesignsByCategory';
 import Card from '@mui/material/Card';
@@ -12,7 +12,6 @@ import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/appContext';
-import axios from 'axios';
 import GetMyProfile from '../../Services/GetMyProfile';
 import { addFavorite, removeFavorite } from '../../Services/favorites';
 
