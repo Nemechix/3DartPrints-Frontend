@@ -251,7 +251,11 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Link to="/">
-                  <img src={logo} alt="LOGO" style={{ height: 50 }} />
+                  <img
+                    src="https://i.postimg.cc/cLL1jDG2/LOGO.png"
+                    alt="LOGO"
+                    style={{ height: 60 }}
+                  />
                 </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
                 <Typography
@@ -548,7 +552,11 @@ function ResponsiveAppBar() {
               >
                 {/* Icon */}
                 <Link to="/">
-                  <img src={logo} alt="LOGO" style={{ height: 50 }} />
+                  <img
+                    src="https://i.postimg.cc/cLL1jDG2/LOGO.png"
+                    alt="LOGO"
+                    style={{ height: 39 }}
+                  />
                 </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
