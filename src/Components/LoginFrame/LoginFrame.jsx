@@ -2,13 +2,15 @@ import { useState } from 'react';
 import './LoginFrame.css';
 import { login } from '../../Services/Login';
 import { useNavigate } from 'react-router';
-import { Button, Card, CardActions, CardContent, CardHeader, Divider, IconButton, Link, TextField } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Divider, IconButton, Link, TextField } from '@mui/material';
 import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
 
 function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [isPassVisible, setPassVisible] = useState(false);
+
+  const [loading, setLoading] = useState(false)
 
   function handleClick() {
     setPassVisible(!isPassVisible);
@@ -18,9 +20,11 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true)
     const { token, role, favorites } = await login({ email, password });
 
     if (token) {
+      setLoading(false)
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
       localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -34,7 +38,11 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
     <div className="Card-login-container">
       <Card
         className="card"
-        sx={{ width: "700px", backgroundColor: "white" }}
+        sx={{ 
+          width: "700px", 
+          backgroundColor: "white", 
+          ...(loading && {filter: 'sepia(50%) opacity(25%)'}) 
+        }}
         raised={true}
       >
         <CardHeader title="Login"></CardHeader>
@@ -87,6 +95,17 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
             </Button>
           </Link>
         </CardActions>
+            {loading && <CircularProgress
+              size={160}
+              sx={{
+                color: 'green',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                marginTop: '-80px',
+                marginLeft: '-80px',
+              }}
+            />}
       </Card>
     </div>
   );
