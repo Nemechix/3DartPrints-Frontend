@@ -62,7 +62,7 @@ export default function Footer() {
       <Divider sx={{ backgroundColor: "white", width: "90%", mt: 1 }} />
       <Link to="/">
         <img
-          src={logo}
+          src="https://i.postimg.cc/cLL1jDG2/LOGO.png"
           alt="Logo"
           style={{ width: "100px", marginTop: "13px" }}
         />
