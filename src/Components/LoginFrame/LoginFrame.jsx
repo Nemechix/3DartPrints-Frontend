@@ -29,7 +29,8 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
       localStorage.setItem("favorites", JSON.stringify(favorites));
-      setOpenLoginPopup ? setOpenLoginPopup(false) : navigate("/");
+      setOpenLoginPopup ? setOpenLoginPopup(false) : null
+      navigate("/")
     } else {
       console.log("Email or Password incorrect.");
     }
