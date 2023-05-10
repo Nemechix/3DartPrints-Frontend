@@ -38,7 +38,7 @@ function CategoriesNavBar() {
               // underline='none'
               // textDecoration= "none"
               // sx={{ color: "text.primary" }}
-              style={{ textDecoration: 'none', color: 'inherit' }}
+              style={{ textDecoration: 'none', color: '#ffffff' }}
             >
               <Typography variant="body2">{category.name}</Typography>
             </Link>
