@@ -254,7 +254,7 @@ function ResponsiveAppBar() {
               >
                 <Link to="/">
                   <img
-                    src="https://i.postimg.cc/cLL1jDG2/LOGO.png"
+                    src="https://i.postimg.cc/ncz4v9FJ/LOGO2.png"
                     alt="LOGO"
                     style={{ height: 60 }}
                   />
@@ -555,7 +555,7 @@ function ResponsiveAppBar() {
                 {/* Icon */}
                 <Link to="/">
                   <img
-                    src="https://i.postimg.cc/cLL1jDG2/LOGO.png"
+                    src="https://i.postimg.cc/ncz4v9FJ/LOGO2.png"
                     alt="LOGO"
                     style={{ height: 39 }}
                   />
