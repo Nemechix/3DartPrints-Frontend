@@ -178,6 +178,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             label="Password"
             variant="outlined"
             margin="dense"
+            type="password"
           ></TextField>
 
         <TextField
@@ -186,6 +187,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             label="Confirma el Password:"
             variant="outlined"
             margin="dense"
+            type="password"
         >
           <Typography 
             variant='caption' 
@@ -225,7 +227,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
         <TextField fullWidth label="Name" variant="outlined" margin="dense" name="name" />
         <TextField fullWidth label="Surname" variant="outlined" margin="dense" name="surname" />
-        <TextField fullWidth label="Birthdate" variant="outlined" margin="dense" name="birth" type="date" />
+        <TextField fullWidth label="Birthdate" position="end" variant="outlined" margin="dense" name="birth" type="date" />
         <p></p>
         <Divider />
         <p></p>
@@ -250,7 +252,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
         <Divider />
         <p></p>
               <Button3D 
-              onClick={handleSubmit} className="button" type="submit">
+              onClick={handleSubmit} className="button-red" type="submit">
               Register
               </Button3D>
       </CardActions>
