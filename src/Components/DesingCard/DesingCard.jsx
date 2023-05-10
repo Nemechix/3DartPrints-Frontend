@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import getDesignsByCategoryName from '../../Services/DesignsByCategory';
 import Card from '@mui/material/Card';
@@ -12,8 +12,8 @@ import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/appContext';
-import axios from 'axios';
 import GetMyProfile from '../../Services/GetMyProfile';
+import { addFavorite, removeFavorite } from '../../Services/favorites';
 
 
 export default function DesignCard() {
@@ -32,6 +32,8 @@ export default function DesignCard() {
   const isMobile = useMediaQuery('(max-width:1024px)');
   const [userId, setUserId] = useState(null);
 
+  const [favorites, setFavorites] = useState([])
+
   useEffect(() => {
     async function fetchData() {
       const response = await getDesignsByCategoryName(name);
@@ -49,40 +51,52 @@ export default function DesignCard() {
     getUserId();
   }, [])
 
+  useEffect(() => {
+    localStorage.getItem('favorites') ?
+      setFavorites(JSON.parse(localStorage.getItem('favorites')))
+      : null
+  }, [localStorage.getItem('favorites')])
+
+  const toggleFavorites = (designId) => {
+    favorites.some(favorite => favorite.id === designId) ?
+      removeFromFavorites(designId)
+      : addToFavorites(designId)
+  }
 
   const addToFavorites = async (designId) => {
     if (!userId) {
       alert("Debes iniciar sesión para agregar a favoritos");
       return;
     }
-    
+
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(`https://threedartprints-2yqk.onrender.com/api/design/favorites`, {designId, userId }, {
-        headers: {
-          'token': token
-        }
-      });
-      return response;
+
+      const data = await addFavorite(designId, userId)
+      
+      console.log(data.message)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
+
+      // return response;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const RemoveFromFavorites = async (designId) => {
+  const removeFromFavorites = async (designId) => {
     if (!userId) {
       alert("Debes iniciar sesión para eliminar de favoritos");
       return;
     }
-    
+
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.delete(`https://threedartprints-2yqk.onrender.com/api/user/favorites`, {designId, userId }, {
-        headers: {
-          'token': token
-        }
-      });
-      return response;
+      const data = await removeFavorite(designId, userId)
+
+      console.log(data.message)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
+      
+      // return response;
     } catch (error) {
       console.error(error);
     }
@@ -139,8 +153,8 @@ export default function DesignCard() {
                 </Typography>
                 <div style={{ display: "flex", marginLeft: "px" }}>
 
-                  <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design.id)}>
-                    <FavoriteIcon />
+                  <IconButton aria-label="Add to favorites" onClick={() => toggleFavorites(design.id)}>
+                    <FavoriteIcon sx={{ color: `${favorites.some(favorite => favorite.id === design.id) ? 'red' : ''}` }}/>
                   </IconButton>
 
 
