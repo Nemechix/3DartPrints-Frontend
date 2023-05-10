@@ -4,6 +4,7 @@ import { login } from '../../Services/Login';
 import { useNavigate } from 'react-router';
 import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Divider, IconButton, Link, TextField } from '@mui/material';
 import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
+import Button3D from '../Button/Button';
 
 function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
   const [email, setEmail] = useState();
@@ -27,7 +28,7 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
       setLoading(false)
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+      localStorage.setItem("favorites", favorites);
       setOpenLoginPopup ? setOpenLoginPopup(false) : navigate("/");
     } else {
       console.log("Email or Password incorrect.");
@@ -41,6 +42,7 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
         sx={{ 
           width: "700px", 
           backgroundColor: "white", 
+          border: "5 solid #ea5455",
           ...(loading && {filter: 'sepia(50%) opacity(25%)'}) 
         }}
         raised={true}
@@ -76,23 +78,20 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
         </CardContent>
         <Divider />
         <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button
+          <p style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "10px" }}>
+          <Button3D
             onClick={handleRegisterClick}
-            size="small"
-            color="secondary"
-            variant="contained"
+            className="button-red"
           >
             Register
-          </Button>
+          </Button3D>            </p>
           <Link to="/api">
-            <Button
+            <Button3D
               onClick={handleSubmit}
-              size="small"
-              color="primary"
-              variant="contained"
+            className="button"
             >
               Login
-            </Button>
+            </Button3D>
           </Link>
         </CardActions>
             {loading && <CircularProgress

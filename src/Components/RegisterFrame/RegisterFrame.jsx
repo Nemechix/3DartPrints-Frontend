@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
+import { Card, CardActions, CardContent, CardHeader, Divider, IconButton, Link, TextField } from '@mui/material';
 import './RegisterFrame.css';
 import postSignUp from '../../Services/postSignUp';
 import getAllUsers from '../../Services/GetAllUser';
 import { useNavigate } from 'react-router';
+import Button3D from '../Button/Button';
 
 function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
@@ -113,12 +115,16 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
   return(
     <div className="register-wrapper">
+      <Card
+        className="card"
+        sx={{ width: "700px", backgroundColor: "white" }}
+        raised={true}
+      >
+        <CardHeader title="Datos para el registro:"></CardHeader>
       {/* User Basics Form */}
-      <form onSubmit={handleBasicsSubmit}
+  <CardContent onSubmit={handleBasicsSubmit}
         style={{display: userBasics ? 'none' : 'block'}}
       >
-        <h2>Datos para el registro:</h2>
-        <hr/>
         <label>
           <p>Username:</p>
           <input type="text" onChange={e => setUsername(e.target.value)}/>
@@ -131,6 +137,8 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             Username already exists
           </Typography>
         </label>
+
+
          <label>
           <p >Email:</p>
           <input type="email" onChange={e => setEmail(e.target.value)}/>
@@ -151,10 +159,36 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             Email already exists
           </Typography>
         </label>
+
+        <TextField
+            onChange={(event) => setEmail(event.target.value)}
+            fullWidth={true}
+            label="Email"
+            variant="outlined"
+            margin="dense"
+        ></TextField>
+        
+        <TextField
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth={true}
+            label="Password"
+            variant="outlined"
+            margin="dense"
+          ></TextField>
+
+        <TextField
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth={true}
+            label="Confirma el Password:"
+            variant="outlined"
+            margin="dense"
+        ></TextField>
+
         <label>
           <p>Password:</p>
           <input type="password" onChange={e => setPassword(e.target.value)}/>
         </label>
+
         <label>
           <p>Confirma el Password:</p>
           <input type="password" onChange={e => setPasswordConfirm(e.target.value)}/>
@@ -168,18 +202,31 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
           </Typography>
         </label>
         <div>
-           <br></br>
+        <Divider />
         </div>
         <div>
             <button className='submit' type="submit" disabled={!enableSubmit}>Registrar</button>
         </div>
-        <div>
-            <button id='login' onClick={handleLoginClick}>Login</button>
-        </div>
-      </form>
+    </CardContent>
+        <Divider />
+          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <p style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "10px" }}></p>
+              <Button3D 
+              onClick={handleBasicsSubmit} disabled={!enableSubmit} className="button" type="submit">
+              Registrar
+              </Button3D>
+            <Link to="/api">
+              <Button3D
+              onClick={handleLoginClick}
+              className="button"
+              >
+              Login
+              </Button3D>
+            </Link>
+          </CardActions>
 
       {/* User Details Form */}
-      <form onSubmit={handleSubmit}
+      <CardActions onSubmit={handleSubmit}
         style={{display: userBasics ? 'block' : 'none'}}
       >
         <h2>Datos para el registro:</h2>
@@ -232,13 +279,12 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
           />
           <label htmlFor='designerYes'>Yes</label>
         </label>
-        <div>
-           <br></br>
-        </div>
-        <div>
-            <button className='submit' type="submit">Registrar</button>
-        </div>
-      </form>
+              <Button3D 
+              onClick={handleBasicsSubmit} className="button" type="submit">
+              Registrar
+              </Button3D>
+      </CardActions>
+            </Card>
     </div>
   )
 }
