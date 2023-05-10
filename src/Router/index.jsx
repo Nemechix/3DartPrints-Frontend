@@ -12,6 +12,7 @@ import CartUser from "../Pages/CartUser/CartUser";
 /* import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import AdminTools from "../Pages/AdminTools/AdminTools"; */
 import PrinterModelsList from "../Pages/PrinterModelList/PrinterModelList";
+import UploadDesign from "../Pages/Upload/UploadDesign";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/printer",
         element: <PrinterModelsList />,
+      },
+      {
+        path: "/upload",
+        element: <UploadDesign />,
       },
     ],
   },

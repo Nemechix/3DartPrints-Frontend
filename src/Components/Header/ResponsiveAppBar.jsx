@@ -39,8 +39,8 @@ const settings = [
     url: '/profile'
   },
   {
-    name: 'Account', 
-    url: '/'
+    name: 'Upload', 
+    url: '/upload'
   },
   {
     name: 'Dashboard',
