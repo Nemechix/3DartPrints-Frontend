@@ -30,7 +30,11 @@ useEffect(() => {
     <main>
       <div>
         {" "}
-        <img style={{paddingTop:"35px", width: isMobile ? "350px" : "60vw"}} src="https://i.postimg.cc/59v7MnN7/coso-1.jpg" alt="img" />
+        <img
+          style={{ paddingTop: "35px", width: isMobile ? "350px" : "60vw" }}
+          src="https://i.postimg.cc/59v7MnN7/coso-1.jpg"
+          alt="img"
+        />
       </div>
       <div className="popular_categories_home">
         {categories.map((category) => (
@@ -98,7 +102,7 @@ useEffect(() => {
       <div className="parrafos_title">
         <div className="p_container">
           <div className="about_title">
-            <h1 className="welcome">¿Como se creo 3DartPrins?</h1>
+            <h1 className="welcome">¿Cómo se creó 3DartPrins?</h1>
             <a href="/about">Conoce nuestros inicios </a>
           </div>
           <div className="parrafos">
