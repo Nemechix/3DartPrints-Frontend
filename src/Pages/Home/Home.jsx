@@ -28,7 +28,10 @@ useEffect(() => {
 
   return (
     <main>
-      <h3 className="h3_home">Visita nuestras categorías populares</h3>
+      <div>
+        {" "}
+        <img style={{paddingTop:"35px", width: isMobile ? "350px" : "60vw"}} src="https://i.postimg.cc/59v7MnN7/coso-1.jpg" alt="img" />
+      </div>
       <div className="popular_categories_home">
         {categories.map((category) => (
           <Card
@@ -44,6 +47,9 @@ useEffect(() => {
               justifyContent: "space-between",
               boxShadow: "none",
               border: "1px solid lightgray",
+              color: "#6b53e6",
+              textTransform: "uppercase",
+              fontFamily: "Roboto",
             }}
           >
             <CardActionArea>

@@ -17,7 +17,7 @@ export default function Footer() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#2f466c",
+        backgroundColor: "#2D27AA",
         color: "white",
         borderRadius: "0px",
         paddingTop: "10px",
@@ -59,8 +59,8 @@ export default function Footer() {
           <TwitterIcon fontSize="large" />
         </a>
       </div>
-      <Divider sx={{ backgroundColor: 'white', width: '90%', mt: 1 }}/>
-      <Link to='/'>
+      <Divider sx={{ backgroundColor: "white", width: "90%", mt: 1 }} />
+      <Link to="/">
         <img
           src={logo}
           alt="Logo"

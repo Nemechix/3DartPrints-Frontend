@@ -136,8 +136,6 @@ function ResponsiveAppBar() {
 
   function handleLogoutClick() {
     localStorage.removeItem('token')
-    localStorage.removeItem('role')
-    localStorage.removeItem('favorites')
     handleCloseUserMenu()
     navigate('/')
   }
@@ -184,7 +182,7 @@ function ResponsiveAppBar() {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#F9F5EB",
+          backgroundColor: "#6b53e6",
           boxShadow: "none",
           borderBottom: "1px solid lightgray",
         }}
@@ -460,7 +458,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Favourites">
                   <Link to="/user/favorites">
                     <IconButton sx={{ p: 0 }}>
-                      <FavoriteBorderIcon sx={{ margin: 1 }} />
+                      <FavoriteBorderIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
@@ -478,7 +478,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
                     <IconButton sx={{ p: 0 }}>
-                      <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                      <ShoppingCartOutlinedIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
@@ -711,7 +713,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Favourites">
                   <Link to="/user/favorites">
                     <IconButton sx={{ p: 0 }}>
-                      <FavoriteBorderIcon sx={{ margin: 1 }} />
+                      <FavoriteBorderIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
@@ -732,7 +736,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
                     <IconButton sx={{ p: 0 }}>
-                      <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                      <ShoppingCartOutlinedIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
