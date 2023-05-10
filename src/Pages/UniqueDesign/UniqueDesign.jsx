@@ -136,7 +136,7 @@ function UniqueDesign() {
             sx={{ marginRight: "1rem", fontSize: "40px" }}
           >
             {isFavorite ? (
-              <FavoriteIcon sx={{ color: "pink" }} />
+              <FavoriteIcon sx={{ color: "#ff7c24" }} />
             ) : (
               <FavoriteBorderIcon />
             )}
