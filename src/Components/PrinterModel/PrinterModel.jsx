@@ -1,12 +1,12 @@
 import React from 'react';
 import './PrinterModel.css';
 
-const PrinterModel = ({ image, name, description }) => {
+const PrinterModel = ({ image, brand, dimensions }) => {
   return (
     <div className="printer-model">
-      <img src={image} alt={name} className="printer-model_image" />
-      <h2 className="printer-model_name">{name}</h2>
-      <p className="printer-model_description">{description}</p>
+      <h2 className="printer-model_brand">{brand}</h2>
+      <h2 className="printer-model_model">{model}</h2>
+      <p className="printe-model_dimensions">{dimensions}</p>
     </div>
   );
 };

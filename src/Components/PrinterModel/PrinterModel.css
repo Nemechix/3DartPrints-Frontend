@@ -14,13 +14,20 @@
     margin-bottom: 10px;
   }
   
-  .printer-model_name {
+  .printer-model_brand {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+    
+  .printer-model_model {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  .printer-model_description {
+  .printer-model_dimensions {
     font-size: 14px;
     text-align: justify;
     margin-bottom: 10px;
