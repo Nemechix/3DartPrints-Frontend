@@ -32,6 +32,8 @@ export default function DesignCard() {
   const isMobile = useMediaQuery('(max-width:1024px)');
   const [userId, setUserId] = useState(null);
 
+  const [favorites, setFavorites] = useState([])
+
   useEffect(() => {
     async function fetchData() {
       const response = await getDesignsByCategoryName(name);
@@ -49,13 +51,24 @@ export default function DesignCard() {
     getUserId();
   }, [])
 
+  useEffect(() => {
+    localStorage.getItem('favorites') ?
+      setFavorites(JSON.parse(localStorage.getItem('favorites')))
+      : null
+  }, [localStorage.getItem('favorites')])
+
+  const toggleFavorites = (designId) => {
+    favorites.some(favorite => favorite.id === designId) ?
+      removeFromFavorites(designId)
+      : addToFavorites(designId)
+  }
 
   const addToFavorites = async (designId) => {
     if (!userId) {
       alert("Debes iniciar sesión para agregar a favoritos");
       return;
     }
-    
+    console.log('ME LLAMAN ADD')
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(`https://threedartprints-2yqk.onrender.com/api/design/favorites`, {designId, userId }, {
@@ -63,18 +76,22 @@ export default function DesignCard() {
           'token': token
         }
       });
+
+      setFavorites(response.data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(response.data.favorites))
+
       return response;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const RemoveFromFavorites = async (designId) => {
+  const removeFromFavorites = async (designId) => {
     if (!userId) {
       alert("Debes iniciar sesión para eliminar de favoritos");
       return;
     }
-    
+    console.log('ME LLAMAN')
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(`https://threedartprints-2yqk.onrender.com/api/user/favorites`, {designId, userId }, {
@@ -82,6 +99,10 @@ export default function DesignCard() {
           'token': token
         }
       });
+
+      setFavorites(response.data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(response.data.favorites))
+      
       return response;
     } catch (error) {
       console.error(error);
@@ -93,6 +114,7 @@ export default function DesignCard() {
   return (
     <div className='designCards_body'>
       <div className="popular_categories">
+        {console.log(favorites)}
         {designs.map((design) => (
           <Card
             key={design.id}
@@ -139,8 +161,8 @@ export default function DesignCard() {
                 </Typography>
                 <div style={{ display: "flex", marginLeft: "px" }}>
 
-                  <IconButton aria-label="Add to favorites" onClick={() => addToFavorites(design.id)}>
-                    <FavoriteIcon />
+                  <IconButton aria-label="Add to favorites" onClick={() => toggleFavorites(design.id)}>
+                    <FavoriteIcon sx={{ color: `${favorites.some(favorite => favorite.id === design.id) ? 'red' : ''}` }}/>
                   </IconButton>
 
 
