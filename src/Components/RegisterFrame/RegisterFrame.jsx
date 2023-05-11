@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
+import { CircularProgress, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import { Card, CardActions, CardContent, CardHeader, Divider, Link, IconButton, TextField } from '@mui/material';
 import './RegisterFrame.css';
@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router';
 import Button3D from '../Button/Button';
 
 function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
+
+  const [loading, setLoading] = useState(false)
 
   const [userBasics, setUserBasics] = useState(false)
 
@@ -91,6 +93,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    setLoading(true)
 
     try {
       const user = await postSignUp(
@@ -106,11 +109,15 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
         }
       )
 
+      setLoading(false)
+
       if (user) {
         setOpenRegisterPopup ? setOpenRegisterPopup(false) : navigate('/')
       }
     } catch(error) {
       console.log(error)
+      setLoading(false)
+      alert('Something went wrong')
     }
   }
 
@@ -122,7 +129,8 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
           width: "700px",
           padding: "10px",
           backgroundColor: "white", 
-          border: "5 solid #ea5455"
+          border: "5 solid #ea5455",
+          ...(loading && {filter: 'sepia(50%) opacity(25%)'})
         }}
         raised={true}
       >
@@ -314,6 +322,17 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
         </CardContent>
 
+        {loading && <CircularProgress
+          size={160}
+          sx={{
+            color: 'green',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            marginTop: '-80px',
+            marginLeft: '-80px',
+          }}
+        />}
       </Card>
     
     </div>

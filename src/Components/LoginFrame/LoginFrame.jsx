@@ -22,17 +22,27 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true)
-    const { token, role, favorites } = await login({ email, password });
 
-    if (token) {
-      setLoading(false)
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-      setOpenLoginPopup ? setOpenLoginPopup(false) : null
-      navigate("/")
-    } else {
+    try {
+      const { token, role, favorites } = await login({ email, password });
+  
+      if (token) {
+        setLoading(false)
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        setOpenLoginPopup ? setOpenLoginPopup(false) : null
+        navigate("/")
+      } else {
+        setLoading(false)
+        console.log("Email or Password incorrect.");
+        
+      }
+      
+    } catch(error) {
       console.log("Email or Password incorrect.");
+      setLoading(false)
+      alert('Email or Password incorrect.')
     }
   }
 
