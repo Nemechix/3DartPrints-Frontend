@@ -1,4 +1,5 @@
-import { getAllUsers } from '../../Services/GetAllUser';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import  getAllUsers  from '../../Services/GetAllUser';
 import { useState, useEffect } from "react";
 
 function AdminTools() {
