@@ -1,19 +1,41 @@
-import React, { useState } from "react";
-import Redirect  from "react-router-dom";
-import DesignCard from '../../Components/DesingCard/DesingCard';
+import { getAllUsers } from '../../Services/GetAllUser';
+import { useState, useEffect } from "react";
 
-const AdminTools = () => {
-  const [loggedIn, setLoggedIn] = useState(true);
-  if (!loggedIn) {
-    return <Redirect to="/login" />;
-  }
+function AdminTools() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const response = await getAllUsers();
+      setUsers(response);
+    }
+    fetchUsers();
+  }, []);
 
   return (
-    <div>
-      <h1>Admin Tools v1.0 - 3DartPrints</h1>
-      <p>      <DesignCard/> </p>
-    </div>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Id</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Email</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {users.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell component="th" scope="row">
+                {user.id}
+              </TableCell>
+              <TableCell align="right">{user.name}</TableCell>
+              <TableCell align="right">{user.email}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
-};
+}
 
 export default AdminTools
