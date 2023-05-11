@@ -1,0 +1,28 @@
+.admin-wrapper {
+    display: absolute;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 80%;
+    z-index: 90;
+}
+
+.admin-panel {
+    position: relative;
+}
+
+@media (min-width: 900px) {
+
+    .admin-wrapper {
+        display: absolute;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
+        width: 80%;
+    }
+
+    .admin-panel {
+        position: relative;
+    }
+
+}
