@@ -54,7 +54,7 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
           width: "700px", 
           backgroundColor: "white", 
           border: "5 solid #ea5455",
-          ...(loading && {filter: 'sepia(50%) opacity(25%)'}) 
+          ...(loading && {filter: 'sepia(50%) opacity(50%)'}) 
         }}
         raised={true}
       >
@@ -105,18 +105,18 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
             </Button3D>
           </Link>
         </CardActions>
-            {loading && <CircularProgress
-              size={160}
-              sx={{
-                color: 'green',
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                marginTop: '-80px',
-                marginLeft: '-80px',
-              }}
-            />}
       </Card>
+        {loading && <CircularProgress
+          size={160}
+          sx={{
+            color: '#ff7c24',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            marginTop: '-80px',
+            marginLeft: '-80px',
+          }}
+        />}
     </div>
   );
 }
