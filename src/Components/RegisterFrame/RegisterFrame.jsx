@@ -322,18 +322,18 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
 
         </CardContent>
 
-        {loading && <CircularProgress
-          size={160}
-          sx={{
-            color: 'green',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            marginTop: '-80px',
-            marginLeft: '-80px',
-          }}
-        />}
       </Card>
+      {loading && <CircularProgress
+        size={160}
+        sx={{
+          color: '#ff7c24',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          marginTop: '-80px',
+          marginLeft: '-80px',
+        }}
+      />}
     
     </div>
   )
