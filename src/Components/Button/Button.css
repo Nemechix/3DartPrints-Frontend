@@ -1,8 +1,8 @@
 /* Button.css */
 
 .button {
-  background-color: #002B5B;
-  color: #fff;
+  background-color: #634ff4;
+  color: #f0f0f0;
   border-radius: 5px;
   padding: 10px 20px;
   border-radius: 4px;
@@ -11,12 +11,12 @@
 }
 
 .button-red {
-  background-color: #ea5455;
-  color: white;
+  background-color: #f9a770;
+  color: #f0f0f0;
 }
 
 .button-green {
-  background-color: green;
-  color: white;
+  background-color: #d2cafc;
+  color: #f0f0f0;
 }
 
