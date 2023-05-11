@@ -198,11 +198,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
             Password should be the same
           </Typography>
         </TextField>
-    </CardContent>
-
-        <Divider />
-
-          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+                  <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
               <p style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "10px" }}>
               <Button3D 
               onClick={handleBasicsSubmit} className="button" type="submit" disabled={!enableSubmit} >
@@ -218,8 +214,9 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
               </Button3D>
             </Link>
           </CardActions>
+    </CardContent>
 
-
+        <Divider />
 
       {/* User Details Form */}
       <CardActions onSubmit={handleSubmit}
