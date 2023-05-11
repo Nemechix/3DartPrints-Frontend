@@ -12,6 +12,8 @@
   padding-top: 20px;
   text-align: center;
   color: #333333;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .h3_home {
@@ -31,17 +33,22 @@
 
 .parrafo1 {
   text-align: justify;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
   text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo3 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
   text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
