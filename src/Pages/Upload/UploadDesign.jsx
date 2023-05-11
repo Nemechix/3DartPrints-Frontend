@@ -69,12 +69,10 @@ const UploadDesignForm = () => {
   return (
     <Grid container spacing={5} justifyContent="center">
       <Grid item xs={12}>
-        <Typography variant="h5" align="center">
-          Upload Design
-        </Typography>
+
       </Grid>
       <Grid item xs={8}>
-        <form style={{marginBottom:"80px", backgroundColor:"white" , border:"1px solid lightgray", boxShadow:"none", paddingTop:"30px"}} onSubmit={handleSubmit}>
+        <form style={{marginBottom:"40px", backgroundColor:"white" , border:"1px solid lightgray", boxShadow:"none", paddingTop:"30px"}} onSubmit={handleSubmit}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>
               <TextField
