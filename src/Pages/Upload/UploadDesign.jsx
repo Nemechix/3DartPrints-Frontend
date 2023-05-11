@@ -7,7 +7,6 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { BorderAll } from "@mui/icons-material";
 
 const UploadDesignForm = () => {
   const [name, setName] = useState("");
