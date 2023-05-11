@@ -1,5 +1,6 @@
-/* import React, { useState } from "react";
-import  Redirect  from "react-router-dom";
+import React, { useState } from "react";
+import Redirect  from "react-router-dom";
+import DesignCard from '../../Components/DesingCard/DesingCard';
 
 const AdminTools = () => {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -10,10 +11,9 @@ const AdminTools = () => {
   return (
     <div>
       <h1>Admin Tools v1.0 - 3DartPrints</h1>
-      <p> </p>
+      <p>      <DesignCard/> </p>
     </div>
   );
 };
 
-export default AdminTools;
-  */
+export default AdminTools

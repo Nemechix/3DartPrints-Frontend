@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
-import { Card, CardActions, CardContent, CardHeader, Divider, IconButton, Link, TextField } from '@mui/material';
+import { Card, CardActions, CardContent, CardHeader, Divider, Link, IconButton, TextField } from '@mui/material';
 import './RegisterFrame.css';
 import postSignUp from '../../Services/postSignUp';
 import getAllUsers from '../../Services/GetAllUser';
@@ -117,9 +117,15 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
     <div className="register-wrapper">
       <Card
         className="card"
-        sx={{ width: "700px", backgroundColor: "white" }}
+        sx={{ 
+          width: "700px",
+          padding: "10px",
+          backgroundColor: "white", 
+          border: "5 solid #ea5455"
+        }}
         raised={true}
       >
+
         <CardHeader title="Datos para el registro:"></CardHeader>
 
       {/* User Basics Form */}
@@ -216,7 +222,7 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
           </CardActions>
     </CardContent>
 
-        <Divider />
+
 
       {/* User Details Form */}
       <CardActions onSubmit={handleSubmit}
@@ -246,14 +252,16 @@ function RegisterFrame({ setOpenRegisterPopup, handleLoginClick }) {
                 </RadioGroup>
             </FormControl>
         <p></p>
-        <Divider />
         <p></p>
-              <Button3D 
-              onClick={handleSubmit} className="button-red" type="submit">
-              Register
-              </Button3D>
+              <Link to="/api">
+                    <Button3D 
+                    onClick={handleSubmit} className="button-red" type="submit">
+                    Register
+                    </Button3D>
+              </Link>
       </CardActions>
     </Card>
+    
     </div>
   )
 }
