@@ -1,6 +1,6 @@
 .design_cart_img {
   height: 16.5vw;
-  width: 20vw;
+  max-width: 32vw;
   border-radius: 5px;
   margin-right: 15px;
 }
@@ -10,7 +10,7 @@
 }
 
 .price_design {
-  color: red;
+  color: #ff7c24;
   font-size: 1.7vw;
   font-weight: bold;
 }
@@ -56,7 +56,7 @@
 @media (max-width: 800px) {
   .design_cart_img {
     height: 36vw;
-    max-width: 35vw;
+    width: 35vw;
     border-radius: 5px;
     margin-right: 15px;
   }
