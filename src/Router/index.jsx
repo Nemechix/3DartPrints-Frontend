@@ -12,6 +12,7 @@ import CartUser from "../Pages/CartUser/CartUser";
 import AdminTools from "../Pages/AdminTools/AdminTools";
 import PrinterModelsList from "../Pages/PrinterModelList/PrinterModelList";
 import UploadDesign from "../Pages/Upload/UploadDesign";
+import Profile from "../Pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/upload",
         element: <UploadDesign />,
+      },
+        {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
