@@ -78,7 +78,8 @@ useEffect(() => {
               }}
             >
               <Typography
-                fontFamily={"Roboto"}
+                fontFamily={""}
+                fontWeight={"1000"}
                 gutterBottom
                 variant="h5"
                 component="div"

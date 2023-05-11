@@ -33,13 +33,23 @@
 
 .parrafo1 {
   text-align: justify;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Lato', sans-serif;
+
+    font-family: 'Secular One', sans-serif;
+
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo2 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Lato', sans-serif;
+
+    font-family: 'Secular One', sans-serif;
+
 
   text-align: justify;
   padding: 20px;
@@ -47,7 +57,12 @@
 }
 
 .parrafo3 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Lato', sans-serif;
+
+    font-family: 'Secular One', sans-serif;
+
 
   text-align: justify;
   padding: 20px;
