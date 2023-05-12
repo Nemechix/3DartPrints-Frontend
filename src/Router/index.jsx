@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect, useNavigate } from "react-router-dom";
 import Root from "../Layouts";
 import Home from "../Pages/Home/Home";
 import About from "../Pages/About/About";
@@ -12,7 +12,35 @@ import CartUser from "../Pages/CartUser/CartUser";
 import AdminTools from "../Pages/AdminTools/AdminTools";
 import PrinterModelsList from "../Pages/PrinterModelList/PrinterModelList";
 import UploadDesign from "../Pages/Upload/UploadDesign";
+import GetMyProfile from "../Services/GetMyProfile";
 // import Profile from "../Pages/Profile/Profile";
+
+async function checkAdmin() {
+
+  try {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = await GetMyProfile(token)
+      return user.role === 'admin' ?
+      null
+      : redirect('/')
+    } else {
+      alert('You should Login first')
+      return redirect('/')
+    }
+    
+  } catch(error) {
+    console.log(error)
+    alert('Something went wrong')
+    return redirect('/')
+  }
+
+  // return localStorage.getItem('token') ?
+  //   localStorage.getItem('role') === 'admin' ?
+  //     null
+  //     : redirect('/')
+  //   : redirect('/')
+}
 
 const router = createBrowserRouter([
   {
@@ -26,6 +54,7 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: <AdminTools />,
+        loader: checkAdmin
       } ,
       {
         path: "/about",
