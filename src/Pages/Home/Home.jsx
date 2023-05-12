@@ -3,16 +3,99 @@ import { useState, useEffect } from "react";
 //import getRandomCategory from "../../Services/GetRandomCategory";
 import getAllCategories from "../../Services/getAllCategories";
 import getAllDesigns from "../../Services/getAllDesigns";
-import { Card, CardActionArea, CardMedia, Typography, useMediaQuery } from "@mui/material";
+import { Box, Card, CardActionArea, CardMedia, IconButton, Typography, useMediaQuery } from "@mui/material";
 import {useNavigate } from "react-router-dom";
 import { shuffle } from "lodash";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useParams } from 'react-router-dom';
+import { useAppContext } from '../../Context/appContext';
+import GetMyProfile from "../../Services/GetMyProfile";
+import { addFavorite } from "../../Services/favorites";
+import { removeFavorite } from "../../Services/favorites";
+
+
 
 
 export default function MultiActionAreaCard() {
   const [categories, setCategories] = useState([]);
   const [designs, setDesigns] = useState([]);
-    const isMobile = useMediaQuery("(max-width:1024px)");
-      const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width:1024px)");
+  const navigate = useNavigate();
+
+  const { name } = useParams();
+  const { cart, addToCart, removeFromCart } = useAppContext()
+
+
+  const cartChecker = (id) => {
+    const boolean = cart.some((design) => design.id === id)
+    return boolean
+  }
+
+  const [userId, setUserId] = useState(null);
+
+  const [favorites, setFavorites] = useState([])
+
+
+  useEffect(() => {
+    async function getUserId() {
+      const token = localStorage.getItem("token");
+      const userData = await GetMyProfile(token);
+      setUserId(userData.id);
+    }
+    getUserId();
+  }, [])
+
+  useEffect(() => {
+    localStorage.getItem('favorites') ?
+      setFavorites(JSON.parse(localStorage.getItem('favorites')))
+      : localStorage.setItem('favorites', JSON.stringify([]))
+  }, [localStorage.getItem('favorites')])
+
+  const toggleFavorites = (designId) => {
+    favorites.some(favorite => favorite.id === designId) ?
+      removeFromFavorites(designId)
+      : addToFavorites(designId)
+  }
+
+  const addToFavorites = async (designId) => {
+    if (!userId) {
+      alert("Debes iniciar sesión para agregar a favoritos");
+      return;
+    }
+
+    try {
+
+      const data = await addFavorite(designId, userId)
+      
+      console.log(data.message)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
+
+      // return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeFromFavorites = async (designId) => {
+    if (!userId) {
+      alert("Debes iniciar sesión para eliminar de favoritos");
+      return;
+    }
+
+    try {
+      const data = await removeFavorite(designId, userId)
+
+      console.log(data.message)
+      setFavorites(data.favorites)
+      localStorage.setItem('favorites', JSON.stringify(data.favorites))
+      
+      // return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
     
@@ -20,14 +103,15 @@ export default function MultiActionAreaCard() {
 
 useEffect(() => {
   async function fetchCategories() {
-    const { data: allCategories } = await getAllCategories();
-    const shuffledCategories = shuffle(allCategories);
+    const  data  = await getAllCategories();
+    console.log(data)
+    const shuffledCategories = shuffle(data);
     setCategories(shuffledCategories.slice(0, 4));
   }
 
   async function fetchDesigns(){
-    const {data: allDesigns} = await getAllDesigns()
-    const shuffledDesigns = shuffle(allDesigns)
+    const data = await getAllDesigns()
+    const shuffledDesigns = shuffle(data)
     setDesigns(shuffledDesigns.slice(0,4))
   }
 

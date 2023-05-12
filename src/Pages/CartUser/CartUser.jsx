@@ -19,7 +19,7 @@ function CartUser() {
 
 
   const checkout = async () => {
-    await fetch("https://threedartprints-2yqk.onrender.com/api/stripe/checkout", {
+    await fetch("http://localhost:3000/api/stripe/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -129,14 +129,14 @@ function CartUser() {
         <h4 style={{ marginTop: "8px", marginBottom: "0px" }}>Resume</h4>
         <p>
           Subtotal articles:{' '}
-          <span style={{ fontSize: isMobile ? '25px' : "2vw", fontWeight: 'bold', float: "right" }}>
+          <span style={{ fontSize: isMobile ? '20px' : "1.8vw", fontWeight: 'bold', float: "right" }}>
             ${cart.reduce((total, design) => total + design.price, 0).toFixed(2)}
           </span>
         </p>
         <Divider variant="middle" />
         <p>
           Total (taxes included):{' '}
-          <span style={{ fontSize: '25px', fontWeight: 'bold', float: "right" }}>
+          <span style={{ fontSize: isMobile ? '25px' : "2vw", fontWeight: 'bold', float: "right" }}>
             ${(cart.reduce((total, design) => total + design.price, 0) * 1.07).toFixed(2)}
           </span>
         </p>
