@@ -16,8 +16,9 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect } from 'react';
-import { Backdrop, Divider, Fade, Grid, Modal, TextField } from '@mui/material';
+import { Backdrop, Badge, Divider, Fade, Grid, Modal, TextField } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 
 import './ResponsiveAppBar.css'
 import logo from '/3DArts_Logo_TRIM.png'
@@ -31,15 +32,16 @@ import RegisterFrame from '../RegisterFrame/RegisterFrame';
 // import { login } from '../../Services/Login';
 
 import { Link } from 'react-router-dom';
+import { useAppContext } from '../../Context/appContext';
 
 const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
 const settings = [
   {
-    name: 'Profile', 
+    name: 'Profile',
     url: '/profile'
   },
   {
-    name: 'Upload', 
+    name: 'Upload',
     url: '/upload'
   },
   {
@@ -50,6 +52,8 @@ const settings = [
 
 function ResponsiveAppBar() {
   const navigate = useNavigate()
+  const { cart, addToCart, removeFromCart } = useAppContext()
+
 
   let i = 1
 
@@ -82,7 +86,7 @@ function ResponsiveAppBar() {
     localStorage.getItem('token') ?
       fetchData()
       : setUser(null)
-      
+
   }, [localStorage.getItem('token')])
 
   function handleMenuItemClick(categoryId) {
@@ -164,20 +168,20 @@ function ResponsiveAppBar() {
         onClose={handleCloseUserMenu}
       >
         {settings.map((setting) => (
-          <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
+          <MenuItem key={setting.name} onClick={() => { handleUserItemClick(setting.url) }}>
             <Typography textAlign="center">{setting.name}</Typography>
           </MenuItem>
         ))}
-        
+
         <MenuItem onClick={handleLogoutClick}>
-            <Typography textAlign="center">Logout</Typography>
+          <Typography textAlign="center">Logout</Typography>
         </MenuItem>
 
       </Menu>
     )
   }
 
-  
+
 
   return (
     <>
@@ -209,7 +213,7 @@ function ResponsiveAppBar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                  // color="inherit"
+                // color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
@@ -341,7 +345,7 @@ function ResponsiveAppBar() {
                   variant="contained"
                   color="success"
                   size="small"
-                  // href='/'
+                // href='/'
                 >
                   <Typography
                     // variant="h6"
@@ -389,7 +393,7 @@ function ResponsiveAppBar() {
                       onClick={
                         user ? handleOpenUserMenu : () => navigate("/login")
                       } //handleOpenLoginMenu}
-                      // sx={{ p: 0 }}
+                    // sx={{ p: 0 }}
                     >
                       <Avatar
                         alt={`${user ? `${user.name}` : ""}`}
@@ -483,11 +487,13 @@ function ResponsiveAppBar() {
               >
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
-                    <IconButton sx={{ p: 0 }}>
-                      <ShoppingCartOutlinedIcon
-                        sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
-                      />
-                    </IconButton>
+                    <Badge badgeContent={cart.length} color="primary">
+                      <IconButton sx={{ p: 0 }}>
+                        <ShoppingCartOutlinedIcon
+                          sx={{ margin: 0, color: "#FF7C24", fontSize: "35px" }}
+                        />
+                      </IconButton>
+                    </Badge>
                   </Link>
                 </Tooltip>
               </Grid>
@@ -507,7 +513,7 @@ function ResponsiveAppBar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                  // color="inherit"
+                // color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
@@ -641,9 +647,9 @@ function ResponsiveAppBar() {
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="User settings">
                     <IconButton
-                      sx={{ p: 0 }}
+                      sx={{ p: 0, fontSize:"10px" }}
                       onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} //handleOpenLoginMenu}
-                      // sx={{ p: 0 }}
+                    // sx={{ p: 0 }}
                     >
                       {/* <Avatar alt={`${user ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg" */}
                       <Avatar
@@ -745,11 +751,13 @@ function ResponsiveAppBar() {
               >
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
-                    <IconButton sx={{ p: 0 }}>
-                      <ShoppingCartOutlinedIcon
-                        sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
-                      />
-                    </IconButton>
+                  <Badge badgeContent={cart.length} color="primary">
+                      <IconButton sx={{ p: 0, marginRight:"3px" }}>
+                        <ShoppingCartOutlinedIcon
+                          sx={{ margin: 0, color: "#FF7C24", fontSize: "25px" }}
+                        />
+                      </IconButton>
+                    </Badge>
                   </Link>
                 </Tooltip>
               </Grid>
