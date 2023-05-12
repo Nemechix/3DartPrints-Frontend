@@ -1,60 +1,52 @@
-import { Avatar, Box, Button, Grid, IconButton, Menu, MenuItem, TextField, Tooltip, Typography } from "@mui/material"
+import { Avatar, Box, Grid, IconButton, Menu, MenuItem, TextField, Tooltip, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { useEffect, useState } from "react";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useState } from "react";
 import UserMenu from "./UserMenu";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
-// const settings = [
-//   {
-//     name: 'Profile', 
-//     url: '/profile'
-//   },
-//   {
-//     name: 'Upload', 
-//     url: '/upload'
-//   },
-//   {
-//     name: 'Dashboard',
-//     url: '/'
-//   }
-// ]
 
-function WebAppBar({ user }) {
+function SmartphoneAppBar({ user, setOpenLoginPopup }) {
   const navigate = useNavigate()
-
 
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
+
+  // const [openLoginPopup, setOpenLoginPopup] = useState(false)
+  // const [openRegisterPopup, setOpenRegisterPopup] = useState(false)
   
-  function handleMenuItemClick(categoryId) {
-    handleCloseNavMenu()
-    navigate(`/category/${categoryId}`);
-  }
-
-  function handleUserItemClick(link) {
-    handleCloseUserMenu()
-    navigate(link)
-  }
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
+  function handleMenuItemClick(categoryId) {
+    handleCloseNavMenu()
+    navigate(`/category/${categoryId}`);
+  }
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleOpenLoginMenu = () => {
+    setOpenLoginPopup(true)
+  }
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  function handleUserItemClick(link) {
+    handleCloseUserMenu()
+    navigate(link)
+  }
 
   function handleLogoutClick() {
     localStorage.removeItem('token')
@@ -64,45 +56,10 @@ function WebAppBar({ user }) {
     navigate('/')
   }
 
-  // function UserMenu() {
-  //   return (
-  //     <Menu
-
-  //       sx={{
-  //         mt: '45px',
-  //       }}
-  //       id="menu-appbar"
-  //       anchorEl={anchorElUser}
-  //       anchorOrigin={{
-  //         vertical: 'top',
-  //         horizontal: 'right',
-  //       }}
-  //       keepMounted
-  //       transformOrigin={{
-  //         vertical: 'top',
-  //         horizontal: 'right',
-  //       }}
-  //       open={Boolean(anchorElUser)}
-  //       onClose={handleCloseUserMenu}
-  //     >
-  //       {settings.map((setting) => (
-  //         <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
-  //           <Typography textAlign="center">{setting.name}</Typography>
-  //         </MenuItem>
-  //       ))}
-        
-  //       <MenuItem onClick={handleLogoutClick}>
-  //           <Typography textAlign="center">Logout</Typography>
-  //       </MenuItem>
-
-  //     </Menu>
-  //   )
-  // }
-
 
   return (
     <>
-      <Grid 
+      <Grid
         container
         sx={{
           display: "flex",
@@ -111,9 +68,15 @@ function WebAppBar({ user }) {
         }}
         rowSpacing={1}
       >
-
-        {/* Web Size Menu */}
-        <Grid item md={1} sx={{ display: { xs: "none", md: "flex" } }}>
+        {/* Smartphone Size Menu */}
+        <Grid
+          item
+          xs={1}
+          sx={{
+            display: { xs: "flex", md: "none" },
+            justifyContent: "center",
+          }}
+        >
           <IconButton
             size="large"
             aria-label="account of current user"
@@ -154,33 +117,34 @@ function WebAppBar({ user }) {
           </Menu>
         </Grid>
 
-        {/* Web Size Icon & Title */}
+        {/* Smartphone Size Icon & Title */}
         <Grid
           item
-          md={1}
+          xs={2}
           sx={{
-            display: { xs: "none", md: "flex" },
+            display: { xs: "flex", md: "none" },
+            alignItems: "center",
           }}
         >
+          {/* Icon */}
           <Link to="/">
             <img
               src="https://i.postimg.cc/ncz4v9FJ/LOGO2.png"
               alt="LOGO"
-              style={{ height: 60 }}
+              style={{ height: 39 }}
             />
           </Link>
-          
+
         </Grid>
 
-        {/* Web Size Search Input */}
+        {/* Smartphone Size Search Input */}
         <Grid
           item
-          md
+          xs
           sx={{
-            display: { xs: "none", md: "flex" },
+            display: { xs: "flex", md: "none" },
             px: 1,
             my: 0,
-            mx: 3,
           }}
         >
           <TextField
@@ -189,48 +153,37 @@ function WebAppBar({ user }) {
               borderRadius: 15,
               width: "100%",
             }}
-            id="webSearchBarInput"
+            id="smartphoneSearchBarInput"
             label="Search"
             variant="outlined"
           />
         </Grid>
 
-        {/* Web Size Quick Actions */}
+        {/* Smartphone Size InspireMe Icon */}
         <Grid
           item
-          md
+          xs={user ? 1 : 3}
           sx={{
             display: { xs: "none", md: "none" },
-            flexGrow: 1,
-            justifyContent: "space-evenly",
+            justifyContent: `${user ? "center" : "left"}`,
           }}
         >
-          <Button
-            startIcon={<AutoFixHighIcon />}
-            onClick={handleCloseNavMenu}
-            variant="contained"
-            color="success"
-            size="small"
-          >
-            <Typography
-              sx={{
-                fontWeight: 600,
-                letterSpacing: ".1rem",
-              }}
-            >
-              Inspire Me!
-            </Typography>
-          </Button>
+          <Tooltip title="Inspire Me!">
+            <IconButton sx={{ p: 0 }}>
+              <AutoFixHighIcon sx={{ margin: 1 }} />
+            </IconButton>
+          </Tooltip>
         </Grid>
 
-        {/* Web Size User Icon */}
+        {/* Smartphone Size User Icon */}
         <Grid
           item
           xs={1}
           md={1}
           sx={{
-            display: { xs: "none", md: "flex" },
+            display: { xs: "flex", md: "none" },
             ml: { md: 2 },
+            mx: 1,
             justifyContent: "center",
           }}
         >
@@ -238,8 +191,7 @@ function WebAppBar({ user }) {
             <Tooltip title="User settings">
               <IconButton
                 sx={{ p: 0 }}
-                onClick={ user ? handleOpenUserMenu : () => navigate("/login")
-                } 
+                onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} 
               >
                 <Avatar
                   alt={`${user ? `${user.name}` : ""}`}
@@ -257,14 +209,14 @@ function WebAppBar({ user }) {
           </Box>
         </Grid>
 
-        {/* Web Size Favs Icon */}
+        {/* Smartphone Size Favs Icon */}
         <Grid
           item
           xs={1}
           sx={{
             display: {
-              xs: "none",
-              md: `${user ? "flex" : "none"}`,
+              xs: `${user ? "flex" : "none"}`,
+              md: "none",
             },
             justifyContent: "center",
           }}
@@ -273,23 +225,22 @@ function WebAppBar({ user }) {
             <Link to="/user/favorites">
               <IconButton sx={{ p: 0 }}>
                 <FavoriteBorderIcon
-                  sx={{ 
-                    margin: 1, 
-                    color: "#FF7C24", 
-                    fontSize: "35px" 
-                  }}
+                  sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
                 />
               </IconButton>
             </Link>
           </Tooltip>
         </Grid>
 
-        {/* Web size cart icon */}
+        {/* Smartphone Size Cart Icon */}
         <Grid
           item
-          md={1}
+          xs={1}
           sx={{
-            display: { xs: "none", md: "flex" },
+            display: {
+              xs: `${user ? "flex" : "flex"}`,
+              md: "none",
+            },
             justifyContent: "center",
           }}
         >
@@ -297,16 +248,15 @@ function WebAppBar({ user }) {
             <Link to="/user/cart">
               <IconButton sx={{ p: 0 }}>
                 <ShoppingCartOutlinedIcon
-                  sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                  sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
                 />
               </IconButton>
             </Link>
           </Tooltip>
         </Grid>
-
       </Grid>
     </>
   )
 }
 
-export default WebAppBar
+export default SmartphoneAppBar
