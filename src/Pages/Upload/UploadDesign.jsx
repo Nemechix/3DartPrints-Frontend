@@ -139,6 +139,7 @@ const UploadDesignForm = () => {
                 style={{
                   backgroundColor: "#ff7c24",
                   boxShadow: "none",
+                  borderRadius:"25px",
                   "&:hover": {
                     backgroundColor: "#e86217"
                   }
