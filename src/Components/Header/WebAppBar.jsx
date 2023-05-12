@@ -6,6 +6,8 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useEffect, useState } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import UserMenu from "./UserMenu";
+import { Badge } from "@mui/material";
+import { useAppContext } from "../../Context/appContext";
 
 const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
 // const settings = [
@@ -30,6 +32,8 @@ function WebAppBar({ user, setUser }) {
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
   
+  const { cart } = useAppContext()
+
   function handleMenuItemClick(categoryId) {
     handleCloseNavMenu()
     navigate(`/category/${categoryId}`);
@@ -296,11 +300,13 @@ function WebAppBar({ user, setUser }) {
         >
           <Tooltip title="Cart">
             <Link to="/user/cart">
-              <IconButton sx={{ p: 0 }}>
-                <ShoppingCartOutlinedIcon
-                  sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
-                />
-              </IconButton>
+              <Badge badgeContent={cart.length} color="primary">
+                <IconButton sx={{ p: 0 }}>
+                  <ShoppingCartOutlinedIcon
+                    sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                  />
+                </IconButton>
+              </Badge>
             </Link>
           </Tooltip>
         </Grid>

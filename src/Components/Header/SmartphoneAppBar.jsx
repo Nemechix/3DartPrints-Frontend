@@ -2,10 +2,13 @@ import { Avatar, Box, Grid, IconButton, Menu, MenuItem, TextField, Tooltip, Typo
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useNavigate } from "react-router-dom";
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UserMenu from "./UserMenu";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+// import { Badge } from "@mui/icons-material";
+import { useAppContext } from '../../Context/appContext';
+import { Badge } from "@mui/material";
 
 const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
 
@@ -15,6 +18,7 @@ function SmartphoneAppBar({ user, setUser, setOpenLoginPopup }) {
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
 
+  const { cart } = useAppContext()
   // const [openLoginPopup, setOpenLoginPopup] = useState(false)
   // const [openRegisterPopup, setOpenRegisterPopup] = useState(false)
   
@@ -248,11 +252,11 @@ function SmartphoneAppBar({ user, setUser, setOpenLoginPopup }) {
           <Tooltip title="Cart">
             <Link to="/user/cart">
               <Badge badgeContent={cart.length} color="primary">
-              <IconButton sx={{ p: 0 }}>
-                <ShoppingCartOutlinedIcon
-                  sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
-                />
-              </IconButton>
+                <IconButton sx={{ p: 0 }}>
+                  <ShoppingCartOutlinedIcon
+                    sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
+                  />
+                </IconButton>
               </Badge>
             </Link>
           </Tooltip>
