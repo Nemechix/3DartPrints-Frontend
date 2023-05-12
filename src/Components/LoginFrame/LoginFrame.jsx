@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './LoginFrame.css';
 import { login } from '../../Services/Login';
 import { useNavigate } from 'react-router';
 import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Divider, IconButton, Link, TextField } from '@mui/material';
 import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
 import Button3D from '../Button/Button';
+import { loginContext } from '../../Context/loginContext';
 
 function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
   const [email, setEmail] = useState();
@@ -12,6 +13,8 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
   const [isPassVisible, setPassVisible] = useState(false);
 
   const [loading, setLoading] = useState(false)
+
+  const { setReload } = useContext(loginContext)
 
   function handleClick() {
     setPassVisible(!isPassVisible);
@@ -32,6 +35,7 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
         localStorage.setItem("role", role);
         localStorage.setItem("favorites", JSON.stringify(favorites));
         setOpenLoginPopup ? setOpenLoginPopup(false) : null
+        setReload(true)
         navigate("/")
       } else {
         setLoading(false)
