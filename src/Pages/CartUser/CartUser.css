@@ -7,12 +7,26 @@
 
 .p_design {
   font-size: 1.3vw;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+#h3_my_cart{
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+}
+
+#p_cart{
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
 }
 
 .price_design {
   color: #ff7c24;
   font-size: 1.7vw;
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+
 }
 .design_cart {
   display: flex;
@@ -38,10 +52,13 @@
   padding: 1rem 1rem 1.5rem;
   border: 1px solid rgb(204, 204, 204);
   margin-top: 125px;
+  margin-bottom: 125px;
+
   border-radius: 5px;
   margin-left: 50px;
   height: 200px;
   width: 23vw;
+  font-family: 'Roboto', sans-serif;
 
 }
 
@@ -63,12 +80,16 @@
 
   .p_design {
     font-size: 4.5vw;
+    font-family: 'Roboto', sans-serif;
+
   }
 
   .price_design {
     color: #ff7c24;
     font-size: 4.5vw;
     font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+
   }
 
   .design_cart {
@@ -95,6 +116,8 @@
     border: 1px solid rgb(204, 204, 204);
     width: 90%;
     margin-top: 20px;
+        margin-bottom: 20px;
+
     border-radius: 5px;
     height: 200px;
     margin: 0;
@@ -102,5 +125,15 @@
 
   .text_design {
     margin-left: 0 px;
+  }
+
+  #h3_my_cart{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+  }
+  
+  #p_cart{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
   }
 }

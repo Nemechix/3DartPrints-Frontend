@@ -8,6 +8,15 @@
     z-index: 10;
 }
 
+.button-red{
+    background-Color:"#6e55f7"
+}
+
+.button-green{
+    background-Color:"#ff8726"
+}
+
+
 @media (min-width: 900px) {
 
 .Card-login-container{
@@ -16,6 +25,14 @@
     align-items: center;
     padding: 50px;
     width: 90%;
+}
+
+.button-red{
+    background-Color:"#6e55f7"
+}
+
+.button-green{
+    background-Color:"#ff8726"
 }
 
 }
