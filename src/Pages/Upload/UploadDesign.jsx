@@ -7,6 +7,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import api from "../../Services/config";
 
 const UploadDesignForm = () => {
   const [name, setName] = useState("");
@@ -49,8 +50,8 @@ const UploadDesignForm = () => {
     try {
       const token = localStorage.getItem("token");
       console.log(designData);
-      const response = await axios.post(
-        "https://threedartprints-2yqk.onrender.com/api/design",
+      const response = await api.post(
+        `/design`,
         designData,
         {
           headers: {
@@ -72,7 +73,7 @@ const UploadDesignForm = () => {
 
       </Grid>
       <Grid item xs={8}>
-        <form style={{marginBottom:"40px", backgroundColor:"white" , border:"1px solid lightgray", boxShadow:"none", paddingTop:"30px"}} onSubmit={handleSubmit}>
+        <form style={{ marginBottom: "40px", backgroundColor: "white", border: "1px solid lightgray", boxShadow: "none", paddingTop: "30px" }} onSubmit={handleSubmit}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -134,7 +135,19 @@ const UploadDesignForm = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" type="submit" fullWidth>
+              <Button
+                style={{
+                  backgroundColor: "#ff7c24",
+                  boxShadow: "none",
+                  borderRadius:"25px",
+                  "&:hover": {
+                    backgroundColor: "#e86217"
+                  }
+                }}
+                variant="contained"
+                type="submit"
+                fullWidth
+              >
                 Subir diseño
               </Button>
             </Grid>

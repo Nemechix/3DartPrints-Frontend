@@ -16,8 +16,9 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect, useContext } from 'react';
-import { Backdrop, Divider, Fade, Grid, Modal, TextField } from '@mui/material';
+import { Backdrop, Badge, Divider, Fade, Grid, Modal, TextField } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 
 import './ResponsiveAppBar.css'
 import logo from '/3DArts_Logo_TRIM.png'
@@ -31,6 +32,7 @@ import RegisterFrame from '../RegisterFrame/RegisterFrame';
 // import { login } from '../../Services/Login';
 
 import { Link } from 'react-router-dom';
+import { useAppContext } from '../../Context/appContext';
 
 import WebAppBar from './WebAppBar';
 import SmartphoneAppBar from './SmartphoneAppBar';
@@ -54,7 +56,11 @@ import { loginContext } from '../../Context/loginContext';
 // ]
 
 function ResponsiveAppBar() {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const { cart, addToCart, removeFromCart } = useAppContext()
+
+
+  let i = 1
 
   // const [anchorElNav, setAnchorElNav] = useState(null)
   // const [anchorElUser, setAnchorElUser] = useState(null)
@@ -172,7 +178,7 @@ function ResponsiveAppBar() {
   //   )
   // }
 
-  
+
 
   return (
     <>
