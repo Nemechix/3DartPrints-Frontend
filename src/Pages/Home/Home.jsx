@@ -103,8 +103,7 @@ export default function MultiActionAreaCard() {
 
 useEffect(() => {
   async function fetchCategories() {
-    const  data  = await getAllCategories();
-    console.log(data)
+    const data = await getAllCategories();
     const shuffledCategories = shuffle(data);
     setCategories(shuffledCategories.slice(0, 4));
   }
