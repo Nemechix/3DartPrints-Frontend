@@ -15,7 +15,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Backdrop, Divider, Fade, Grid, Modal, TextField } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
@@ -31,8 +31,11 @@ import RegisterFrame from '../RegisterFrame/RegisterFrame';
 // import { login } from '../../Services/Login';
 
 import { Link } from 'react-router-dom';
+
 import WebAppBar from './WebAppBar';
 import SmartphoneAppBar from './SmartphoneAppBar';
+
+import { loginContext } from '../../Context/loginContext';
 
 // const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
 // const settings = [
@@ -51,15 +54,17 @@ import SmartphoneAppBar from './SmartphoneAppBar';
 // ]
 
 function ResponsiveAppBar() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const [anchorElNav, setAnchorElNav] = useState(null)
-  const [anchorElUser, setAnchorElUser] = useState(null)
+  // const [anchorElNav, setAnchorElNav] = useState(null)
+  // const [anchorElUser, setAnchorElUser] = useState(null)
   
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
   const [openRegisterPopup, setOpenRegisterPopup] = useState(false)
   
   const [user, setUser] = useState()
+
+  const { reload, setReload } = useContext(loginContext)
 
   useEffect(() => {
 
@@ -71,38 +76,40 @@ function ResponsiveAppBar() {
     localStorage.getItem('token') ?
       fetchData()
       : setUser(null)
+
+    setReload(false)
       
-  }, [localStorage.getItem('token')])
+  }, [reload])
 
-  function handleMenuItemClick(categoryId) {
-    handleCloseNavMenu()
-    navigate(`/category/${categoryId}`);
-  }
+  // function handleMenuItemClick(categoryId) {
+  //   handleCloseNavMenu()
+  //   navigate(`/category/${categoryId}`);
+  // }
 
-  function handleUserItemClick(link) {
-    handleCloseUserMenu()
-    navigate(link)
-  }
+  // function handleUserItemClick(link) {
+  //   handleCloseUserMenu()
+  //   navigate(link)
+  // }
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  // const handleOpenNavMenu = (event) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
-  const handleOpenLoginMenu = () => {
-    setOpenLoginPopup(true)
-  }
+  // const handleOpenLoginMenu = () => {
+  //   setOpenLoginPopup(true)
+  // }
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   const handleCloseLoginMenu = () => {
     setOpenLoginPopup(false)
@@ -122,48 +129,48 @@ function ResponsiveAppBar() {
     setOpenLoginPopup(true)
   }
 
-  function handleLogoutClick() {
-    localStorage.removeItem('token')
-    localStorage.removeItem('role')
-    localStorage.removeItem('favorites')
-    handleCloseUserMenu()
-    navigate('/')
-  }
+  // function handleLogoutClick() {
+  //   localStorage.removeItem('token')
+  //   localStorage.removeItem('role')
+  //   localStorage.removeItem('favorites')
+  //   handleCloseUserMenu()
+  //   navigate('/')
+  // }
 
-  function UserMenu() {
-    return (
-      <Menu
+  // function UserMenu() {
+  //   return (
+  //     <Menu
 
-        sx={{
-          mt: '45px',
-        }}
-        id="menu-appbar"
-        anchorEl={anchorElUser}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-      >
-        {settings.map((setting) => (
-          <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
-            <Typography textAlign="center">{setting.name}</Typography>
-          </MenuItem>
-        ))}
+  //       sx={{
+  //         mt: '45px',
+  //       }}
+  //       id="menu-appbar"
+  //       anchorEl={anchorElUser}
+  //       anchorOrigin={{
+  //         vertical: 'top',
+  //         horizontal: 'right',
+  //       }}
+  //       keepMounted
+  //       transformOrigin={{
+  //         vertical: 'top',
+  //         horizontal: 'right',
+  //       }}
+  //       open={Boolean(anchorElUser)}
+  //       onClose={handleCloseUserMenu}
+  //     >
+  //       {settings.map((setting) => (
+  //         <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
+  //           <Typography textAlign="center">{setting.name}</Typography>
+  //         </MenuItem>
+  //       ))}
         
-        <MenuItem onClick={handleLogoutClick}>
-            <Typography textAlign="center">Logout</Typography>
-        </MenuItem>
+  //       <MenuItem onClick={handleLogoutClick}>
+  //           <Typography textAlign="center">Logout</Typography>
+  //       </MenuItem>
 
-      </Menu>
-    )
-  }
+  //     </Menu>
+  //   )
+  // }
 
   
 
@@ -180,12 +187,15 @@ function ResponsiveAppBar() {
         {/* Header itself */}
         <Container maxWidth="xl" sx={{ px: 1 }}>
           <Toolbar sx={{ display: "flex", flexWrap: "wrap" }} disableGutters>
-            <WebAppBar user={user}
+            <WebAppBar 
+              user={user}
+              setUser={setUser}
               sx={{ display: { xs: "none", md: "flex" } }}
             />
             
             <SmartphoneAppBar 
               user={user} 
+              setUser={setUser}
               setOpenLoginPopup={setOpenLoginPopup}
               sx={{ display: { xs: "flex", md: "none" } }}
             />

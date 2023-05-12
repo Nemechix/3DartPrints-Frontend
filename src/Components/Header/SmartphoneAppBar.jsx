@@ -9,7 +9,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
 
-function SmartphoneAppBar({ user, setOpenLoginPopup }) {
+function SmartphoneAppBar({ user, setUser, setOpenLoginPopup }) {
   const navigate = useNavigate()
 
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -53,6 +53,7 @@ function SmartphoneAppBar({ user, setOpenLoginPopup }) {
     localStorage.removeItem('role')
     localStorage.removeItem('favorites')
     handleCloseUserMenu()
+    setUser(null)
     navigate('/')
   }
 

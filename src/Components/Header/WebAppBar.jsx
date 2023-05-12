@@ -23,7 +23,7 @@ const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego']
 //   }
 // ]
 
-function WebAppBar({ user }) {
+function WebAppBar({ user, setUser }) {
   const navigate = useNavigate()
 
 
@@ -61,6 +61,7 @@ function WebAppBar({ user }) {
     localStorage.removeItem('role')
     localStorage.removeItem('favorites')
     handleCloseUserMenu()
+    setUser(null)
     navigate('/')
   }
 
