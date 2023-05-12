@@ -1,13 +1,16 @@
 import "./Home.css";
 import { useState, useEffect } from "react";
 //import getRandomCategory from "../../Services/GetRandomCategory";
-import api from "../../Services/config";
+import getAllCategories from "../../Services/getAllCategories";
+import getAllDesigns from "../../Services/getAllDesigns";
 import { Card, CardActionArea, CardMedia, Typography, useMediaQuery } from "@mui/material";
 import {useNavigate } from "react-router-dom";
 import { shuffle } from "lodash";
 
+
 export default function MultiActionAreaCard() {
   const [categories, setCategories] = useState([]);
+  const [designs, setDesigns] = useState([]);
     const isMobile = useMediaQuery("(max-width:1024px)");
       const navigate = useNavigate();
 
@@ -17,11 +20,18 @@ export default function MultiActionAreaCard() {
 
 useEffect(() => {
   async function fetchCategories() {
-    const { data: allCategories } = await api.get(`/category`);
+    const { data: allCategories } = await getAllCategories();
     const shuffledCategories = shuffle(allCategories);
     setCategories(shuffledCategories.slice(0, 4));
   }
 
+  async function fetchDesigns(){
+    const {data: allDesigns} = await getAllDesigns()
+    const shuffledDesigns = shuffle(allDesigns)
+    setDesigns(shuffledDesigns.slice(0,4))
+  }
+
+  fetchDesigns()
   fetchCategories();
 }, []);
 
@@ -95,6 +105,109 @@ useEffect(() => {
               >
                 {category.name}
               </Typography>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <div className="popular_categories">
+        {designs.map((design) => (
+          <Card
+            key={design.id}
+            className="card"
+            sx={{
+              width: "45%",
+              height: "280px",
+              margin: "5px",
+              marginBottom: "30px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              boxShadow: "none",
+              border: "1px solid lightgray",
+            }}
+          >
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height={isMobile ? "185" : "220vw"}
+                image={design.image}
+                alt={design.name}
+                style={{ objectFit: "cover" }}
+                onClick={function handleMenuItemClick() {
+                  navigate(`/user/${design.userId}/designs/${design.id}`);
+                }}
+              />
+            </CardActionArea>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "column",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "1rem",
+              }}
+            >
+              <Typography
+                fontFamily={"Roboto"}
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  width: "100%",
+                  fontSize: isMobile ? "1rem" : "1.08rem",
+                  marginRight: isMobile ? 0 : "1rem",
+                  marginBottom: "0px",
+                }}
+              >
+                {design.name}
+              </Typography>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ marginRight: "" }}
+                >
+                  {`$${design.price}`}
+                </Typography>
+                <div style={{ display: "flex", marginLeft: "px" }}>
+                  <IconButton
+                    aria-label="Add to favorites"
+                    onClick={() => toggleFavorites(design.id)}
+                  >
+                    <FavoriteIcon
+                      sx={{
+                        color: `${
+                          favorites.some(
+                            (favorite) => favorite.id === design.id
+                          )
+                            ? "#ff7c24"
+                            : ""
+                        }`,
+                      }}
+                    />
+                  </IconButton>
+
+                  {cartChecker(design.id) ? (
+                    <IconButton
+                      aria-label="remove to cart"
+                      onClick={() => removeFromCart(design.id)}
+                    >
+                      <ShoppingCartIcon sx={{ color: "#6b53e6" }} />
+                    </IconButton>
+                  ) : (
+                    <IconButton
+                      aria-label="Add to cart"
+                      onClick={() => addToCart(design)}
+                    >
+                      <ShoppingCartIcon />
+                    </IconButton>
+                  )}
+                </div>
+              </Box>
             </div>
           </Card>
         ))}

@@ -25,7 +25,7 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
 
     try {
       const { token, role, favorites } = await login({ email, password });
-  
+
       if (token) {
         setLoading(false)
         localStorage.setItem("token", token);
@@ -36,10 +36,10 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
       } else {
         setLoading(false)
         console.log("Email or Password incorrect.");
-        
+
       }
-      
-    } catch(error) {
+
+    } catch (error) {
       console.log("Email or Password incorrect.");
       setLoading(false)
       alert('Email or Password incorrect.')
@@ -50,11 +50,11 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
     <div className="Card-login-container">
       <Card
         className="card"
-        sx={{ 
-          width: "700px", 
-          backgroundColor: "white", 
-          border: "5 solid #ea5455",
-          ...(loading && {filter: 'sepia(50%) opacity(50%)'}) 
+        sx={{
+          width: "700px",
+          backgroundColor: "white",
+          border: "1px solid lightgray",
+          boxShadow: "none"
         }}
         raised={true}
       >
@@ -66,10 +66,12 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
             label="Email"
             variant="outlined"
             margin="dense"
+            style={{ borderRadius: "5px" }}
             InputProps={{
               startAdornment: <Email />,
             }}
           ></TextField>
+
           <TextField
             onChange={(event) => setPassword(event.target.value)}
             fullWidth={true}
@@ -77,6 +79,7 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
             variant="outlined"
             type={isPassVisible ? "text" : "password"}
             margin="dense"
+            style={{ borderRadius: "5px" }}
             InputProps={{
               startAdornment: <Lock />,
               endAdornment: (
@@ -86,37 +89,42 @@ function LoginFrame({ setOpenLoginPopup, handleRegisterClick }) {
               ),
             }}
           ></TextField>
+
         </CardContent>
         <Divider />
         <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
           <p style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "10px" }}>
-          <Button3D
-            onClick={handleRegisterClick}
-            className="button-red"
-          >
-            Register
-          </Button3D>            </p>
+            <Button3D
+              onClick={handleRegisterClick}
+              className="button-green"
+              style={{ backgroundColor: "#6e55f7" }}
+
+
+            >
+              Register
+            </Button3D>            </p>
           <Link to="/api">
             <Button3D
               onClick={handleSubmit}
-            className="button"
+              className="button-green"
+              style={{ backgroundColor: "#ff8726" }}
             >
               Login
             </Button3D>
           </Link>
         </CardActions>
       </Card>
-        {loading && <CircularProgress
-          size={160}
-          sx={{
-            color: '#ff7c24',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            marginTop: '-80px',
-            marginLeft: '-80px',
-          }}
-        />}
+      {loading && <CircularProgress
+        size={160}
+        sx={{
+          color: '#ff7c24',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          marginTop: '-80px',
+          marginLeft: '-80px',
+        }}
+      />}
     </div>
   );
 }
