@@ -51,26 +51,13 @@ const settings = [
 function ResponsiveAppBar() {
   const navigate = useNavigate()
 
-  let i = 1
-
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
-  // const [anchorElLogin, setAnchorElLogin] = useState(null)
+  
   const [openLoginPopup, setOpenLoginPopup] = useState(false)
   const [openRegisterPopup, setOpenRegisterPopup] = useState(false)
-  // const [isLogged, setIsLogged] = useState()
+  
   const [user, setUser] = useState()
-
-  // let isLogged = localStorage.getItem('token')
-  // console.log(isLogged)
-  // async function handleSubmit(event) {
-  //   event.preventDefault()
-  //   const response = await login({email, password})
-  //   response.hasOwnProperty('data') ? 
-  //     localStorage.setItem('token', response.data.token)
-  //   // console.log(localStorage.token)
-  //     : console.log('Email or Password incorrect.')
-  // }
 
   useEffect(() => {
 
@@ -103,8 +90,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleOpenLoginMenu = (event) => {
-    // setAnchorElLogin(event.currentTarget)
+  const handleOpenLoginMenu = () => {
     setOpenLoginPopup(true)
   }
 
@@ -209,7 +195,6 @@ function ResponsiveAppBar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                  // color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
@@ -259,24 +244,7 @@ function ResponsiveAppBar() {
                     style={{ height: 60 }}
                   />
                 </Link>
-                {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="a"
-                  href="/"
-                  sx={{
-                    mr: 2,
-                    display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: '#0d0628',
-                    textDecoration: 'none',
-                  }}
-                >
-                  3DArt
-                </Typography> */}
+                
               </Grid>
 
               {/* Web Size Search Input */}
@@ -285,9 +253,6 @@ function ResponsiveAppBar() {
                 md
                 sx={{
                   display: { xs: "none", md: "flex" },
-                  // backgroundColor: 'GhostWhite',
-                  // border: '1px solid black',
-                  // borderRadius: 3,
                   px: 1,
                   my: 0,
                   mx: 3,
@@ -296,11 +261,8 @@ function ResponsiveAppBar() {
                 <TextField
                   sx={{
                     backgroundColor: "white",
-                    // border: '1px solid black',
                     borderRadius: 15,
-                    // flexGrow: 3,
                     width: "100%",
-                    // margin: 1
                   }}
                   id="webSearchBarInput"
                   label="Search"
@@ -318,57 +280,22 @@ function ResponsiveAppBar() {
                   justifyContent: "space-evenly",
                 }}
               >
-                {/* <Box
-                  sx={{
-                    flexGrow: 1,
-                    justifyContent: 'center',
-                    display: { xs: 'none', md: 'flex' }
-                  }}
-                > */}
-                {/* {pages.map((page) => (
-                    <Button
-                      key={page}
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, display: 'block' }}
-                    >
-                      {page}
-                    </Button>
-                  ))} */}
                 <Button
                   startIcon={<AutoFixHighIcon />}
                   onClick={handleCloseNavMenu}
-                  // sx={{ display: 'block' }}
                   variant="contained"
                   color="success"
                   size="small"
-                  // href='/'
                 >
                   <Typography
-                    // variant="h6"
-                    // noWrap
-                    // component="button"
-                    // href="/"
                     sx={{
-                      // mr: 0,
-                      // display: { xs: 'none', md: 'flex' },
-                      // fontFamily: 'monospace',
                       fontWeight: 600,
                       letterSpacing: ".1rem",
-                      // color: 'inherit',
-                      // textDecoration: 'none',
                     }}
                   >
                     Inspire Me!
                   </Typography>
                 </Button>
-                {/* <Tooltip title="Cart">
-                    <Link to="/user/cart">
-                      <IconButton sx={{ p: 0 }}>
-                        <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
-                      </IconButton>
-                    </Link>
-                  </Tooltip> */}
-                {/* </Box> */}
               </Grid>
 
               {/* Web Size User Icon */}
@@ -386,10 +313,8 @@ function ResponsiveAppBar() {
                   <Tooltip title="User settings">
                     <IconButton
                       sx={{ p: 0 }}
-                      onClick={
-                        user ? handleOpenUserMenu : () => navigate("/login")
-                      } //handleOpenLoginMenu}
-                      // sx={{ p: 0 }}
+                      onClick={ user ? handleOpenUserMenu : () => navigate("/login")
+                      } 
                     >
                       <Avatar
                         alt={`${user ? `${user.name}` : ""}`}
@@ -399,53 +324,6 @@ function ResponsiveAppBar() {
                     </IconButton>
                   </Tooltip>
                   <UserMenu />
-                  {/* <Menu
-                    sx={{
-                      mt: '45px',
-                    }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={Boolean(anchorElUserWeb)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    {settings.map((setting) => (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
-                      </MenuItem>
-                    ))}
-                  </Menu> */}
-                  {/* <Menu
-                    sx={{
-                      // display: {xs: 'flex', md: 'none'},
-                      mt: '45px',
-                    }}
-                    id='login-appbar'
-                    anchorEl={anchorElLogin}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right'
-                    }}
-                    open={Boolean(anchorElLogin)}
-                    onClose={handleCloseLoginMenu}
-                  >
-                      
-                    <MenuItem onClick={handleCloseLoginMenu}>
-                      <Link to='/login' textDecoration='null'>
-                        <Typography>
-                          Login
-                        </Typography>
-                      </Link>
-                    </MenuItem>
-                  </Menu> */}
                 </Box>
               </Grid>
 
@@ -465,7 +343,11 @@ function ResponsiveAppBar() {
                   <Link to="/user/favorites">
                     <IconButton sx={{ p: 0 }}>
                       <FavoriteBorderIcon
-                        sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                        sx={{ 
+                          margin: 1, 
+                          color: "#FF7C24", 
+                          fontSize: "35px" 
+                        }}
                       />
                     </IconButton>
                   </Link>
@@ -507,7 +389,6 @@ function ResponsiveAppBar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                  // color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
@@ -549,7 +430,6 @@ function ResponsiveAppBar() {
                 sx={{
                   display: { xs: "flex", md: "none" },
                   alignItems: "center",
-                  // pl: '10px'
                 }}
               >
                 {/* Icon */}
@@ -560,27 +440,7 @@ function ResponsiveAppBar() {
                     style={{ height: 39 }}
                   />
                 </Link>
-                {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
-                {/* Title */}
-                {/* <Typography
-                  variant="h5"
-                  noWrap
-                  component="a"
-                  href="/"
-                  sx={{
-                    mr: 0,
-                    display: { xs: 'flex', md: 'none' },
-                    // flexGrow: 1,
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: '#0d0628',
-                    textDecoration: 'none',
-                  }}
-                >
-                  3DArtPrints
-                </Typography> */}
               </Grid>
 
               {/* Smartphone Size Search Input */}
@@ -589,9 +449,6 @@ function ResponsiveAppBar() {
                 xs
                 sx={{
                   display: { xs: "flex", md: "none" },
-                  // backgroundColor: 'GhostWhite',
-                  // border: '1px solid black',
-                  // borderRadius: 3,
                   px: 1,
                   my: 0,
                 }}
@@ -600,9 +457,7 @@ function ResponsiveAppBar() {
                   sx={{
                     backgroundColor: "white",
                     borderRadius: 15,
-                    // flexGrow: 3,
                     width: "100%",
-                    // margin: 0,
                   }}
                   id="smartphoneSearchBarInput"
                   label="Search"
@@ -642,69 +497,16 @@ function ResponsiveAppBar() {
                   <Tooltip title="User settings">
                     <IconButton
                       sx={{ p: 0 }}
-                      onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} //handleOpenLoginMenu}
-                      // sx={{ p: 0 }}
+                      onClick={user ? handleOpenUserMenu : handleOpenLoginMenu} 
                     >
-                      {/* <Avatar alt={`${user ? "Remy Sharp" : ''}`} src="/static/images/avatar/2.jpg" */}
                       <Avatar
                         alt={`${user ? `${user.name}` : ""}`}
                         src=""
                         sx={{ color: "black" }}
                       />
-                      {/* {console.log(user ? user.name : 'NO USER')} */}
                     </IconButton>
                   </Tooltip>
                   <UserMenu />
-                  {/* <Menu
-                    sx={{
-                      mt: '45px',
-                    }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    {settings.map((setting) => (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
-                      </MenuItem>
-                    ))}
-                    
-                    <MenuItem onClick={handleLogoutClick}>
-                        <Typography textAlign="center">Logout</Typography>
-                    </MenuItem>
-
-                  </Menu> */}
-                  {/* <Menu
-                    sx={{
-                      // display: {xs: 'flex', md: 'none'},
-                      mt: '45px',
-                    }}
-                    id='login-appbar'
-                    anchorEl={anchorElLogin}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right'
-                    }}
-                    open={Boolean(anchorElLogin)}
-                    onClose={handleCloseLoginMenu}
-                  >
-                      
-                    <MenuItem onClick={handleCloseLoginMenu}>
-                      <Typography>
-                        Login
-                      </Typography>
-                    </MenuItem>
-                  </Menu> */}
                 </Box>
               </Grid>
 
@@ -763,7 +565,6 @@ function ResponsiveAppBar() {
           maxWidth="xl"
           sx={{
             display: { xs: "none", md: "block" },
-            // borderTop: '1px solid black'
           }}
         >
           <CategoriesNavBar />
@@ -772,9 +573,6 @@ function ResponsiveAppBar() {
 
       {/* Login Popup */}
       <Modal
-        // sx={{
-        //   bgcolor: 'white'
-        // }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={openLoginPopup}
@@ -797,31 +595,7 @@ function ResponsiveAppBar() {
             height: "100%",
           }}
         >
-          <Box
-            sx={
-              {
-                // display: 'flex',
-                // position: 'relative',
-                // justifyContent: 'center',
-                // alignItems: 'center',
-                // top: '50%',
-                // left: '50%',
-                // transform: 'translate(-50%, -50%)',
-                // width: '100%',
-                // height: '100%',
-                // bgcolor: 'white',
-                // border: '2px solid #000',
-                // boxShadow: 24,
-                // p: 4,
-              }
-            }
-          >
-            {/* <Typography id="transition-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography> */}
+          <Box>
             <LoginFrame
               setOpenLoginPopup={setOpenLoginPopup}
               handleRegisterClick={handleRegisterClick}
@@ -832,9 +606,6 @@ function ResponsiveAppBar() {
 
       {/* Register Popup */}
       <Modal
-        // sx={{
-        //   bgcolor: 'white'
-        // }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={openRegisterPopup}
