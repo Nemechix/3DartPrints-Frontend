@@ -10,20 +10,6 @@ import { Badge } from "@mui/material";
 import { useAppContext } from "../../Context/appContext";
 
 const pages = ['Pokemon', 'Cocina', 'Marvel', 'Dc', 'Naruto', 'Digimon', 'Lego'];
-// const settings = [
-//   {
-//     name: 'Profile', 
-//     url: '/profile'
-//   },
-//   {
-//     name: 'Upload', 
-//     url: '/upload'
-//   },
-//   {
-//     name: 'Dashboard',
-//     url: '/'
-//   }
-// ]
 
 function WebAppBar({ user, setUser }) {
   const navigate = useNavigate()
@@ -68,42 +54,6 @@ function WebAppBar({ user, setUser }) {
     setUser(null)
     navigate('/')
   }
-
-  // function UserMenu() {
-  //   return (
-  //     <Menu
-
-  //       sx={{
-  //         mt: '45px',
-  //       }}
-  //       id="menu-appbar"
-  //       anchorEl={anchorElUser}
-  //       anchorOrigin={{
-  //         vertical: 'top',
-  //         horizontal: 'right',
-  //       }}
-  //       keepMounted
-  //       transformOrigin={{
-  //         vertical: 'top',
-  //         horizontal: 'right',
-  //       }}
-  //       open={Boolean(anchorElUser)}
-  //       onClose={handleCloseUserMenu}
-  //     >
-  //       {settings.map((setting) => (
-  //         <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
-  //           <Typography textAlign="center">{setting.name}</Typography>
-  //         </MenuItem>
-  //       ))}
-        
-  //       <MenuItem onClick={handleLogoutClick}>
-  //           <Typography textAlign="center">Logout</Typography>
-  //       </MenuItem>
-
-  //     </Menu>
-  //   )
-  // }
-
 
   return (
     <>
