@@ -87,36 +87,6 @@ function ResponsiveAppBar() {
       
   }, [reload])
 
-  // function handleMenuItemClick(categoryId) {
-  //   handleCloseNavMenu()
-  //   navigate(`/category/${categoryId}`);
-  // }
-
-  // function handleUserItemClick(link) {
-  //   handleCloseUserMenu()
-  //   navigate(link)
-  // }
-
-  // const handleOpenNavMenu = (event) => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
-
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
-
-  // const handleOpenLoginMenu = () => {
-  //   setOpenLoginPopup(true)
-  // }
-
-  // const handleCloseNavMenu = () => {
-  //   setAnchorElNav(null);
-  // };
-
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
-
   const handleCloseLoginMenu = () => {
     setOpenLoginPopup(false)
   }
@@ -134,51 +104,6 @@ function ResponsiveAppBar() {
     setOpenRegisterPopup(false)
     setOpenLoginPopup(true)
   }
-
-  // function handleLogoutClick() {
-  //   localStorage.removeItem('token')
-  //   localStorage.removeItem('role')
-  //   localStorage.removeItem('favorites')
-  //   handleCloseUserMenu()
-  //   navigate('/')
-  // }
-
-  // function UserMenu() {
-  //   return (
-  //     <Menu
-
-  //       sx={{
-  //         mt: '45px',
-  //       }}
-  //       id="menu-appbar"
-  //       anchorEl={anchorElUser}
-  //       anchorOrigin={{
-  //         vertical: 'top',
-  //         horizontal: 'right',
-  //       }}
-  //       keepMounted
-  //       transformOrigin={{
-  //         vertical: 'top',
-  //         horizontal: 'right',
-  //       }}
-  //       open={Boolean(anchorElUser)}
-  //       onClose={handleCloseUserMenu}
-  //     >
-  //       {settings.map((setting) => (
-  //         <MenuItem key={setting.name} onClick={() => {handleUserItemClick(setting.url)}}>
-  //           <Typography textAlign="center">{setting.name}</Typography>
-  //         </MenuItem>
-  //       ))}
-        
-  //       <MenuItem onClick={handleLogoutClick}>
-  //           <Typography textAlign="center">Logout</Typography>
-  //       </MenuItem>
-
-  //     </Menu>
-  //   )
-  // }
-
-
 
   return (
     <>
