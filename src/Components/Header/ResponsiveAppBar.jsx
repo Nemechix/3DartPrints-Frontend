@@ -39,8 +39,8 @@ const settings = [
     url: '/profile'
   },
   {
-    name: 'Account', 
-    url: '/'
+    name: 'Upload', 
+    url: '/upload'
   },
   {
     name: 'Dashboard',
@@ -136,6 +136,8 @@ function ResponsiveAppBar() {
 
   function handleLogoutClick() {
     localStorage.removeItem('token')
+    localStorage.removeItem('role')
+    localStorage.removeItem('favorites')
     handleCloseUserMenu()
     navigate('/')
   }
@@ -182,7 +184,7 @@ function ResponsiveAppBar() {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#F9F5EB",
+          backgroundColor: "#f0f0f0",
           boxShadow: "none",
           borderBottom: "1px solid lightgray",
         }}
@@ -251,7 +253,11 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Link to="/">
-                  <img src={logo} alt="LOGO" style={{ height: 50 }} />
+                  <img
+                    src="https://i.postimg.cc/ncz4v9FJ/LOGO2.png"
+                    alt="LOGO"
+                    style={{ height: 60 }}
+                  />
                 </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
                 <Typography
@@ -458,7 +464,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Favourites">
                   <Link to="/user/favorites">
                     <IconButton sx={{ p: 0 }}>
-                      <FavoriteBorderIcon sx={{ margin: 1 }} />
+                      <FavoriteBorderIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
@@ -476,7 +484,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
                     <IconButton sx={{ p: 0 }}>
-                      <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                      <ShoppingCartOutlinedIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
@@ -544,7 +554,11 @@ function ResponsiveAppBar() {
               >
                 {/* Icon */}
                 <Link to="/">
-                  <img src={logo} alt="LOGO" style={{ height: 50 }} />
+                  <img
+                    src="https://i.postimg.cc/ncz4v9FJ/LOGO2.png"
+                    alt="LOGO"
+                    style={{ height: 39 }}
+                  />
                 </Link>
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'black' }} /> */}
 
@@ -709,7 +723,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Favourites">
                   <Link to="/user/favorites">
                     <IconButton sx={{ p: 0 }}>
-                      <FavoriteBorderIcon sx={{ margin: 1 }} />
+                      <FavoriteBorderIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>
@@ -730,7 +746,9 @@ function ResponsiveAppBar() {
                 <Tooltip title="Cart">
                   <Link to="/user/cart">
                     <IconButton sx={{ p: 0 }}>
-                      <ShoppingCartOutlinedIcon sx={{ margin: 1 }} />
+                      <ShoppingCartOutlinedIcon
+                        sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
+                      />
                     </IconButton>
                   </Link>
                 </Tooltip>

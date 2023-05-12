@@ -34,13 +34,16 @@ function CategoriesNavBar() {
               href={`/category/${category.name}`}
               sx={{ p: 0, color: "text.primary", textDecoration: "none" }}
             > */}
-            <Link to={`/category/${category.name}`}
+            <Link
+              to={`/category/${category.name}`}
               // underline='none'
               // textDecoration= "none"
               // sx={{ color: "text.primary" }}
-              style={{ textDecoration: 'none', color: 'inherit' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
-              <Typography variant="body2">{category.name}</Typography>
+              <Typography variant="body2">
+                {category.name.toUpperCase()}
+              </Typography>
             </Link>
             {/* </Button> */}
           </IconButton>

@@ -1,5 +1,5 @@
 .p_home {
-  font-family: "Secular One", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding-top: 15px;
   padding-bottom: 40px;
@@ -12,6 +12,8 @@
   padding-top: 20px;
   text-align: center;
   color: #333333;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .h3_home {
@@ -31,17 +33,37 @@
 
 .parrafo1 {
   text-align: justify;
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Lato', sans-serif;
+
+    font-family: 'Secular One', sans-serif;
+
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo2 {
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Lato', sans-serif;
+
+    font-family: 'Secular One', sans-serif;
+
+
   text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
 }
 
 .parrafo3 {
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Lato', sans-serif;
+
+    font-family: 'Secular One', sans-serif;
+
+
   text-align: justify;
   padding: 20px;
   font-size: 4.3vw;
@@ -49,12 +71,13 @@
 }
 
 .parrafos_title {
-  background-color: #eedbee;
+  background-color: #d2cafc;
 }
 
 @media screen and (min-width: 1024px) {
   .h3_home {
     font-size: 2vw;
+    color: #FF7C24;
   }
 
   .welcome{
