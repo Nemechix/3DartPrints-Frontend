@@ -468,7 +468,7 @@ function ResponsiveAppBar() {
               {/* Smartphone Size InspireMe Icon */}
               <Grid
                 item
-                xs={`${user ? 1 : 3}`}
+                xs={user ? 1 : 3}
                 sx={{
                   display: { xs: "none", md: "none" },
                   justifyContent: `${user ? "center" : "left"}`,
