@@ -253,7 +253,7 @@ function WebAppBar({ user, setUser }) {
               <Badge badgeContent={cart.length} color="primary">
                 <IconButton sx={{ p: 0 }}>
                   <ShoppingCartOutlinedIcon
-                    sx={{ margin: 1, color: "#FF7C24", fontSize: "35px" }}
+                    sx={{ color: "#FF7C24", fontSize: "35px" }}
                   />
                 </IconButton>
               </Badge>
