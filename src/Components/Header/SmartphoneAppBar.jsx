@@ -251,7 +251,7 @@ function SmartphoneAppBar({ user, setUser, setOpenLoginPopup }) {
               <Badge badgeContent={cart.length} color="primary">
                 <IconButton sx={{ p: 0 }}>
                   <ShoppingCartOutlinedIcon
-                    sx={{ margin: 1, color: "#FF7C24", fontSize: "25px" }}
+                    sx={{ color: "#FF7C24", fontSize: "25px" }}
                   />
                 </IconButton>
               </Badge>
