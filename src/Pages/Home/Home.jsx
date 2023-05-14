@@ -124,7 +124,7 @@ useEffect(() => {
       <div>
         {" "}
         <img
-          style={{ paddingTop: "35px", width: isMobile ? "350px" : "60vw" }}
+          style={{ paddingTop: "5px", width: isMobile ? "350px" : "40vw" }}
           src="https://i.postimg.cc/j27h5Shy/cosas-de-nchi-03.png"
           alt="img"
         />
@@ -196,7 +196,7 @@ useEffect(() => {
       <div>
         {" "}
         <img
-          style={{ paddingTop: "35px", width: isMobile ? "350px" : "60vw" }}
+          style={{ paddingTop: "5px", width: isMobile ? "350px" : "40vw" }}
           src="https://i.postimg.cc/9QjLDZK0/cosas-de-nchi-04.png"
           alt="img"
         />
