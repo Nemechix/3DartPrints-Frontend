@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 //import getRandomCategory from "../../Services/GetRandomCategory";
 import getAllCategories from "../../Services/getAllCategories";
 import getAllDesigns from "../../Services/getAllDesigns";
-import { Box, Card, CardActionArea, CardMedia, IconButton, Typography, useMediaQuery } from "@mui/material";
+import { Box, Card, CardActionArea, CardMedia, IconButton, Skeleton, Typography, useMediaQuery } from "@mui/material";
 import {useNavigate } from "react-router-dom";
 import { shuffle } from "lodash";
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -20,6 +20,8 @@ import { removeFavorite } from "../../Services/favorites";
 export default function MultiActionAreaCard() {
   const [categories, setCategories] = useState([]);
   const [designs, setDesigns] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(false)
+  const [loadingDesigns, setLoadingDesigns] = useState(false)
   const isMobile = useMediaQuery("(max-width:1024px)");
   const navigate = useNavigate();
 
@@ -103,15 +105,19 @@ export default function MultiActionAreaCard() {
 
 useEffect(() => {
   async function fetchCategories() {
+    setLoadingCategories(true)
     const data = await getAllCategories();
     const shuffledCategories = shuffle(data);
     setCategories(shuffledCategories.slice(0, 4));
+    data.length ? setLoadingCategories(false) : null
   }
 
   async function fetchDesigns(){
+    setLoadingDesigns(true)
     const data = await getAllDesigns()
     const shuffledDesigns = shuffle(data)
     setDesigns(shuffledDesigns.slice(0,4))
+    data.length ? setLoadingDesigns(false) : null
   }
 
   fetchDesigns()
@@ -149,18 +155,28 @@ useEffect(() => {
               fontFamily: "Roboto",
             }}
           >
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height={isMobile ? "130" : "160vw"}
-                image={category.image}
-                alt={category.name}
-                style={{ objectFit: "cover" }}
-                onClick={function handleMenuItemClick() {
-                  navigate(`/category/${category.name}`);
+            {loadingCategories ? (
+              <Skeleton variant='rectangular' animation='wave' 
+                sx={{ 
+                  height: '100%',
+                  width: '100%'
                 }}
               />
-            </CardActionArea>
+            ) : (
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height={isMobile ? "130" : "160vw"}
+                  image={category.image}
+                  alt={category.name}
+                  style={{ objectFit: "cover" }}
+                  onClick={function handleMenuItemClick() {
+                    navigate(`/category/${category.name}`);
+                  }}
+                />
+              </CardActionArea>
+            )}
+
             <div
               style={{
                 display: "flex",
@@ -186,7 +202,7 @@ useEffect(() => {
                   marginBottom: "0px",
                 }}
               >
-                {category.name}
+                {loadingCategories ? <Skeleton animation='wave'/> : category.name}
               </Typography>
             </div>
           </Card>
@@ -219,18 +235,27 @@ useEffect(() => {
               border: "1px solid lightgray",
             }}
           >
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height={isMobile ? "185" : "220vw"}
-                image={design.image}
-                alt={design.name}
-                style={{ objectFit: "cover" }}
-                onClick={function handleMenuItemClick() {
-                  navigate(`/user/${design.userId}/designs/${design.id}`);
+            {loadingDesigns ? (
+              <Skeleton variant='rectangular' animation='wave' 
+                sx={{ 
+                  height: '100%',
+                  width: '100%'
                 }}
-              />
-            </CardActionArea>
+              />)
+            : (
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height={isMobile ? "185" : "220vw"}
+                  image={design.image}
+                  alt={design.name}
+                  style={{ objectFit: "cover" }}
+                  onClick={function handleMenuItemClick() {
+                    navigate(`/user/${design.userId}/designs/${design.id}`);
+                  }}
+                />
+              </CardActionArea>
+            )}
             <div
               style={{
                 display: "flex",
@@ -255,7 +280,7 @@ useEffect(() => {
                   marginBottom: "0px",
                 }}
               >
-                {design.name}
+                {loadingDesigns ? <Skeleton/> : design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Typography

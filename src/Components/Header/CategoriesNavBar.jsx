@@ -1,17 +1,20 @@
-import { Typography, Button, IconButton, Stack, Divider } from '@mui/material'
+import { Typography, Button, IconButton, Stack, Divider, Skeleton } from '@mui/material'
 import { useState, useEffect } from 'react'
 import getAllCategories from '../../Services/getAllCategories'
 import { Link } from 'react-router-dom'
 
 function CategoriesNavBar() {
   
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([{name:''},{name:''},{name:''},{name:''}])
+  const [loading, setLoading] = useState(false)
   
   useEffect(() => {
   
     async function fetchData() {
+      setLoading(true)
       const categories = await getAllCategories()
       setCategories(categories)
+      setLoading(false)
     }
   
     fetchData()
@@ -28,27 +31,25 @@ function CategoriesNavBar() {
       sx={{ color: 'black', overflow: 'auto' }}
     >
       {categories.map((category) => {
-        return (
+        return loading ? 
+          <Skeleton 
+            animation='wave' 
+            sx={{ 
+              width:'100%' 
+            }}
+          /> : (
           <IconButton key={category.name} sx={{ p: 0 }}>
-            {/* <Button
-              href={`/category/${category.name}`}
-              sx={{ p: 0, color: "text.primary", textDecoration: "none" }}
-            > */}
             <Link
               to={`/category/${category.name}`}
-              // underline='none'
-              // textDecoration= "none"
-              // sx={{ color: "text.primary" }}
               style={{ textDecoration: "none", color: "black" }}
             >
               <Typography variant="body2">
                 {category.name.toUpperCase()}
               </Typography>
             </Link>
-            {/* </Button> */}
           </IconButton>
-        );
-      })}
+        )
+})}
       
     </Stack>
   )

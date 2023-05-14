@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Box from '@mui/material/Box';
-import { useMediaQuery } from '@mui/material';
+import { Skeleton, useMediaQuery } from '@mui/material';
 import { CardActionArea } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
@@ -27,17 +27,21 @@ export default function DesignCard() {
   }
 
 
-  const [designs, setDesigns] = useState([]);
+  const [designs, setDesigns] = useState([0,0,0,0]);
   const navigate = useNavigate()
   const isMobile = useMediaQuery('(max-width:1024px)');
   const [userId, setUserId] = useState(null);
 
   const [favorites, setFavorites] = useState([])
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     async function fetchData() {
+      setLoading(true)
       const response = await getDesignsByCategoryName(name);
       setDesigns(response);
+      setLoading(false)
     }
     fetchData();
   }, [name]);
@@ -123,18 +127,27 @@ export default function DesignCard() {
               border: "1px solid lightgray",
             }}
           >
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height={isMobile ? "185" : "220vw"}
-                image={design.image}
-                alt={design.name}
-                style={{ objectFit: "cover" }}
-                onClick={function handleMenuItemClick() {
-                  navigate(`/user/${design.userId}/designs/${design.id}`);
+            {loading ? (
+              <Skeleton
+                sx={{
+                  height:'100%',
+                  width:'100%'
                 }}
               />
-            </CardActionArea>
+            ) : (              
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height={isMobile ? "185" : "220vw"}
+                  image={design.image}
+                  alt={design.name}
+                  style={{ objectFit: "cover" }}
+                  onClick={function handleMenuItemClick() {
+                    navigate(`/user/${design.userId}/designs/${design.id}`);
+                  }}
+                />
+              </CardActionArea>
+            )}
             <div
               style={{
                 display: "flex",
@@ -159,7 +172,7 @@ export default function DesignCard() {
                   marginBottom: "0px",
                 }}
               >
-                {design.name}
+                {loading ? <Skeleton/> : design.name}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Typography
@@ -167,7 +180,7 @@ export default function DesignCard() {
                   color="text.secondary"
                   sx={{ marginRight: "" }}
                 >
-                  {`$${design.price}`}
+                  {loading ? '' : `$${design.price}`}
                 </Typography>
                 <div style={{ display: "flex", marginLeft: "px" }}>
                   <IconButton
