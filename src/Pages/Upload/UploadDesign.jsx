@@ -6,8 +6,11 @@ import {
   Button,
   Grid,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 import api from "../../Services/config";
+import { Snackbar, SnackbarContent } from "@mui/material";
+
 
 const UploadDesignForm = () => {
   const [name, setName] = useState("");
@@ -16,6 +19,10 @@ const UploadDesignForm = () => {
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [categoryName, setCategoryName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const handleImageInputChange = (event) => {
     const imageFile = event.target.files[0];
@@ -36,6 +43,8 @@ const UploadDesignForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    setLoading(true);
 
     const designData = {
       name: name,
@@ -62,15 +71,21 @@ const UploadDesignForm = () => {
       );
 
       console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+      setSuccess(true);
+      setSnackbarMessage("¡El diseño se ha subido exitosamente!");
+    setSnackbarOpen(true);
+    setLoading(false);
+  } catch (error) {
+    setSnackbarMessage("¡Hubo un error al subir el diseño!");
+    setSnackbarOpen(true);
+    setLoading(false);
+  }
+};
+
 
   return (
     <Grid container spacing={5} justifyContent="center">
       <Grid item xs={12}>
-
       </Grid>
       <Grid item xs={8}>
         <form style={{ marginBottom: "40px", backgroundColor: "white", border: "1px solid lightgray", boxShadow: "none", paddingTop: "30px" }} onSubmit={handleSubmit}>
@@ -135,27 +150,49 @@ const UploadDesignForm = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button
-                style={{
-                  backgroundColor: "#ff7c24",
-                  boxShadow: "none",
-                  borderRadius:"25px",
-                  "&:hover": {
-                    backgroundColor: "#e86217"
-                  }
-                }}
-                variant="contained"
-                type="submit"
-                fullWidth
-              >
-                Subir diseño
-              </Button>
+              {loading ? (
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <CircularProgress />
+                </div>
+              ) : (
+                <Button
+                  style={{
+                    backgroundColor: "#ff7c24",
+                    boxShadow: "none",
+                    borderRadius: "25px",
+                    "&:hover": {
+                      backgroundColor: "#e86217"
+                    }
+                  }}
+                  variant="contained"
+                  type="submit"
+                  fullWidth
+                >
+                  Subir diseño
+                </Button>
+              )}
             </Grid>
           </Grid>
         </form>
-      </Grid>
+
+        <Snackbar
+  open={snackbarOpen}
+  autoHideDuration={3000}
+  onClose={() => setSnackbarOpen(false)}
+  style={{ width: "500px", height: "80px" }}
+>
+  <SnackbarContent
+    message={snackbarMessage}
+    action={
+      <Button color="inherit" size="small" onClick={() => setSnackbarOpen(false)}>
+        Cerrar
+      </Button>
+    }
+  />
+</Snackbar></Grid>
     </Grid>
   );
+
 };
 
 export default UploadDesignForm;

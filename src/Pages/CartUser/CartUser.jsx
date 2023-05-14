@@ -19,7 +19,7 @@ function CartUser() {
 
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/stripe/checkout", {
+    await fetch("https://threedartprints-2yqk.onrender.com/api/stripe/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

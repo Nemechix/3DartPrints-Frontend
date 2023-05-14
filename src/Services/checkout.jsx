@@ -1,6 +1,5 @@
 import api from "./config";
 
-const { cart, addToCart, removeFromCart } = useAppContext()
 
 const checkout = async () => {
   await fetch(`${api}/stripe/checkout`, {
