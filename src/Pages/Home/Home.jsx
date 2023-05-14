@@ -125,7 +125,7 @@ useEffect(() => {
         {" "}
         <img
           style={{ paddingTop: "35px", width: isMobile ? "350px" : "60vw" }}
-          src="https://i.postimg.cc/59v7MnN7/coso-1.jpg"
+          src="https://i.postimg.cc/j27h5Shy/cosas-de-nchi-03.png"
           alt="img"
         />
       </div>
@@ -191,6 +191,15 @@ useEffect(() => {
             </div>
           </Card>
         ))}
+      </div>
+
+      <div>
+        {" "}
+        <img
+          style={{ paddingTop: "35px", width: isMobile ? "350px" : "60vw" }}
+          src="https://i.postimg.cc/9QjLDZK0/cosas-de-nchi-04.png"
+          alt="img"
+        />
       </div>
 
       <div className="popular_categories">
