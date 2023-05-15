@@ -18,8 +18,8 @@ import { removeFavorite } from "../../Services/favorites";
 
 
 export default function MultiActionAreaCard() {
-  const [categories, setCategories] = useState([]);
-  const [designs, setDesigns] = useState([]);
+  const [categories, setCategories] = useState([0,0,0,0]);
+  const [designs, setDesigns] = useState([0,0,0,0]);
   const [loadingCategories, setLoadingCategories] = useState(false)
   const [loadingDesigns, setLoadingDesigns] = useState(false)
   const isMobile = useMediaQuery("(max-width:1024px)");
@@ -288,7 +288,7 @@ useEffect(() => {
                   color="text.secondary"
                   sx={{ marginRight: "" }}
                 >
-                  {`$${design.price}`}
+                  {loadingDesigns ? '' : `$${design.price}`}
                 </Typography>
                 <div style={{ display: "flex", marginLeft: "px" }}>
                   <IconButton
