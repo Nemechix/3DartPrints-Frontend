@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function CategoriesNavBar() {
   
-  const [categories, setCategories] = useState([{name:''},{name:''},{name:''},{name:''}])
+  const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(false)
   
   useEffect(() => {
@@ -30,14 +30,13 @@ function CategoriesNavBar() {
       paddingY={1}
       sx={{ color: 'black', overflow: 'auto' }}
     >
-      {categories.map((category) => {
-        return loading ? 
-          <Skeleton 
-            animation='wave' 
-            sx={{ 
-              width:'100%' 
-            }}
-          /> : (
+      {loading ? <>
+        <Skeleton animation='wave' sx={{ width:'100%' }}/>
+        <Skeleton animation='wave' sx={{ width:'100%' }}/>
+        <Skeleton animation='wave' sx={{ width:'100%' }}/>
+        <Skeleton animation='wave' sx={{ width:'100%' }}/>
+        </> : categories.map((category) => {
+        return (
           <IconButton key={category.name} sx={{ p: 0 }}>
             <Link
               to={`/category/${category.name}`}
@@ -49,7 +48,7 @@ function CategoriesNavBar() {
             </Link>
           </IconButton>
         )
-})}
+      })}
       
     </Stack>
   )
